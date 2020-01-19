@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
-    <div class="card card-widget widget-user">
-    <div class="widget-user-header text-white" >
-      <h3 class="username"> {{name}} </h3>
-
+  <div class="profile">
+    <div class="card">
+    <div class="widget-user-header" >
+      <h1 class="username"> {{name}} </h1>
+      whyyyyy is this not working
 
     </div>
     </div>
