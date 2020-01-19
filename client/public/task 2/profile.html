@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <title> Profile Card</title>
+    <link rel="stylesheet" href="style.css">
+        <link href="https://stackpath.boostrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel =
+                "stylesheet">
+    </head>
+    <body>
+        <div class = "profile-card">
+            <h1>{{ name }} Profile!</h1>
+            <p>About: {{ desc }}</p>
+            <div class = "image-container">
+                <img src = "/img/user.jpeg" style = "width: 100%">
+            </div>
+
+        </div>
+
+    </body>
+
+    <script>
+        export default {
+            name:"profile",
+            data() {
+                return {
+                    name: 'Jane Doe',
+                    desc: 'I like to code!'
+                }
+            },
+        }
+    </script>
+
+    <!-- Add "scoped" attribute to limit CSS to this component only -->
+    <style scoped>
+        h3 {
+            margin: 40px 0 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        a {
+            color: #42b983;
+        }
+    </style>
+
+</html>
