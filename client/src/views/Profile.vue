@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card card-widget widget-user">
-    <div class="widget-user-header text-white" >
+    <div class="widget-user-header" >
       <h3 class="username"> {{name}} </h3>
 
 
