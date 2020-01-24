@@ -2,12 +2,18 @@
   <div class="profile">
     <div class="card card-widget widget-user">
       <div class="widget-user-header align:center" >
-        <h3 class="name"> {{ name }} </h3>
+        <h3 class="header"> My Profile</h3>
+        <h3 class="name"> {{name}}</h3>
         <div class="photo" style="width:300px;height:300px;overflow:hidden;display:inline-block;border:1px solid black; margin-left:auto;margin-right:auto;">
           <img src="https://source.unsplash.com/iJ9o00UeAWk" width="200px">
         </div>
-        <h4 class="desc"> About me: {{desc}}</h4>
+
         <h4 class="desc"> Rating: {{rating}}</h4>
+        <h4 class="desc"> About me: </h4>
+        <textarea id="" name="notes" rows = '4' placeholder:id="Edit your description here.">
+
+
+        </textarea>
 
       </div>
     </div>
