@@ -24,9 +24,8 @@
         <br> <br> <br>
 
 
-  </div>
     </div>
-
+  </div>
 
 </template>
 
