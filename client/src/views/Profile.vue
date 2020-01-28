@@ -1,19 +1,33 @@
 <template>
   <div class="profile">
-    <div class="card card-widget widget-user">
+
+    <div class="card card-widget widget-user" align="middle">
+        <h2> MY PROFILE </h2>
+        <h3 class = "title"> {{name}} </h3>
+
+        <img src=https://source.unsplash.com/tzILuPBLcvk/ r width=200px height="200px"/>
+
 
 
         <h4 class="desc"> Rating: {{rating}}</h4>
         <h4 class="desc"> About me: </h4>
-        <textarea id="" name="notes" rows = '4' placeholder:id="Edit your description here.">
+        <textarea name="notes" rows = '4' placeholder:id="Edit your description here."></textarea>
+
+        <br>
+        <h4 class="desc"> Skills: </h4>
+        <textarea name="skills" rows = '4' placeholder:id="Edit your description here."></textarea>
+
+        <br>
+        <h4 class="desc"> Interests: </h4>
+        <textarea name="interests" rows = '4' placeholder:id="Edit your description here."></textarea>
+
+        <br> <br> <br>
 
 
-        </textarea>
-
-      </div>
+  </div>
     </div>
-  </div>
-  </div>
+
+
 </template>
 
 <script>
@@ -31,9 +45,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  body {background-color: powderblue;}
-  h3   {color: blue;}
-  p    {color: red;}
 
+  .profile {
+      padding:40px;
+
+      margin:40px;
+
+  }
 
 </style>
