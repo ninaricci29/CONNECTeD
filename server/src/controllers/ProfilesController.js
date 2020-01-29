@@ -2,7 +2,7 @@ const User = require('../models').User
 
 module.exports = {
   async retrieve (req, res){
-    try{
+    try {
       user = await User.findOne({
         where: {
           id: req.query.id
@@ -12,19 +12,19 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'an error has occured trying to fetch the user'
+        error: 'an error has occurred trying to fetch the user'
       })
     }
   }, 
 
   async register(req, res){
-    try{
+    try {
       query = await User.create(req.body);
       res.send({user: query.toJSON()})
     } catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occured trying to fetch the user'
+        error: 'an error has occured trying to register the user'
       })
     }
   }
