@@ -5,4 +5,6 @@ You need to have node.js installed. Then clone the repo and run:
 ```
 cd client
 npm install
+cd server
+npm install
 ```
