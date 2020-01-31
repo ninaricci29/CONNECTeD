@@ -34,5 +34,5 @@ ConnectEd is built by Nano Banano. This project's development started at and has
 * Isha Kerpal: since December 2019
 * Akarshi Sharma: since December 2019
 
-Mentor: Veerpal Brar
+Mentor: Veerpal Brar <br/>
 Supervisor: Larry Yueli Zhang 
