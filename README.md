@@ -4,7 +4,7 @@
 
 0. [Introduction](#introduction)
 2. [Screenshots](#screenshots)
-1. [Setup](#setup
+1. [Setup](#setup)
 
 ## Introduction
 
