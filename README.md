@@ -25,13 +25,13 @@ npm install
 
 ## Credits
 
-ConnectEd is built by Nano Banano. Here is a list of our members: 
+ConnectEd is built by Nano Banano. This project's development started at and has been supported at the University of Toronto Mississauga. Below is a list of our contributors so far. 
 
-Marissa Shey: since December 2019
-Nina Ricci Lu: since December 2019
-Maham Khan: since December 2019
-Isha Kerpal: since December 2019
-Akarshi Sharma: since December 2019
+*Marissa Shey: since December 2019
+*Nina Ricci Lu: since December 2019
+*Maham Khan: since December 2019
+*Isha Kerpal: since December 2019
+*Akarshi Sharma: since December 2019
 
 Mentor: Veerpal Brar
 Supervisor: Larry Yueli Zhang 
