@@ -1,12 +1,9 @@
 <template>
-
     <div>
-
         <div class="coverPhoto">
             <div class="profile">
             </div>
         </div>
-
         <div class="profileText">
             <h2> Your Name </h2>
         </div>
@@ -14,27 +11,22 @@
         <img src="../assets/profile.jpg"/>
 
         <div class="AboutMeCredentials">
-
             <div class="AboutMe">
                 <h3> Got a project? Let's collaborate! </h3>
                 <h4> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor </h4>
             </div>
-
             <div class="Creds">
                 <h3> Year of Study: First Year </h3>
                 <h3> Major: Computer Science </h3>
                 <h3> Avg Rating: 5.00 </h3>
             </div>
-
         </div>
 
         <div class = "Projects">
-
             <div class ="ProjectsTitle">
                 <h5> P R O J E C T S </h5>
             </div>
-
             <div class="WebApplication">
                 <h3> WEB APPLICATION </h3>
                 <h4> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -65,13 +57,8 @@
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                     deserunt mollit anim id est laborum." </h4>
             </div>
-
         </div>
     </div>
-
-    <!--  </body>-->
-
-
 </template>
 
 <style>
@@ -81,9 +68,7 @@
         /*scroll-behavior: smooth;*/
         background-color: grey;
         background-size: 1500px;
-
     }
-
 
     .profileText {
         font-family: "Candara";
@@ -150,7 +135,6 @@
         height: 220px;
         width: 280px;
         border-radius: 50%;
-
     }
 
     .navigation {
@@ -190,5 +174,4 @@
         margin-left: 40px;
         margin-right: 40px;
     }
-
 </style>
