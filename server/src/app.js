@@ -12,11 +12,14 @@ var history = require('connect-history-api-fallback');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cors())
-//app.use(serveStatic(path.join(__dirname,'/dist')))
+
+require('./routes')(app)
 app.use('/connect', express.static(path.join(__dirname, 'dist')))
 console.log(`${path.join(__dirname, "/dist")}`)
-require('./routes')(app)
-app.use(history())
+
+app.get("/connect/*", (req, res) => { 
+	res.sendFile(path.join(__dirname, '/dist/index.html'))})
+app.use("/connect/", history())
 models.sequelize.sync()
   .then( () => {
     app.listen(config.port)
