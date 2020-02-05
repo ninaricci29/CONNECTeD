@@ -2,20 +2,20 @@
     <section class="Log-In">
         <div>
             <h1 class="brand">CONNECTeD</h1>
-            <h5 class="sub"> WELCOME BACK </h5>
+            <h6 class="sub"> JOIN CONNECTeD TODAY </h6>
         </div>
         <form class="form">
-            <div class="form-group">
-                <!--            <label for="exampleInputEmail1">Username</label>-->
-                <input type="Username" class="form-control active" placeholder="Username">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <!--            <label for="exampleInputPassword1">Password</label>-->
-                <input type="password" class="form-control active" placeholder="Password">
-            </div>
+<!--            <div class="form-group">-->
+<!--                &lt;!&ndash;            <label for="exampleInputEmail1">Username</label>&ndash;&gt;-->
+<!--                <input type="Username" class="form-control active" placeholder="Username">-->
+<!--                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                &lt;!&ndash;            <label for="exampleInputPassword1">Password</label>&ndash;&gt;-->
+<!--                <input type="password" class="form-control active" placeholder="Password">-->
+<!--            </div>-->
             <div id="button">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="log-in-via-utorid" class="btn btn-primary">Sign In with UofT</button>
             </div>
         </form>
     </section>
@@ -34,7 +34,7 @@
     }
     .sub{
         font-weight: bold;
-        font-size: 25px;
+        font-size: 20px;
         padding-top: 10px;
     }
     .form{

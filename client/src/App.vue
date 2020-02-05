@@ -7,8 +7,8 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/log-in" > Log In </b-nav-item>
-        <b-nav-item to="/register">Register </b-nav-item>
+        <b-nav-item to="/Sign-In" > Sign-In </b-nav-item>
+        <b-nav-item to="/info">info </b-nav-item>
         <b-nav-item to="/profile"> Profile </b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
