@@ -21,16 +21,13 @@
             <div class="form-group">
                 <label>Major</label>
                 <select class="form-control form-control-md">
-                    <option>Small select</option>
+                    <option>select your major</option>
                     <option>Computer Science</option>-->
                     <option>Math & Statistics</option>
                     <option>Biology</option>
                     <option>Drama</option>
                 </select>
-
             </div>
-
-
             <div class="form-group">
                 <label>Bio</label>
 
