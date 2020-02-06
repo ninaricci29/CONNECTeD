@@ -50,7 +50,7 @@
 </html>
 </template>
 
-<style>
+<style scoped>
 body{
   background-image: url("https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&dpr=2&auto=format&fit=crop&w=416&h=312&q=60");
   background-color: #cccccc;
