@@ -28,7 +28,10 @@ module.exports = {
       })
     }
   },
-
+  /* This method updates the profile information of a user
+     with the new data povided by the user. The profile
+     information is updated with a given user id, by looking 
+     up the id in the database.  */
   async update_profile (req, res){
     try{
       console.log(req)
@@ -43,7 +46,7 @@ module.exports = {
       user.year=req.body.year;
       user.description=req.body.description;
       await user.save();
-      res.send("succesfully updated")
+      res.send("Successfully Updated")
     } 
     catch (err) {
       console.log(err);
