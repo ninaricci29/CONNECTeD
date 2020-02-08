@@ -1,32 +1,24 @@
 <template>
-    <section class="Log-In">
+    <body>
         <div>
             <h1 class="brand">CONNECTeD</h1>
             <h6 class="sub"> JOIN CONNECTeD TODAY </h6>
         </div>
         <form class="form">
-<!--            <div class="form-group">-->
-<!--                &lt;!&ndash;            <label for="exampleInputEmail1">Username</label>&ndash;&gt;-->
-<!--                <input type="Username" class="form-control active" placeholder="Username">-->
-<!--                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                &lt;!&ndash;            <label for="exampleInputPassword1">Password</label>&ndash;&gt;-->
-<!--                <input type="password" class="form-control active" placeholder="Password">-->
-<!--            </div>-->
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary">Sign In with UofT</button>
+                <button type="log-in" class="btn btn-primary">Sign In with UofT</button>
             </div>
         </form>
-    </section>
+    </body>
 </template>
 
 <style scoped>
-    .Log-In{
+    body{
         padding-top: 40px;
         background-color: #2e2e2e ;
         font-family: Montserrat,serif;
         color: white;
+        text-align: center;
     }
     .brand{
         font-weight: bolder;
@@ -41,21 +33,6 @@
         padding-top: 50px;
         padding-bottom: 40px;
     }
-    .form-group{
-        /*text-align: center;*/
-        padding-left: 400px;
-    }
-    .form-control{
-        width: 500px;
-        border-color: white;
-        background-color: #2e2e2e;
-    }
-    .active{
-        color: white;
-    }
-    #emailHelp{
-        width: 500px;
-    }
     #button{
         padding-bottom: 20px;
         padding-top: 20px;
@@ -68,11 +45,7 @@
         background-color: #2e2e2e;
     }
     .btn:hover{
-        background-color: white; /* Green */
+        background-color: white;
         color: black;
     }
-    #icon-list{
-        background-color: black;
-    }
-
 </style>

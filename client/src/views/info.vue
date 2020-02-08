@@ -16,13 +16,13 @@
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" class="form-control active" placeholder="Smith">
+                <input type="year-of-study" class="form-control active" placeholder="1">
             </div>
             <div class="form-group">
                 <label>Major</label>
                 <select class="form-control form-control-md">
                     <option>select your major</option>
-                    <option>Computer Science</option>-->
+                    <option>Computer Science</option>
                     <option>Math & Statistics</option>
                     <option>Biology</option>
                     <option>Drama</option>
@@ -88,8 +88,7 @@
         background-color: #2e2e2e;
     }
     .btn:hover{
-        background-color: white; /* Green */
+        background-color: white;
         color: black;
     }
-
 </style>
