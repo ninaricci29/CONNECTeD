@@ -75,13 +75,10 @@
         mounted() {
             axios.get('http://localhost:8081/profile?id=3')
                 .then(response => (
-                    this.name = response.data.full_name)
-                );
-
-            axios.get('http://localhost:8081/profile?id=3')
-                .then(response => (
+                    this.name = response.data.full_name,
                     this.description = response.data.description)
                 );
+
         }
     }
 </script>
