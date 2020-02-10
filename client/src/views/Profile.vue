@@ -61,7 +61,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     body {
         padding: 20px;
         margin: 0;
