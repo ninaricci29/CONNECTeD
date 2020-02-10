@@ -4,23 +4,23 @@
             <h1>CONNECTeD</h1>
             <h6>Complete the form.</h6>
         </div>
-        <form class="form">
+        <form class="form" method="mymet">
             <div class="form-group">
                 <label>First Name</label>
 
-                <input type="First Name" class="form-control active" placeholder="John">
+                <input type="First Name" v-model= "fn" class="form-control active" placeholder="John">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" class="form-control active" placeholder="Smith">
+                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" class="form-control active" placeholder="1">
+                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1">
             </div>
             <div class="form-group">
                 <label>Major</label>
-                <select class="form-control form-control-md">
+                <select class="form-control form-control-md" v-model= "major">
                     <option>select your major</option>
                     <option>Computer Science</option>
                     <option>Math & Statistics</option>
@@ -31,21 +31,21 @@
             <div class="form-group">
                 <label>Bio</label>
 
-                <input type="bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
+                <input type="bio" v-model= "bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
                 <small id="bio-type" class="form-text text-muted">Describe your self!</small>
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary">SUBMIT</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="mymet" >SUBMIT</button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    export default {
-
-    }
+export default {
+    
+}
 </script>
 
 <style scoped>
@@ -98,3 +98,48 @@
         border-color: black;
     }
 </style>
+
+<script>
+import axios from 'axios'
+export default {
+    name:"mymet",
+    data() {
+    return {
+      fn: '',
+      ln: '', 
+      major: '',
+      bio: '',
+      yos: ''
+    }
+  }, 
+    methods:{
+    mymet(){
+        // The url for the post request has
+        // to be the url to the update page we need to make.
+        axios.post('http://localhost:8081/info', {
+            // Still need to figure out value, id will have
+            id:5,
+            first_name: this.fn,
+            last_name: this.ln,
+            major: this.major,
+            bio: this.bio,
+            year: this.yos
+        })
+        .then(function (response) {
+            id: response.data.id;
+            utorid: response.data.utorid;
+            first_name: repsonse.data.first_name;
+            last_name:response.data.last_name;
+            major:repsonse.data.major;
+            bio:response.data.bio;
+            year:response.body.year;
+
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    }
+}
+</script>
