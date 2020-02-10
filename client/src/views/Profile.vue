@@ -5,7 +5,6 @@
             </div>
         </div>
         <div class="profileText">
-            <h2> Your Name </h2>
         </div>
 
         <img src="../assets/profile.jpg"/>
@@ -13,13 +12,8 @@
         <div class="AboutMeCredentials">
             <div class="AboutMe">
                 <h3> Got a project? Let's collaborate! </h3>
-                <h4> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor </h4>
             </div>
             <div class="Creds">
-                <h3> Year of Study: First Year </h3>
-                <h3> Major: Computer Science </h3>
-                <h3> Avg Rating: 5.00 </h3>
             </div>
         </div>
 
