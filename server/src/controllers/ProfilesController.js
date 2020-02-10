@@ -1,4 +1,5 @@
 const User = require('../models').User
+const Tag = require('../models').Tag
 
 module.exports = {
   async retrieve (req, res){
@@ -31,11 +32,7 @@ module.exports = {
 
   async tags(req, res) {
     try {
-      tags = await Tag.findAll({
-        where: {
-          id: req.query.id
-        }
-      })
+      tags = await Tag.findAll({})
       res.send(tags)
     } catch (err) {
       console.log(err)

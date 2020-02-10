@@ -4,7 +4,7 @@
  This is known as the 'many to many relationship'.
 */
 
-module.exports = async (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Tag', {
         // Model attributes are defined here
         tag_name: {
@@ -14,11 +14,9 @@ module.exports = async (sequelize, DataTypes) => {
             unique: true
         }
     }, {
+        timestamps: false
     });
 
 
-// The Users_Tag model is generated as the through table with two columns: userId and tagId.
-    Tag.belongsToMany(User, {through: 'Users_Tag'});
-    User.belongsToMany(Tags, {through: 'Users_Tag'});
 
 }
