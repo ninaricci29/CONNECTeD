@@ -27,5 +27,22 @@ module.exports = {
         error: 'an error has occurred trying to register the user'
       })
     }
+  },
+
+  async tags(req, res) {
+    try {
+      tags = await Tag.findAll({
+        where: {
+          id: req.query.id
+        }
+      })
+      res.send(tags)
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'an error has occurred trying to fetch tags'
+      })
+    }
   }
+
 }
