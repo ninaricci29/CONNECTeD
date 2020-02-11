@@ -117,7 +117,7 @@ export default {
         // The url for the post request has
         // to be the url to the update page we need to make.
         axios.post('http://localhost:8081/info', {
-            // Still need to figure out value, id will have
+            // Still need to figure out the value 'id' will have
             id:5,
             first_name: this.fn,
             last_name: this.ln,
@@ -127,7 +127,6 @@ export default {
         })
         .then(function (response) {
             id: response.data.id;
-            utorid: response.data.utorid;
             first_name: repsonse.data.first_name;
             last_name:response.data.last_name;
             major:repsonse.data.major;
