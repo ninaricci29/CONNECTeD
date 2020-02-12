@@ -1,26 +1,26 @@
 <template>
     <div>
         <div>
-            <h1>CONNECTeD</h1>
+            <h1>Update your Profile</h1>
             <h6>Complete the form.</h6>
         </div>
-        <form class="form" method="submit">
+        <form class="form" method="mymet">
             <div class="form-group">
                 <label>First Name</label>
 
-                <input type="First Name" class="form-control active" placeholder="John" v-model="firstname" >
+                <input type="First Name" v-model= "fn" class="form-control active" placeholder="John">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" class="form-control active" placeholder="Smith" v-model= "lastname">
+                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" class="form-control active" placeholder="1" v-model= "yos">
+                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1">
             </div>
             <div class="form-group">
                 <label>Major</label>
-                <select class="form-control form-control-md" v-model="major">
+                <select class="form-control form-control-md" v-model= "major">
                     <option>select your major</option>
                     <option>Computer Science</option>
                     <option>Math & Statistics</option>
@@ -31,52 +31,16 @@
             <div class="form-group">
                 <label>Bio</label>
 
-                <input type="bio" class="form-control active" placeholder="Got a project? Let's collaborate!" v-model="bio">
+                <input type="bio" v-model= "bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
                 <small id="bio-type" class="form-text text-muted">Describe your self!</small>
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="submit">SUBMIT</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="mymet" >SUBMIT</button>
             </div>
         </form>
     </div>
 </template>
-
-<script>
-    import axios from 'axios'
-        export default {
-    name:"submit",
-    data() {
-        return {
-        firstname: '',
-        lastname : '', 
-        bio: '',
-        yos:'',
-        major:''
-        }
-    }, 
-    methods:{
-        submit(){
-        axios.post('http://localhost:8081/profile',{
-        first_name: this.firstname,
-        last_name:this.lastname,
-        bio:this.bio,
-        yos: this.yos,
-        major: this.major
-        })
-        .then(response => {
-            this.firstname= response.data.first_name,
-            this.lastname= response.data.last_name,
-            this.bio= response.data.bio
-            this.yos= response.data.yos
-            this.major= response.data.major
-        })
-        .catch(function(error){
-            console.log(error);
-        });
-    }
-    }}
-</script>
 
 <style scoped>
     body {
@@ -128,3 +92,47 @@
         border-color: black;
     }
 </style>
+
+<script>
+import axios from 'axios'
+export default {
+    name:"mymet",
+    data() {
+    return {
+      fn: '',
+      ln: '', 
+      major: '',
+      bio: '',
+      yos: ''
+    }
+  }, 
+    methods:{
+    mymet(){
+        // The url for the post request has
+        // to be the url to the update page we need to make.
+        axios.post('http://localhost:8081/updateprofile', {
+            // Still need to figure out the value 'id' will have
+            id:5,
+            first_name: this.fn,
+            last_name: this.ln,
+            major: this.major,
+            bio: this.bio,
+            year: this.yos
+        })
+        .then(response => {
+            this.id=response.data.id;
+            this.first_name= response.data.first_name;
+            this.last_name= response.data.last_name;
+            this.major= response.data.major;
+            this.bio= response.data.bio;
+            this.year= response.body.year;
+
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    }
+}
+</script>
