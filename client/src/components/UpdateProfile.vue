@@ -70,7 +70,7 @@
         border-color: black;
     }
     .active{
-        color: white;
+        color:black;
     }
     #bio-type{
         width: 500px;
