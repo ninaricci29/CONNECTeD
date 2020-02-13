@@ -4,7 +4,7 @@
             <h1>Update your Profile</h1>
             <h6>Complete the form.</h6>
         </div>
-        <form class="form" method="mymet">
+        <form class="form" method="update">
             <div class="form-group">
                 <label>First Name</label>
 
@@ -36,7 +36,7 @@
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="mymet" >SUBMIT</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="update" >SUBMIT</button>
             </div>
         </form>
     </div>
@@ -96,7 +96,7 @@
 <script>
 import axios from 'axios'
 export default {
-    name:"mymet",
+    name:"update",
     data() {
     return {
       fn: '',
@@ -107,7 +107,7 @@ export default {
     }
   }, 
     methods:{
-    mymet(){
+    update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
         axios.post('http://localhost:8081/updateprofile', {
