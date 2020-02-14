@@ -5,7 +5,7 @@
             </div>
         </div>
         <div class="profileText">
-            <h2> Your Name </h2>
+            <h2> {{name}} </h2>
         </div>
 
         <img src="../assets/profile.jpg"/>
@@ -13,13 +13,12 @@
         <div class="AboutMeCredentials">
             <div class="AboutMe">
                 <h3> Got a project? Let's collaborate! </h3>
-                <h4> "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor </h4>
+                <h4> {{description}} </h4>
             </div>
             <div class="Creds">
-                <h3> Year of Study: First Year </h3>
-                <h3> Major: Computer Science </h3>
-                <h3> Avg Rating: 5.00 </h3>
+                <h3> Year of Study: {{year}} </h3>
+                <h3> Major: {{major}} </h3>
+                <h3> Avg Rating: {{rating}} </h3>
             </div>
         </div>
 
@@ -60,6 +59,31 @@
         </div>
     </div>
 </template>
+
+<script>
+    import axios from 'axios';
+    export default {
+        data() {
+            return {
+                name,
+                description: null,
+                year: null,
+                major: null,
+                rating: null
+            }
+        },
+        mounted() {
+            axios.get('http://localhost:8081/profile?id=2')
+                .then(response => (
+                    this.name = response.data.first_name + ' ' + response.data.last_name,
+                    this.description = response.data.bio,
+                    this.year = response.data.year,
+                    this.major = response.data.major
+                ));
+
+        }
+    }
+</script>
 
 <style>
     body {

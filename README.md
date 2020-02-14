@@ -3,7 +3,7 @@
 ## Contents
 
 0. [Introduction](#introduction)
-2. [Screenshots](#screenshots)
+2. [Wireframes and Screenshots](#images)
 1. [Setup](#setup)
 
 ## Introduction
@@ -12,7 +12,7 @@ ConnectEd is an online platform where university students can turn dream project
 
 Our platform matches UofT students based on self-stated personal objectives, skill levels, and project ideas. Students can connect, collaborate, and hone entrepreneurial and preprofessional skills as they complete projects with other nominated users. 
 
-## Screenshots
+## Wireframes and Screenshots
 Coming soon! 
 
 ## Setup
