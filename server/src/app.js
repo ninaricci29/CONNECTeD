@@ -7,11 +7,13 @@ const app = express()
 const config = require("./config/config")
 const serveStatic = require('serve-static')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 var history = require('connect-history-api-fallback');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cors())
+app.use(cookieParser());
 
 require('./routes')(app)
 app.use('/connect', express.static(path.join(__dirname, 'dist')))
