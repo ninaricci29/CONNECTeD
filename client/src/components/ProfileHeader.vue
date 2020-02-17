@@ -1,5 +1,5 @@
 <template>
-    <body>
+    <body class="profile">
         <header>
             <div class="profile-picture">
                 <img src="../assets/DSC02912.jpg"/>
@@ -8,17 +8,17 @@
 
         <section class="profile-info">
             <b-container class="container">
-                <b-row class="profile">
+                <b-row class="profile-components">
                     <b-col class="profile-bio">
-                        <b-row> <h6> Nina Ricci Lu </h6></b-row>
-                        <b-row> <h8> Got a project? </h8></b-row>
-                        <b-row> <h8> north-collective.ca </h8></b-row>
+                        <b-row> <h6> {{name}} </h6></b-row>
+                        <b-row> <h8> {{description}} </h8></b-row>
+                        <b-row> <h8> url.ca </h8></b-row>
                     </b-col>
 
                     <b-col class="profile-about">
-                        <b-row> <h6> Avg. Rating </h6></b-row>
-                        <b-row> <h8> Year of study </h8></b-row>
-                        <b-row> <h8> Major </h8></b-row>
+                        <b-row> <h6> Avg. Rating: {{rating}}</h6></b-row>
+                        <b-row> <h8> Year of Study: {{year}}</h8></b-row>
+                        <b-row> <h8> Major: {{major}}</h8></b-row>
                     </b-col>
                 </b-row>
             </b-container>
@@ -39,6 +39,19 @@
         </section>
     </body>
 </template>
+
+<script>
+    export default {
+        name: "ProfileHeader",
+        props: {
+            name: String,
+            description: String,
+            rating: String,
+            year: String,
+            major: String
+        }
+    };
+</script>
 
 
 <style scoped>

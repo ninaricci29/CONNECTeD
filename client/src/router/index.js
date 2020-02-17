@@ -29,7 +29,7 @@ const routes = [
         path: "/profile",
         name: "profile",
         component: () =>
-            import(/* webpackChunkName: "profile"*/ "../components/ProfileHeader.vue")
+            import(/* webpackChunkName: "profile"*/ "../views/Profile.vue")
     },
     {
         path: "/log-in",
