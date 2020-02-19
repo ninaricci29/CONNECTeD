@@ -10,32 +10,18 @@
             <b-container class="container">
                 <b-row class="profile-components">
                     <b-col class="profile-bio">
-                        <b-row> <h6> {{name}} </h6></b-row>
-                        <b-row> <h8> {{description}} </h8></b-row>
+                        <b-row> <h6> Nina </h6></b-row>
+                        <b-row> <h8> Got a project? </h8></b-row>
                         <b-row> <h8> url.ca </h8></b-row>
                     </b-col>
 
                     <b-col class="profile-about">
-                        <b-row> <h6> Avg. Rating: {{rating}}</h6></b-row>
-                        <b-row> <h8> Year of Study: {{year}}</h8></b-row>
-                        <b-row> <h8> Major: {{major}}</h8></b-row>
+                        <b-row> <h6> Avg. Rating: stars go here</h6></b-row>
+                        <b-row> <h8> Year of Study: year goes here</h8></b-row>
+                        <b-row> <h8> Major: my major</h8></b-row>
                     </b-col>
                 </b-row>
             </b-container>
-
-            <b-col class="profile-connections">
-                <b-row>
-                    <b-col>
-                        <b-col> <h7> 567 </h7></b-col>
-                        <b-col> <h8> Connections </h8></b-col>
-                    </b-col>
-                    <b-col>
-                        <b-col> <h7> 5 </h7></b-col>
-                        <b-col> <h8> Projects </h8></b-col>
-                    </b-col>
-                </b-row>
-            </b-col>
-
         </section>
     </body>
 </template>
