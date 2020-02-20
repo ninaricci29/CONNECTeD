@@ -71,9 +71,4 @@
         padding-left: 300px;
     }
 
-    .profile-connections {
-        padding-left: 500px
-    }
-
-
 </style>
