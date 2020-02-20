@@ -27,16 +27,6 @@
 </template>
 
 <script>
-    // export default {
-    //     name: "ProfileHeader",
-    //     props: {
-    //         name: String,
-    //         description: String,
-    //         rating: String,
-    //         year: String,
-    //         major: String
-    //     }
-    // };
     import axios from 'axios';
     export default {
         data() {
@@ -62,12 +52,10 @@
 
 </script>
 
-
 <style scoped>
     * {
         box-sizing: border-box;
     }
-
 
     header {
         padding-top: 140px;
@@ -93,5 +81,4 @@
     .profile-bio {
         padding-left: 300px;
     }
-
 </style>
