@@ -1,5 +1,4 @@
 <template>
-    <body>
     <nav id="NavBar">
         <div>
             <input type="checkbox" id="nav" class="hidden">
@@ -22,8 +21,6 @@
             </div>
         </div>
     </nav>
-    </body>
-
 </template>
 
 <script>
@@ -57,7 +54,7 @@
 
     nav {
         padding: 20px;
-        -webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.09);
+        /*-webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.09);*/
     }
 
     .logo {

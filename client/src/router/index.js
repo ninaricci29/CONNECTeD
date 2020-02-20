@@ -8,7 +8,7 @@ const routes = [
         path: "/home",
         name: "home",
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../views/Home")
+            import(/* webpackChunkName: "log-in" */ "../components/Projects.vue")
     },
     {
         path: "/signIn",
@@ -17,7 +17,7 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../components/Sign-In.vue")
+            import(/* webpackChunkName: "log-in" */ "../components/SignIn.vue")
     },
     {
         path: "/info",
@@ -26,7 +26,7 @@ const routes = [
             import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
     },
     {
-        path: "/profile",
+        path: "/profile/:id",
         name: "profile",
         component: () =>
             import(/* webpackChunkName: "profile"*/ "../views/Profile.vue")
@@ -35,7 +35,7 @@ const routes = [
         path: "/log-in",
         name: "Log In",
         component: () =>
-            import(/* webpackChunkName: "search"*/ "../components/Sign-In.vue")
+            import(/* webpackChunkName: "search"*/ "../components/SignIn.vue")
     },
     {
         path: "/updateprofile",
