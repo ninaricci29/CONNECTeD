@@ -10,15 +10,15 @@
             <b-container class="container">
                 <b-row class="profile-components">
                     <b-col class="profile-bio">
-                        <b-row> <h6> Nina </h6></b-row>
-                        <b-row> <h8> Got a project? </h8></b-row>
-                        <b-row> <h8> url.ca </h8></b-row>
+                        <b-row> <h6> {{name}} </h6></b-row>
+                        <b-row> <h8> About Me </h8></b-row>
+                        <b-row> <h8> {{description}} </h8></b-row>
                     </b-col>
 
                     <b-col class="profile-about">
-                        <b-row> <h6> Avg. Rating: stars go here</h6></b-row>
-                        <b-row> <h8> Year of Study: year goes here</h8></b-row>
-                        <b-row> <h8> Major: my major</h8></b-row>
+                        <b-row> <h6> Rating: {{rating}}</h6></b-row>
+                        <b-row> <h8> Year of Study: {{year}}</h8></b-row>
+                        <b-row> <h8> Major: {{major}}</h8></b-row>
                     </b-col>
                 </b-row>
             </b-container>
@@ -27,16 +27,39 @@
 </template>
 
 <script>
+    // export default {
+    //     name: "ProfileHeader",
+    //     props: {
+    //         name: String,
+    //         description: String,
+    //         rating: String,
+    //         year: String,
+    //         major: String
+    //     }
+    // };
+    import axios from 'axios';
     export default {
-        name: "ProfileHeader",
-        props: {
-            name: String,
-            description: String,
-            rating: String,
-            year: String,
-            major: String
+        data() {
+            return {
+                name,
+                description: null,
+                year: null,
+                major: null,
+                rating: null
+            }
+        },
+        mounted() {
+            this.id = this.$route.params.id;
+            axios.get('http://localhost:8081/profile?id='+this.id)
+                .then(response => (
+                    this.name = response.data.first_name + ' ' + response.data.last_name,
+                        this.description = response.data.bio,
+                        this.year = response.data.year,
+                        this.major = response.data.major
+                ));
         }
-    };
+    }
+
 </script>
 
 
