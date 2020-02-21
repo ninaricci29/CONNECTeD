@@ -16,7 +16,7 @@ Our platform matches UofT students based on self-stated personal objectives, ski
 Coming soon! 
 
 ## Setup
-You need to have node.js installed. Then clone the repo and run: 
+You need to have node.js installed. Then clone the repo, navigate to it, and run: 
 ```
 cd client
 npm install
