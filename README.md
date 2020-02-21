@@ -20,6 +20,7 @@ You need to have node.js installed. Then clone the repo, navigate to it, and run
 ```
 cd client
 npm install
+cd ..
 cd server
 npm install
 ```
