@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true, 
     }, 
-    full_name: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    major: DataTypes.STRING,
+    bio: DataTypes.TEXT,
+    year: DataTypes.INTEGER,
   });
 }

@@ -1,48 +1,54 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: () =>
-      import(/* webpackChunkName: "register"*/ "../views/Register.vue")
-  },
-  {
-    path: "/profile",
-    name: "profile",
-    component: () =>
-      import(/* webpackChunkName: "profile"*/ "../views/Profile.vue")
-  },
-  {
-    path: "/search",
-    name: "search",
-    component: () =>
-      import(/* webpackChunkName: "search"*/ "../views/Search.vue")
-  }
+    {
+        path: "/home",
+        name: "home",
+        component: () =>
+            import(/* webpackChunkName: "log-in" */ "../components/Projects.vue")
+    },
+    {
+        path: "/signIn",
+        name: "signIn",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import(/* webpackChunkName: "log-in" */ "../components/SignIn.vue")
+    },
+    {
+        path: "/info",
+        name: "info",
+        component: () =>
+            import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
+    },
+    {
+        path: "/profile/:id",
+        name: "profile",
+        component: () =>
+            import(/* webpackChunkName: "profile"*/ "../views/Profile.vue")
+    },
+    {
+        path: "/log-in",
+        name: "Log In",
+        component: () =>
+            import(/* webpackChunkName: "search"*/ "../components/SignIn.vue")
+    },
+    {
+        path: "/updateprofile",
+        name: "UpdateProfile",
+        component: () =>
+            import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
+    }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: "/connect",
-  routes
+    mode: "history",
+    base: "/connect",
+    routes
 });
 
 export default router;
