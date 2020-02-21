@@ -1,4 +1,5 @@
 const User = require('../models').User
+const Tag = require('../models').Tag
 
 module.exports = {
   async retrieve (req, res){
@@ -28,8 +29,18 @@ module.exports = {
       })
     }
   },
+
+  async tags(req, res) {
+    try {
+      tags = await Tag.findAll({})
+      res.send(tags)
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'an error has occurred trying to fetch tags'
+
   /* This method updates the profile information of a user
-     with the new data povided by the user. The profile
+     with the new data provided by the user. The profile
      information is updated with a given user id, by looking 
      up the id in the database.  */
   async update_profile (req, res){
@@ -52,7 +63,9 @@ module.exports = {
       console.log(err);
       res.status(500).send({
         error: 'an error has occurred trying to update the user'
+
       })
     }
   }
+
 }
