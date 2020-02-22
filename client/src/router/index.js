@@ -8,7 +8,7 @@ const routes = [
         path: "/home",
         name: "home",
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../components/Projects.vue")
+            import(/* webpackChunkName: "log-in" */ "../views/Search.vue")
     },
     {
         path: "/signIn",

@@ -7,12 +7,12 @@
                 <i></i>
                 <i></i>
             </label>
-            <div class="logo ">
+            <div class="logo">
                 <a>CONNECTED</a>
             </div>
             <div class="nav-wrapper">
                 <ul>
-                    <li v-for="(link, index) in navLinks" :key="index">
+                    <li v-on:click="collapse" v-for="(link, index) in navLinks" :key="index">
                     <router-link :to="link.path">
                         {{ link.text }}
                     </router-link>
@@ -25,8 +25,17 @@
 
 <script>
     export default {
-        props: ['navLinks']
+        props: ['navLinks'],
+        methods: {
+            collapse: function () {
+                document.getElementById("nav").checked = false;
+
+            }
+        }
+
     }
+
+
 </script>
 
 <style scoped>
@@ -54,169 +63,113 @@
 
     nav {
         padding: 20px;
-        /*-webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.09);*/
     }
 
     .logo {
         float: left;
         margin-left: 16px;
-
     }
 
     .logo a {
         color: #000;
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 18px;
-        letter-spacing: 0px;
+        font-size: 24px;
+        letter-spacing: 1px;
         text-decoration: none;
     }
 
-    nav ul {
-        float: right;
-        margin: -25px;
-        margin-right: 25px;
+    .nav-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: #fff;
+        opacity: 0;
+        transition: all 0.2s ease;
     }
 
-    nav ul li {
-        display: inline-block;
-        float: left;
+    .nav-wrapper ul {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
     }
 
-    nav ul li:not(:first-child) {
-        margin-left: 48px;
+    .nav-wrapper ul li {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: right;
+        margin-bottom: 10px;
     }
 
-    nav ul li:last-child {
-        margin-right: 24px;
+    .nav-wrapper ul li:nth-child(1) a {
+        transition-delay: 0.2s;
     }
 
-    nav ul li a {
-        display: inline-block;
-        outline: none;
+    .nav-wrapper ul li:nth-child(2) a {
+        transition-delay: 0.3s;
+    }
+
+    .nav-wrapper ul li:nth-child(3) a {
+        transition-delay: 0.4s;
+    }
+
+    .nav-wrapper ul li:nth-child(4) a {
+        transition-delay: 0.5s;
+    }
+
+    .nav-wrapper ul li:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .nav-wrapper ul li a {
+        padding: 10px 24px;
+        opacity: 0;
         color: #000;
-        text-transform: uppercase;
-        text-decoration: none;
         font-size: 14px;
+        font-weight: 600;
         letter-spacing: 1.2px;
-        font-weight: 600;
+        transform: translateX(-20px);
+        transition: all 0.2s ease;
     }
 
-    nav ul li a:hover{
-        outline: none;
-        color: lightslategrey;
-        text-decoration: none;
-        font-weight: 600;
+    .nav-btn {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        display: block;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        z-index: 9999;
+        border-radius: 50%;
     }
 
-    @media screen and (max-width: 864px) {
-        .logo {
-            position: fixed;
-            left: 10px;
-            top: 15px;
-            display: block;
-            cursor: pointer;
-            z-index: 9999;
-            border-radius: 50%;
-        }
-        .logo a {
-            font-size: 24px;
-        }
-        nav{
-            padding: 30px;
-            -webkit-box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
-        }
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: #fff;
-            opacity: 0;
-            transition: all 0.2s ease;
-        }
+    .nav-btn i {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #000;
+        border-radius: 2px;
+        margin-left: 14px;
 
-        .nav-wrapper ul {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-        }
+    }
 
-        .nav-wrapper ul li {
-            display: block;
-            float: none;
-            width: 100%;
-            text-align: right;
-            margin-bottom: 10px;
-        }
+    .nav-btn i:nth-child(1) {
+        margin-top: 16px;
+    }
 
-        .nav-wrapper ul li:nth-child(1) a {
-            transition-delay: 0.2s;
-        }
+    .nav-btn i:nth-child(2) {
+        margin-top: 4px;
+        opacity: 1;
+    }
 
-        .nav-wrapper ul li:nth-child(2) a {
-            transition-delay: 0.3s;
-        }
-
-        .nav-wrapper ul li:nth-child(3) a {
-            transition-delay: 0.4s;
-        }
-
-        .nav-wrapper ul li:nth-child(4) a {
-            transition-delay: 0.5s;
-        }
-
-        .nav-wrapper ul li:not(:first-child) {
-            margin-left: 0;
-        }
-
-        .nav-wrapper ul li a {
-            padding: 10px 24px;
-            opacity: 0;
-            color: #000;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            transform: translateX(-20px);
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn {
-            position: fixed;
-            right: 10px;
-            top: 10px;
-            display: block;
-            width: 48px;
-            height: 48px;
-            cursor: pointer;
-            z-index: 9999;
-            border-radius: 50%;
-        }
-
-        .nav-btn i {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: #000;
-            border-radius: 2px;
-            margin-left: 14px;
-        }
-
-        .nav-btn i:nth-child(1) {
-            margin-top: 16px;
-        }
-
-        .nav-btn i:nth-child(2) {
-            margin-top: 4px;
-            opacity: 1;
-        }
-
-        .nav-btn i:nth-child(3) {
-            margin-top: 4px;
-        }
+    .nav-btn i:nth-child(3) {
+        margin-top: 4px;
     }
 
     #nav:checked + .nav-btn {
@@ -253,6 +206,5 @@
     .hidden {
         display: none;
     }
-
 
 </style>

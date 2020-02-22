@@ -19,7 +19,7 @@
                 },
                 {
                     text: 'Profile',
-                    path: '/Profile',
+                    path: '/profile/1',
                 },
                 {
                     text: 'Log In',
