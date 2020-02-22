@@ -7,9 +7,16 @@
                 <i></i>
                 <i></i>
             </label>
+
+            <b-nav-form>
+                <b-form-input size="sm" class="search" placeholder="search.." style="width: 300px;" ></b-form-input>
+<!--                <b-button size="sm" class="my-2 my-sm-0" type="submit">search..</b-button>-->
+            </b-nav-form>
+
             <div class="logo">
                 <a href="#">CONNECTED</a>
             </div>
+
             <div class="nav-wrapper">
                 <ul>
                     <li v-on:click="collapse" v-for="(link, index) in navLinks" :key="index">
@@ -64,17 +71,24 @@
     nav {
         padding: 20px;
     }
+    .search {
+        border-color: lightslategrey;
+        border-radius: 8px;
+        position: absolute;
+        transform: translate(20%, 80%);
+
+    }
 
     .logo {
         display: inline-block;
-        margin-left: 16px;
+        /*margin-left: 16px;*/
     }
 
     .logo a {
         color: #000;
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 35px;
         letter-spacing: 1px;
         text-decoration: none;
     }
@@ -122,6 +136,10 @@
         transition-delay: 0.5s;
     }
 
+    .nav-wrapper ul li:nth-child(5) a {
+        transition-delay: 0.5s;
+    }
+
     .nav-wrapper ul li:not(:first-child) {
         margin-left: 0;
     }
@@ -145,8 +163,8 @@
 
     .nav-btn {
         position: fixed;
-        right: 10px;
-        top: 10px;
+        right: 20px;
+        top: 20px;
         display: block;
         width: 48px;
         height: 48px;
