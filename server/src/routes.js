@@ -4,6 +4,7 @@ module.exports = (app) => {
 
   app.post('/profile', ProfileController.register);
   app.get('/tags', ProfileController.tags);
+  app.get('/projects', ProfileController.projects);
 
   app.post('/profile', ProfileController.register),
   app.post('/updateprofile', ProfileController.update_profile)

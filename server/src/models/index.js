@@ -37,6 +37,6 @@ Tag.belongsToMany(User, {through: Users_Tag});
 
 db.User = User
 db.Tag = Tag
-
+db.Project = Project
 
 module.exports = db
