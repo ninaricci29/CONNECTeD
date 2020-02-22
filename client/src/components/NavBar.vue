@@ -8,7 +8,7 @@
                 <i></i>
             </label>
             <div class="logo">
-                <a>CONNECTED</a>
+                <a href="#">CONNECTED</a>
             </div>
             <div class="nav-wrapper">
                 <ul>
@@ -66,7 +66,7 @@
     }
 
     .logo {
-        float: left;
+        display: inline-block;
         margin-left: 16px;
     }
 
@@ -130,11 +130,17 @@
         padding: 10px 24px;
         opacity: 0;
         color: #000;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 600;
         letter-spacing: 1.2px;
         transform: translateX(-20px);
         transition: all 0.2s ease;
+    }
+
+    nav ul li :hover{
+        outline: none;
+        color: lightslategrey;
+        text-decoration: none;
     }
 
     .nav-btn {
