@@ -15,6 +15,12 @@
 
 </template>
 
+<script>
+    export default {
+        name: "SearchTags"
+    };
+</script>
+
 <style scoped>
     * {
         box-sizing: border-box;
@@ -44,7 +50,7 @@
         border-radius: 5px;
         font-size: 14px;
         font-weight: 300;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .09);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
     }
 
     .tags li a:hover {
