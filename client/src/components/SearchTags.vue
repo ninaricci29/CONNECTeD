@@ -38,7 +38,7 @@
     }
 
     .tags li {
-        padding-top: 20px;
+        /*padding-top: 20px;*/
         list-style-type: none;
         text-decoration: none;
         text-transform: uppercase;
@@ -59,7 +59,6 @@
     }
 
     h4 {
-
         font-weight: bold;
     }
     h5 {

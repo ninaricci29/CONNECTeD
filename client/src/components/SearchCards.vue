@@ -43,19 +43,21 @@
         border-radius: 1000px;
         position: absolute;
         transform: translate(40%, 20%);
-        border: 2px solid #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        border: 3px solid #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
         object-fit: cover;
+        cursor: pointer;
     }
 
      .project-covers li img{
-        width: 70px;
-        height: 70px;
-        position: absolute;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
+         width: 80px;
+         height: 80px;
+         position: absolute;
+         box-shadow: 0 0 20px rgba(0, 0, 0, .09);
          transform: translate(-10%, -140%);
-        object-fit: cover;
-        border-radius: 5px;
+         object-fit: cover;
+         border-radius: 5px;
+         cursor: pointer;
     }
 
     .container {

@@ -13,6 +13,9 @@
                         <SearchCard class="card"/>
                     </li>
 
+                    <li>
+                        <SearchCard class="card"/>
+                    </li>
                 </ul>
             </div>
         </section>
