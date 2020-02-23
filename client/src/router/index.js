@@ -5,10 +5,10 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: "/home",
-        name: "home",
+        path: "/search",
+        name: "search",
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../components/Projects.vue")
+            import(/* webpackChunkName: "log-in" */ "../views/Search.vue")
     },
     {
         path: "/signIn",
