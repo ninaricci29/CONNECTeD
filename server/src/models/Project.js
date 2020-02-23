@@ -10,10 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         tag_name: {
             // A Project must be unique
             type: DataTypes.STRING,
+
             allowNull: false,
             unique: true
         }
     }, {
+        desc: DataTypes.TEXT,
         timestamps: false
     });
 
