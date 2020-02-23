@@ -1,5 +1,6 @@
 const User = require('../models').User
 const Tag = require('../models').Tag
+const Project = require('../models').Project
 
 module.exports = {
   async retrieve (req, res){
@@ -38,6 +39,20 @@ module.exports = {
       console.log(err)
       res.status(500).send({
         error: 'an error has occurred trying to fetch tags'
+      })
+    }
+  },
+  async projects(req, res) {
+    try {
+      projects = await Project.findAll({})
+      res.send(projects)
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'an error has occurred trying to fetch projects'
+      })
+    }
+  },
 
   /* This method updates the profile information of a user
      with the new data provided by the user. The profile
