@@ -14,10 +14,14 @@
             </div>
             <div class="form-group">
                 <label>Last Name</label>
+                <span class="star">*</span>
+
                 <input type="Last Name" class="form-control active" placeholder="Smith" v-model= "lastname">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
+                <span class="star">*</span>
+
                 <select class="form-control form-control-md" v-model="yos">
                     <option value="" selected>1</option>
                     <option>2</option>
@@ -28,6 +32,8 @@
             </div>
             <div class="form-group">
                 <label>Major</label>
+                <span class="star">*</span>
+
                 <select class="form-control form-control-md" placeholder="select your major" v-model="major">
                     <option value="" disabled selected>select your major</option>
                     <option>Computer Science</option>
@@ -38,6 +44,7 @@
             </div>
             <div class="form-group">
                 <label>Bio</label>
+                <span class="star">*</span>
 
                 <input type="bio" class="form-control active" placeholder="Got a project? Let's collaborate!" maxlength="100" v-model="bio">
                 <small id="bio-type" class="form-text text-muted">Describe your self!</small>
