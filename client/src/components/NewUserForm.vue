@@ -7,8 +7,10 @@
         <form class="form" method="submit">
             <div class="form-group">
                 <label>First Name</label>
+                <span class="star">*</span>
 
-                <input type="First Name" class="form-control active" placeholder="John" v-model="firstname" >
+                <input type="First Name" class="form-control active" placeholder="John" v-model="firstname">
+
             </div>
             <div class="form-group">
                 <label>Last Name</label>
@@ -16,12 +18,18 @@
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" class="form-control active" placeholder="1" v-model= "yos">
+                <select class="form-control form-control-md" v-model="yos">
+                    <option value="" selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>4+</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Major</label>
-                <select class="form-control form-control-md" v-model="major">
-                    <option>select your major</option>
+                <select class="form-control form-control-md" placeholder="select your major" v-model="major">
+                    <option value="" disabled selected>select your major</option>
                     <option>Computer Science</option>
                     <option>Math & Statistics</option>
                     <option>Biology</option>
@@ -31,8 +39,31 @@
             <div class="form-group">
                 <label>Bio</label>
 
-                <input type="bio" class="form-control active" placeholder="Got a project? Let's collaborate!" v-model="bio">
+                <input type="bio" class="form-control active" placeholder="Got a project? Let's collaborate!" maxlength="100" v-model="bio">
                 <small id="bio-type" class="form-text text-muted">Describe your self!</small>
+            </div>
+
+            <div>
+                <b-form-tags v-model="value" no-outer-focus class="form-control user-tags">
+                    <template v-slot="{ tags, inputAttrs, inputHandlers, tagVariant, addTag, removeTag }">
+                        <b-input-group>
+                            <b-form-input class="tags-input"
+                                    v-bind="inputAttrs"
+                                    v-on="inputHandlers"
+                                    placeholder="Tags"/>
+                        </b-input-group>
+                        <div class="tags">
+                            <b-form-tag class="inside-tags"
+                                    v-for="tag in tags"
+                                    @remove="removeTag(tag)"
+                                    :key="tag"
+                                    :title="tag"
+                                    :variant="tagVariant">
+                                {{ tag }}
+                            </b-form-tag>
+                        </div>
+                    </template>
+                </b-form-tags>
             </div>
 
             <div id="button">
@@ -49,12 +80,13 @@
     data() {
         return {
         firstname: '',
-        lastname : '', 
+        lastname : '',
         bio: '',
         yos:'',
-        major:''
+        major:'',
+            value: ['apple']
         }
-    }, 
+    },
     methods:{
         submit(){
         axios.post('http://localhost:8081/profile',{
@@ -127,4 +159,27 @@
         color: black;
         border-color: black;
     }
+    .star{
+        color: red;
+    }
+
+    .user-tags {
+        border-color: white;
+        padding: 0;
+    }
+
+    .tags-input {
+        display: flex;
+    }
+
+    .tags {
+        text-align: left;
+        padding: 10px 0 0 0;
+    }
+
+    .inside-tags {
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
 </style>
