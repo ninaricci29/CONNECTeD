@@ -51,26 +51,34 @@
             </div>
 
             <div>
-                <b-form-tags v-model="value" no-outer-focus class="form-control user-tags">
-                    <template v-slot="{ tags, inputAttrs, inputHandlers, tagVariant, addTag, removeTag }">
-                        <b-input-group>
-                            <b-form-input class="tags-input"
+                <b-form-group label="select your tags:">
+                    <!-- prop `add-on-change` is needed to enable adding tags vie the `change` event -->
+                    <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
+                        <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                            <ul v-if="tags.length > 0" class="list-inline">
+                                <li v-for="tag in tags" :key="tag" class="abc">
+                                    <b-form-tag
+                                            @remove="removeTag(tag)"
+                                            :title="tag"
+                                            :disabled="disabled"
+                                            variant="info"
+                                    >{{ tag }}</b-form-tag>
+                                </li>
+                            </ul>
+                            <b-form-select
+                                    class="form-control abc"
                                     v-bind="inputAttrs"
                                     v-on="inputHandlers"
-                                    placeholder="Tags"/>
-                        </b-input-group>
-                        <div class="tags">
-                            <b-form-tag class="inside-tags"
-                                    v-for="tag in tags"
-                                    @remove="removeTag(tag)"
-                                    :key="tag"
-                                    :title="tag"
-                                    :variant="tagVariant">
-                                {{ tag }}
-                            </b-form-tag>
-                        </div>
-                    </template>
-                </b-form-tags>
+                                    :disabled="disabled || availableOptions.length === 0"
+                                    :options="availableOptions">
+                                <template v-slot:first>
+                                    <!-- This is required to prevent bugs with Safari -->
+                                    <option disabled value="">Choose a tag...</option>
+                                </template>
+                            </b-form-select>
+                        </template>
+                    </b-form-tags>
+                </b-form-group>
             </div>
 
             <div id="button">
@@ -86,14 +94,21 @@
     name:"submit",
     data() {
         return {
-        firstname: '',
-        lastname : '',
-        bio: '',
-        yos:'',
-        major:'',
-            value: ['apple']
+            firstname: '',
+            lastname : '',
+            bio: '',
+            yos:'',
+            major:'',
+
+            options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning'],
+            value: []
         }
     },
+            computed: {
+                availableOptions() {
+                    return this.options.filter(opt => this.value.indexOf(opt) === -1)
+                }
+            },
     methods:{
         submit(){
         axios.post('http://localhost:8081/profile',{
@@ -170,23 +185,25 @@
         color: red;
     }
 
-    .user-tags {
+    .abc {
+        display: inline;
+
+    }
+
+    .abc:not(:first-child){
+        padding-left: 10px;
+    }
+
+    .outer {
         border-color: white;
         padding: 0;
     }
 
-    .tags-input {
-        display: flex;
-    }
+    .outer span {
+        background-color: lightslategrey;
+        border-color: black;
+        color: white;
 
-    .tags {
-        text-align: left;
-        padding: 10px 0 0 0;
-    }
-
-    .inside-tags {
-        font-size: 13px;
-        padding: 0 10px;
     }
 
 </style>
