@@ -1,6 +1,7 @@
 const User = require('../models').User
 const Tag = require('../models').Tag
 const Project = require('../models').Project
+const UsersTag = require('../models').UsersTag
 
 module.exports = {
   async retrieve (req, res){
@@ -21,8 +22,21 @@ module.exports = {
 
   async register(req, res){
     try {
-      query = await User.create(req.body);
-      res.send({user: query.toJSON()})
+      console.log(req.body);
+      user = await User.create(req.body);
+      
+      for (var i = 0; i < req.body.tag_ids.length; i++){
+        var tag = await Tag.findOne({
+          where:{
+            id : req.body.tag_ids[i]}});
+        const uid_tid = {
+          UserId: user.id,
+          TagId: req.body.tag_ids[i]
+        }
+        console.log(uid_tid)
+        const saved_uid_tid = await UsersTag.create(uid_tid)
+      }
+      res.send({user: user.toJSON()})
     } catch (err) {
       console.log(err);
       res.status(500).send({
