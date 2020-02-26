@@ -7,7 +7,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Project', {
         // Model attributes are defined here
-        tag_name: {
+        project_name: {
             // A Project must be unique
             type: DataTypes.STRING,
 
