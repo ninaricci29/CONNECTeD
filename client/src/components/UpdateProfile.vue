@@ -112,7 +112,7 @@ export default {
         // to be the url to the update page we need to make.
         axios.post('http://localhost:8081/updateprofile', {
             // Still need to figure out the value 'id' will have
-            id:5,
+            id: this.$route.params.id,
             first_name: this.fn,
             last_name: this.ln,
             major: this.major,
