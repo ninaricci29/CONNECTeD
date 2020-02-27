@@ -103,14 +103,15 @@ export default {
       ln: '', 
       major: '',
       bio: '',
-      yos: ''
+      yos: '',
+      error: ''
     }
   }, 
     methods:{
     update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
-        axios.post('http://localhost:8081/updateprofile', {
+        axios.post('/connect/updateprofile', {
             // Still need to figure out the value 'id' will have
             id:5,
             first_name: this.fn,
@@ -126,11 +127,9 @@ export default {
             this.major= response.data.major;
             this.bio= response.data.bio;
             this.year= response.body.year;
-
-            console.log(response);
         })
         .catch(function (error) {
-            console.log(error);
+            this.error = error;
         });
     }
     }

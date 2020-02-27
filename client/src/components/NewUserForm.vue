@@ -111,11 +111,11 @@
             },
     methods:{
         submit(){
-        axios.post('http://localhost:8081/profile',{
+        axios.post('/connect/create_profile',{
         first_name: this.firstname,
         last_name:this.lastname,
         bio:this.bio,
-        yos: this.yos,
+        year: this.yos,
         major: this.major
         })
         .then(response => {

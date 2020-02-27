@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js --exec \"node\""
+    "start": "nodemon src/app.js --exec \"node\"",
+    "client": "cd ../client && npm run build && cp -r dist ../server/src/. && cd../server"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "connect-history-api-fallback": "^1.6.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
