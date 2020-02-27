@@ -54,6 +54,23 @@ module.exports = {
     }
   },
 
+  async add_project (req, res) {
+    try {
+      console.log(req)
+      const project = await Project.findOne({where: {
+        id:req.body.id
+      }})
+      project.desc=req.body.desc;
+      project.project_name=req.body.project_name;
+
+    }
+    catch (err) {
+      console.log(err);
+      res.status(500).send({
+        error: 'an error has occurred trying to add the project'
+      })
+    }
+  },
   /* This method updates the profile information of a user
      with the new data provided by the user. The profile
      information is updated with a given user id, by looking 

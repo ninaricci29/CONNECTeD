@@ -8,17 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Project', {
         // Model attributes are defined here
         project_name: {
-            // A Project must be unique
+            // A project must be unique
             type: DataTypes.STRING,
-
             allowNull: false,
             unique: true
-        }
+        },
     }, {
-        desc: DataTypes.TEXT,
+
         timestamps: false
     });
-
-
 
 }

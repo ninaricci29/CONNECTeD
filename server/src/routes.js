@@ -8,4 +8,6 @@ module.exports = (app) => {
   app.post('/profile', ProfileController.register),
   app.post('/updateprofile', ProfileController.update_profile)
 
+  app.get('/home', ProfileController.projects)
+  app.post('/home', ProfileController.add_project)
 }
