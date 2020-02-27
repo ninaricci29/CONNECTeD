@@ -90,7 +90,9 @@
 
 <script>
     import axios from 'axios'
-        export default {
+    import AuthenticationService from '@/services/AuthenticationService'
+    
+    export default {
     name:"submit",
     data() {
         return {
@@ -99,6 +101,7 @@
             bio: '',
             yos:'',
             major:'',
+            error:'',
 
             options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning'],
             value: []
@@ -112,6 +115,7 @@
     methods:{
         submit(){
         axios.post('/connect/create_profile',{
+        utorid: AuthenticationService.getUtorid(),
         first_name: this.firstname,
         last_name:this.lastname,
         bio:this.bio,
@@ -126,7 +130,7 @@
             this.major= response.data.major
         })
         .catch(function(error){
-            console.log(error);
+            this.error = error;
         });
     }
     }}

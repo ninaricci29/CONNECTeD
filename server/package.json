@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js --exec \"node\"",
-    "client": "cd ../client && npm run build && cp -r dist ../server/src/. && cd../server"
+    "client": "cd ../client && npm run build && cp -r dist ../server/src/. && cd ../server"
   },
   "keywords": [],
   "author": "",
