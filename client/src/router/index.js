@@ -44,10 +44,10 @@ const routes = [
             import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
     },
     {
-        path: "/upload-projects",
-        name: "UploadProjects",
+        path: "/post-projects",
+        name: "PostProjects",
         component: () =>
-            import(/* webpackChunkName: "upload-projects"*/ "../components/UploadProjects.vue")
+            import(/* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue")
     }
 ];
 

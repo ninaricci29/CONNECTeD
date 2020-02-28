@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h6>Upload a new project!</h6>
+            <h6>Post a new project!</h6>
         </div>
         <form class="form" method="submit">
             <div class="form-group">
@@ -49,7 +49,7 @@
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="submit">SUBMIT</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="submit">PUBLISH</button>
             </div>
         </form>
     </div>

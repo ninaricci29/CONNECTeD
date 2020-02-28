@@ -3,8 +3,8 @@
         <h4> PROJECTS </h4>
 
         <section class="container">
-            <b-button>
-                <b-link class="project-button" href="/upload-projects">Upload a new project!</b-link>
+            <b-button class="btn-sm">
+                <b-link class="project-button" href="/post-projects">NEW PROJECT</b-link>
 
             </b-button>
 
