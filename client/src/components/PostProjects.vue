@@ -61,7 +61,7 @@
         name:"submit",
         data() {
             return {
-                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning'],
+                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: []
             }
         },
