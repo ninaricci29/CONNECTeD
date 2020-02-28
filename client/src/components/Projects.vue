@@ -3,7 +3,10 @@
         <h4> PROJECTS </h4>
 
         <section class="container">
-            <b-form-input class="text-box" v-model="text" placeholder="What's your new project?"/>
+            <b-button class="btn-sm">
+                <b-link class="project-button" href="/post-projects">NEW PROJECT</b-link>
+
+            </b-button>
 
             <div class="project-cards">
                 <ul>
@@ -70,5 +73,10 @@
 
     .project-cards {
         padding: 1rem 0 1rem 0;
+    }
+
+    .project-button {
+        color: white;
+        text-decoration: none;
     }
 </style>
