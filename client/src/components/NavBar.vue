@@ -19,7 +19,7 @@
 
             <div class="h2 mb-2 gear-wheel">
                 <b-link class="update-button" href="/updateprofile/:id">
-                    <b-icon icon="gear"></b-icon>
+                    <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
                 </b-link>
 
 
