@@ -31,17 +31,17 @@
         <label>Year of Study</label>
         <span class="star">*</span>
 
-        <select class="form-control form-control-md" v-model="yos">
-          <option value="" selected>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>4+</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Major</label>
-        <span class="star">*</span>
+            <select class="form-control form-control-md" v-model="yos">
+              <option value="" selected>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>4+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Major</label>
+            <span class="star">*</span>
 
         <select
           class="form-control form-control-md"
@@ -158,18 +158,6 @@ export default {
       });
   },
   methods: {
-    tags_opt() {
-      axios.get("http://localhost:8081/tags").then(response => {
-        var options = []
-        this.tags = response.data;
-        console.log(response.data)
-        for (var i = 0; i < this.tags.length; i++) {
-          options.push(this.tags[i].tag_name);
-          console.log(this.tags[i]);
-        }
-        return options
-      });
-  },
     submit() {
       var ids = []
       for(var i = 0; i < this.value.length; i++){
@@ -205,74 +193,74 @@ export default {
 </script>
 
 <style scoped>
-body {
-  padding-top: 40px;
-  background-color: white;
-  color: black;
-  text-align: center;
-}
-body h1 {
-  font-weight: bolder;
-  font-size: 60px;
-  text-align: center;
-}
-body h6 {
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 10px;
-}
-.form {
-  display: inline-block;
-}
-.form-group {
-  text-align: left;
-}
-.form-control {
-  width: 500px;
-  border-color: black;
-}
-.active {
-  color: black;
-}
-#bio-type {
-  width: 500px;
-}
-#button {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-.btn {
-  background-color: #2e2e2e;
-}
-.btn-primary {
-  border-color: white;
-  background-color: #2e2e2e;
-}
-.btn:hover {
-  background-color: white;
-  color: black;
-  border-color: black;
-}
-.star {
-  color: red;
-}
+  body {
+    padding-top: 40px;
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+  body h1 {
+    font-weight: bolder;
+    font-size: 60px;
+    text-align: center;
+  }
+  body h6 {
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .form {
+    display: inline-block;
+  }
+  .form-group {
+    text-align: left;
+  }
+  .form-control {
+    width: 500px;
+    border-color: black;
+  }
+  .active {
+    color: black;
+  }
+  #bio-type {
+    width: 500px;
+  }
+  #button {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  .btn {
+    background-color: #2e2e2e;
+  }
+  .btn-primary {
+    border-color: white;
+    background-color: #2e2e2e;
+  }
+  .btn:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+  }
+  .star {
+    color: red;
+  }
 
-.abc {
-  display: inline;
-}
+  .abc {
+    display: inline;
+  }
 
-.abc:not(:first-child) {
-  padding-left: 10px;
-}
+  .abc:not(:first-child) {
+    padding-left: 10px;
+  }
 
-.outer {
-  border-color: white;
-  padding: 0;
-}
+  .outer {
+    border-color: white;
+    padding: 0;
+  }
 
-.outer span {
-  background-color: lightslategrey;
-  border-color: black;
-  color: white;
-}
+  .outer span {
+    background-color: lightslategrey;
+    border-color: black;
+    color: white;
+  }
 </style>
