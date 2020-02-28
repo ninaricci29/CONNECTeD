@@ -42,6 +42,12 @@ const routes = [
         name: "UpdateProfile",
         component: () =>
             import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
+    },
+    {
+        path: "/upload-projects",
+        name: "UploadProjects",
+        component: () =>
+            import(/* webpackChunkName: "upload-projects"*/ "../components/UploadProjects.vue")
     }
 ];
 
