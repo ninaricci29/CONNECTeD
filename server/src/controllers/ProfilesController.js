@@ -54,10 +54,38 @@ module.exports = {
     }
   },
 
-  /* This method updates the profile information of a user
-     with the new data provided by the user. The profile
-     information is updated with a given user id, by looking 
-     up the id in the database.  */
+  async addProject(req,res){
+    try {
+      //console.log(req.body);
+      query = await Project.create(req.body);
+      res.send("Successfully Updated")
+    } catch (err) {
+
+      console.log(err)
+      res.status(500).send({
+        err: 'an error has occurred trying to add the project'
+      })
+    }
+  },
+
+  async updateProject(req,res){
+    try {
+      const project = await Project.findOne({where:{
+        id: req.body.id
+      }
+      })
+      project.project_name = req.body.project_name;
+      project.desc = req.body.desc;
+      await project.save();
+      res.send("Project successfully updated")
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            error: 'An error has occurred trying to update the project'
+        })
+    }
+  },
+
   async update_profile (req, res){
     try{
       console.log(req)
@@ -77,7 +105,7 @@ module.exports = {
     catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occurred trying to update the user'
+        err: 'an error has occurred trying to update the user'
 
       })
     }
