@@ -1,15 +1,20 @@
 <template>
     <div id="app">
         <NavBar :nav-links="navLinks"/>
+
         <router-view/>
+
+        <Footer/>
     </div>
 </template>
 
 <script>
     import NavBar from '@/components/NavBar'
+    import Footer from '@/components/Footer'
     export default {
         components: {
-            NavBar
+            NavBar,
+            Footer
         },
         data: () => ({
             navLinks: [
