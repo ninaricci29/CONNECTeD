@@ -2,7 +2,9 @@
     <div class="footer">
         <div class="inner-footer">
             <div class="logo-container info">
-                ConnectEd
+                <a>
+                    <b-link href="/home"> ConnectEd </b-link>
+                </a>
             </div>
 
             <div>
@@ -62,13 +64,21 @@
 
     }
 
-    .logo-container {
+    .logo-container a {
         font-weight: bold;
         font-size: 22px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .logo-container a:hover {
+        cursor: pointer;
+
     }
 
     .info {
         margin: 10px 20px 20px 120px;
+        cursor: pointer;
     }
 
     .info-inner {
@@ -87,7 +97,7 @@
         color: white;
     }
 
-    .info-inner li a:hover{
+    .info-inner li a:hover {
         cursor: pointer;
 
     }
