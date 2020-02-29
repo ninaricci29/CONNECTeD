@@ -81,9 +81,14 @@
                 </b-form-group>
             </div>
 
+            <label>Profile Picture
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </label>
+
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="submit">SUBMIT</button>
             </div>
+
         </form>
     </div>
 </template>
@@ -99,6 +104,7 @@
             bio: '',
             yos:'',
             major:'',
+            file: '',
 
             options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning'],
             value: []
@@ -111,13 +117,14 @@
             },
     methods:{
         submit(){
-        axios.post('http://localhost:8081/profile',{
-        first_name: this.firstname,
-        last_name:this.lastname,
-        bio:this.bio,
-        yos: this.yos,
-        major: this.major
-        })
+        var form = new FormData();
+        form.append('first_name', this.firstname)
+        form.append('last_name', this.lastname)
+        form.append('bio', this.bio)
+        form.append('major', this.major)
+        form.append('year', this.yos)
+        form.append('profile_picture', this.file);
+        axios.post('http://localhost:8081/profile',form , {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
             this.firstname= response.data.first_name,
             this.lastname= response.data.last_name,
@@ -128,6 +135,9 @@
         .catch(function(error){
             console.log(error);
         });
+    },
+    handleFileUpload(){
+       this.file = this.$refs.file.files[0];
     }
     }}
 </script>

@@ -21,6 +21,7 @@ module.exports = {
 
   async register(req, res){
     try {
+      req.body.profile_picture = req.file.filename;
       query = await User.create(req.body);
       res.send({user: query.toJSON()})
     } catch (err) {

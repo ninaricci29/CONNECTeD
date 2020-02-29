@@ -2,7 +2,7 @@
     <body class="profile">
         <header>
             <div class="profile-picture">
-                <img src="../assets/DSC02912.jpg"/>
+                <img :src="link"/>
             </div>
         </header>
 
@@ -35,7 +35,8 @@
                 description: null,
                 year: null,
                 major: null,
-                rating: null
+                rating: null,
+                link: null
             }
         },
         mounted() {
@@ -45,7 +46,8 @@
                     this.name = response.data.first_name + ' ' + response.data.last_name,
                         this.description = response.data.bio,
                         this.year = response.data.year,
-                        this.major = response.data.major
+                        this.major = response.data.major,
+                        this.link = "http://localhost:8081/images/" + response.data.profile_picture
                 ));
         }
     }

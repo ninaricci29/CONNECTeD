@@ -1,11 +1,9 @@
 const ProfileController = require('./controllers/ProfilesController')
-module.exports = (app) => {
+module.exports = (app, upload) => {
   app.get('/profile', ProfileController.retrieve), 
 
-  app.post('/profile', ProfileController.register);
+  app.post('/profile', upload.single('profile_picture'), ProfileController.register);
   app.get('/tags', ProfileController.tags);
-  
-  app.post('/profile', ProfileController.register),
   app.post('/updateprofile', ProfileController.update_profile)
 
 }
