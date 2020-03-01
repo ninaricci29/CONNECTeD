@@ -38,10 +38,16 @@ const routes = [
             import(/* webpackChunkName: "search"*/ "../components/SignIn.vue")
     },
     {
-        path: "/updateprofile",
+        path: "/updateprofile/:id",
         name: "UpdateProfile",
         component: () =>
             import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
+    },
+    {
+        path: "/post-projects",
+        name: "PostProjects",
+        component: () =>
+            import(/* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue")
     }
 ];
 
