@@ -81,10 +81,10 @@
     }
 
     .gear-wheel {
-        position: fixed;
-        right: 80px;
-        top: 25px;
-        display: block;
+        float: right;
+        display: inline-flex;
+        padding-right: 120px;
+        padding-top: 5px;
         width: 48px;
         height: 48px;
         cursor: pointer;

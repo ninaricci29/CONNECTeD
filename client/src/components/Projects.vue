@@ -1,6 +1,6 @@
 <template>
     <div class="projects">
-        <h4> PROJECTS </h4>
+        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /> </h4>
 
         <section class="container">
             <b-button class="btn-sm">
