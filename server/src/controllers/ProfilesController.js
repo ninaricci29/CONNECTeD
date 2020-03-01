@@ -42,10 +42,20 @@ module.exports = {
       })
     }
   },
+
   async projects(req, res) {
     try {
-      projects = await Project.findAll({})
-      res.send(projects)
+      user = await User.findOne({
+        where: {
+          id: req.query.id
+        }
+      }),
+      project = await Project.findAll({
+         where: {
+           id: user.id //req.query.id
+         }
+      })
+      res.send(project[0])
     } catch (err) {
       console.log(err)
       res.status(500).send({
