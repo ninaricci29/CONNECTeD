@@ -62,19 +62,21 @@
         data() {
             return {
                 name: '',
-                description: ''
+                description: '',
+                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                value: []
             }
         },
-        // computed: {
-        //     availableOptions() {
-        //         return this.options.filter(opt => this.value.indexOf(opt) === -1)
-        //     }
-        // },
+        computed: {
+            availableOptions() {
+                return this.options.filter(opt => this.value.indexOf(opt) === -1)
+            }
+        },
         methods:{
             addProject(){
                 axios.post('http://localhost:8081/post-projects',{
                     // id is hardcoded
-                    id: 13,
+                    id: 14,
                     project_name: this.name,
                     desc: this.description
                 })
