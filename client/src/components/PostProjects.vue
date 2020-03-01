@@ -3,19 +3,19 @@
         <div>
             <h6>Post a new project!</h6>
         </div>
-        <form class="form" method="submit">
+        <form class="form" method="addProject">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
 
-                <input type="Project-Name" class="form-control active">
+                <input type="Project-Name" v-model= "name" class="form-control active">
 
             </div>
             <div class="form-group">
                 <label>Description</label>
                 <span class="star">*</span>
 
-                <textarea type="Description" class="form-control active description" placeholder="This project is.."
+                <textarea type="Description" v-model= "description" class="form-control active description" placeholder="This project is.."
                           rows="4" cols="50" name="comment"/>
                 <small id="bio-type" class="form-text text-muted">Describe your project!</small>
             </div>
@@ -49,7 +49,7 @@
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="submit">PUBLISH</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
             </div>
         </form>
     </div>
@@ -58,9 +58,11 @@
 <script>
     import axios from 'axios'
     export default {
-        name:"submit",
+        name:"addProject",
         data() {
             return {
+                name: '',
+                description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: []
             }
@@ -71,20 +73,17 @@
             }
         },
         methods:{
-            submit(){
-                axios.post('http://localhost:8081/profile',{
-                    first_name: this.firstname,
-                    last_name:this.lastname,
-                    bio:this.bio,
-                    yos: this.yos,
-                    major: this.major
+            addProject(){
+                axios.post('http://localhost:8081/post-projects',{
+                    // id is hardcoded
+                    id: 14,
+                    project_name: this.name,
+                    desc: this.description
                 })
                     .then(response => {
-                        this.firstname= response.data.first_name,
-                            this.lastname= response.data.last_name,
-                            this.bio= response.data.bio
-                        this.yos= response.data.yos
-                        this.major= response.data.major
+                        this.id= response.data.id;
+                        this.projectname= response.data.project_name;
+                        this.desc= response.data.desc;
                     })
                     .catch(function(error){
                         console.log(error);

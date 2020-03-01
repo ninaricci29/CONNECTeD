@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true
         },
-        desc: DataTypes.TEXT,
+        desc: DataTypes.TEXT
+    },
+    {
         timestamps: false
     }
     );
