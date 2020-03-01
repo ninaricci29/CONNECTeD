@@ -1,6 +1,5 @@
 const User = require('../models').User
 const Tag = require('../models').Tag
-const Project = require('../models').Project
 const UsersTag = require('../models').UsersTag
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'an error has occurred trying to fetch the user'
+        err: 'an error has occurred trying to fetch the user'
       })
     }
   }, 
@@ -40,7 +39,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occurred trying to register the user'
+        err: 'an error has occurred trying to register the user'
       })
     }
   },
@@ -52,26 +51,11 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'an error has occurred trying to fetch tags'
-      })
-    }
-  },
-  async projects(req, res) {
-    try {
-      projects = await Project.findAll({})
-      res.send(projects)
-    } catch (err) {
-      console.log(err)
-      res.status(500).send({
-        error: 'an error has occurred trying to fetch projects'
+        err: 'an error has occurred trying to fetch tags'
       })
     }
   },
 
-  /* This method updates the profile information of a user
-     with the new data provided by the user. The profile
-     information is updated with a given user id, by looking 
-     up the id in the database.  */
   async update_profile (req, res){
     try{
       console.log(req)
@@ -91,7 +75,7 @@ module.exports = {
     catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occurred trying to update the user'
+        err: 'an error has occurred trying to update the user'
 
       })
     }
