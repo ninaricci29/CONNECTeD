@@ -151,11 +151,8 @@ export default {
   mounted() {
     axios.get("/connect/tags").then(response => {
         this.tags = response.data;
-        console.log("hiii")
-        console.log(response.data)
         for (var i = 0; i < this.tags.length; i++) {
           this.options.push(this.tags[i].tag_name);
-          console.log(this.tags[i]);
         }
       });
   },
@@ -170,12 +167,12 @@ export default {
         }
       }
       axios
-        .post("connect/create_profile", {
+        .post("/connect/create_profile", {
           utorid: AuthenticationService.getUtorid(),
           first_name: this.firstname,
           last_name: this.lastname,
           bio: this.bio,
-          yos: this.yos,
+          year: this.yos,
           major: this.major,
           value: this.value,
           tag_ids: ids

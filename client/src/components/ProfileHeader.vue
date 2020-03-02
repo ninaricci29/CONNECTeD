@@ -43,9 +43,9 @@
             axios.get('/connect/profile_info?id='+ id)
                 .then(response => (
                     this.name = response.data.first_name + ' ' + response.data.last_name,
-                        this.description = response.data.bio,
-                        this.year = response.data.year,
-                        this.major = response.data.major
+                    this.description = response.data.bio,
+                    this.year = response.data.year,
+                    this.major = response.data.major
                 ));
         }
     }
