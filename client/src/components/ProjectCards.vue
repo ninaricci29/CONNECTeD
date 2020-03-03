@@ -2,10 +2,8 @@
     <div class="project-cards">
         <img src="../assets/saul-flores-wBLis5RllUE-unsplash.jpg"/>
         <div class="container">
-
             <div class="project-name"> Project Name </div>
             <p class="project-description"> This is my project description. Hi Nina is da best, da oNly best. </p>
-
         </div>
 
     </div>

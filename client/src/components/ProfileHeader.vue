@@ -11,8 +11,8 @@
                 <b-row class="profile-components">
                     <b-col class="profile-bio">
                         <b-row> <h6> {{name}} </h6></b-row>
-                        <b-row> <h8> About Me </h8></b-row>
                         <b-row> <h8> {{description}} </h8></b-row>
+                        <b-row> <h8>  url.ca </h8></b-row>
                     </b-col>
 
                     <b-col class="profile-about">

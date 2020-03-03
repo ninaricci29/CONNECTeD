@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
         project_name: {
 
         type: DataTypes.STRING,
-        allowNull: true,
-        unique: true
+        allowNull: false,
+        unique: false
 },
     desc: DataTypes.TEXT,
 }, {

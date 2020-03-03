@@ -40,5 +40,6 @@ Tag.belongsToMany(Project, {through: Project_Tag});
 db.User = User
 db.Tag = Tag
 db.Project = Project
+db.UsersTag = Users_Tag
 
 module.exports = db

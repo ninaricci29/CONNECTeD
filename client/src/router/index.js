@@ -5,10 +5,10 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: "/home",
-        name: "home",
+        path: "/search",
+        name: "search",
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../components/Projects.vue")
+            import(/* webpackChunkName: "log-in" */ "../views/Search.vue")
     },
     {
         path: "/signIn",
@@ -38,10 +38,16 @@ const routes = [
             import(/* webpackChunkName: "search"*/ "../components/SignIn.vue")
     },
     {
-        path: "/updateprofile",
+        path: "/updateprofile/:id",
         name: "UpdateProfile",
         component: () =>
             import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
+    },
+    {
+        path: "/post-projects",
+        name: "PostProjects",
+        component: () =>
+            import(/* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue")
     }
 ];
 

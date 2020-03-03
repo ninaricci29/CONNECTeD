@@ -8,15 +8,15 @@
             <div class="form-group">
                 <label>First Name</label>
 
-                <input type="First Name" v-model= "fn" class="form-control active" placeholder="John">
+                <input type="First Name" v-model= "fn" class="form-control active" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith">
+                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1">
+                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Major</label>
@@ -106,13 +106,24 @@ export default {
       yos: ''
     }
   }, 
+  mounted() {
+    this.id = this.$route.params.id;
+    axios.get('http://localhost:8081/profile?id=' + this.id).then(response => (
+        this.fn = response.data.first_name,
+        this.ln = response.data.last_name,
+        this.bio = response.data.bio,
+        this.yos = response.data.year,
+        this.major = response.data.major
+                ));
+    },
+
     methods:{
     update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
         axios.post('http://localhost:8081/updateprofile', {
             // Still need to figure out the value 'id' will have
-            id:5,
+            id: this.$route.params.id,
             first_name: this.fn,
             last_name: this.ln,
             major: this.major,
