@@ -12,6 +12,5 @@ module.exports = (app) => {
   app.post('/post-projects',ProjectController.addProject);
   app.post('/update-project',ProjectController.updateProject);
 
-  app.get('/home', ProfileController.projects)
-  app.post('/home', ProfileController.add_project)
+ 
 }
