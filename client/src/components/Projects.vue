@@ -29,7 +29,7 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCards from "@/components/ProjectCards.vue";
+    import ProjectCards from "@/components/testing.vue";
     export default {
         name: "projects",
         components: {
