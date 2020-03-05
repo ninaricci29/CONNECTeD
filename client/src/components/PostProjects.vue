@@ -77,7 +77,7 @@
             addProject(){
                 axios.post('/connect/post-projects',{
                     // userid is hardcoded, need to use cookie to get it
-                    userid: 8,
+                    userid: 1,
                     project_name: this.name,
                     desc: this.description
                 })
