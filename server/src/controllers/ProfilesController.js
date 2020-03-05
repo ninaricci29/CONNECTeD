@@ -58,7 +58,6 @@ module.exports = {
 
   async update_profile (req, res){
     try{
-      console.log(req)
       const user = await User.findOne({where: {
         id: req.body.id
       }})
@@ -70,7 +69,7 @@ module.exports = {
       user.year=req.body.year;
       user.description=req.body.description;
       await user.save();
-      res.send("Successfully Updated")
+      res.send(user.toJSON())
     } 
     catch (err) {
       console.log(err);

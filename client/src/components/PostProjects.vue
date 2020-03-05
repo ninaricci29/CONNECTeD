@@ -64,7 +64,8 @@
                 name: '',
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
-                value: []
+                value: [],
+                error: ''
             }
         },
         computed: {
@@ -74,9 +75,9 @@
         },
         methods:{
             addProject(){
-                axios.post('http://localhost:8081/post-projects',{
+                axios.post('/connect/post-projects',{
                     // userid is hardcoded, need to use cookie to get it
-                    userid: 8,
+                    userid: 1,
                     project_name: this.name,
                     desc: this.description
                 })
@@ -85,7 +86,7 @@
                         this.desc= response.data.desc;
                     })
                     .catch(function(error){
-                        console.log(error);
+                        this.error = error;
                     });
             }
         }}
