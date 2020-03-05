@@ -76,13 +76,12 @@
         methods:{
             addProject(){
                 axios.post('/connect/post-projects',{
-                    // id is hardcoded
-                    id: 14,
+                    // userid is hardcoded, need to use cookie to get it
+                    userid: 8,
                     project_name: this.name,
                     desc: this.description
                 })
                     .then(response => {
-                        this.id= response.data.id;
                         this.projectname= response.data.project_name;
                         this.desc= response.data.desc;
                     })

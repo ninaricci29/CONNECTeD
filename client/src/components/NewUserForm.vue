@@ -157,6 +157,7 @@ export default {
       });
   },
   methods: {
+    
     submit() {
       var ids = []
       for(var i = 0; i < this.value.length; i++){
@@ -181,7 +182,7 @@ export default {
           (this.firstname = response.data.first_name),
             (this.lastname = response.data.last_name),
             (this.bio = response.data.bio);
-          this.yos = response.data.yos;
+          this.yos = response.data.year;
           this.major = response.data.major;
         })
         .catch(function(error){
