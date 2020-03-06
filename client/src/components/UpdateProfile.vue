@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith" autocomplete="on">
+                <input type="Last Name" v-model= "ln" class="form-control active" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
@@ -32,7 +32,7 @@
                 <label>Bio</label>
 
                 <input type="bio" v-model= "bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
-                <small id="bio-type" class="form-text text-muted">Describe your self!</small>
+                <small id="bio-type" class="form-text text-muted">Describe yourself!</small>
             </div>
 
             <div id="button">
