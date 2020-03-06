@@ -1,24 +1,15 @@
 <template>
     <div class="projects">
-        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /> </h4>
+        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /></h4>
 
         <section class="container">
-            <b-button v-if="isLoggedIn()" class="btn-sm">
-                <b-link class="project-button" href="/connect/post-projects">NEW PROJECT</b-link>
-
+            <b-button class="btn-sm">
+                <b-link class="project-button" href="/post-projects">NEW PROJECT</b-link>
             </b-button>
 
             <div class="project-cards">
                 <ul>
                     <li class="description">
-                        <ProjectCards/>
-                    </li>
-
-                    <li>
-                        <ProjectCards/>
-                    </li>
-
-                    <li>
                         <ProjectCards/>
                     </li>
                 </ul>
@@ -29,31 +20,11 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCards from "@/components/testing.vue";
-    import AuthenticationService from "@/services/AuthenticationService";
-    import axios from 'axios';
-    
+    import ProjectCards from "../components/testing.vue";
     export default {
         name: "projects",
-        data() {
-            return {
-                utorid: '',
-             }
-        },
         components: {
             ProjectCards
-        }, 
-        mounted() {
-            var id = this.$route.params.id;
-            axios.get('/connect/profile_info?id='+ id)
-                .then(response => (
-                    this.utorid = response.data.utorid
-                ));
-        }, 
-        methods:{
-            isLoggedIn(){
-                return AuthenticationService.userIsLoggedIn(this.utorid);
-            }
         }
     };
 </script>
@@ -69,14 +40,6 @@
 
     .container{
         padding: 20px 40px 0 40px;
-    }
-
-    .text-box {
-        font-size: 14px;
-        height: 80px;
-        border-color: white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
-        padding-bottom: 20px;
     }
 
     li {
@@ -98,5 +61,6 @@
     .project-button {
         color: white;
         text-decoration: none;
+
     }
 </style>
