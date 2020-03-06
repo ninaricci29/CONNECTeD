@@ -101,7 +101,7 @@
     }
 
     .first-col {
-        padding-left: 150px;
+        padding-left: 300px;
     }
 
     li {

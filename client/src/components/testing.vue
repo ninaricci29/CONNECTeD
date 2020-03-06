@@ -2,7 +2,23 @@
     <div class="container">
         <div class="card">
             <h2>North</h2>
-            <font-awesome-icon :icon="['fa', 'arrow-right']" class="arrow"/>
+            <font-awesome-icon :icon="['fa', 'arrow-right']" class="arrow" @click="modalShow = !modalShow"/>
+            <b-modal v-model="modalShow" modal-class="true" hide-footer="true" centered="true" hide-header="true" content-class="true">
+                <div>
+                    <h2>North</h2>
+                    <p>This is my project description. Ratatata the ghetto. AHhhh. This is my project description. Ratatata the ghetto. AHhhh.
+                        This is my project description. Ratatata the ghetto. AHhhh. This is my project description. Ratatata the ghetto. AHhhh.</p>
+
+                    <div class="social">
+                        <font-awesome-icon :icon="['fab', 'github']" class="social-icon"/>
+                    </div>
+
+
+                </div>
+
+            </b-modal>
+
+
             <p>a lonely trip.</p>
             <div class="pic">
                 <img src="../assets/photo-1525543907410-b2562b6796d6.jpeg" />
@@ -32,12 +48,7 @@
                 <li></li>
                 <li></li>
             </ul>
-            <div class="social">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-github"></i>
-            </div>
+
             <button>
             </button>
         </div>
@@ -46,7 +57,13 @@
 
 <script>
     export default {
-        name: "ProjectCards"
+        name: "ProjectCards",
+        data() {
+
+            return {
+                modalShow: false
+            }
+        }
     };
 </script>
 
@@ -56,6 +73,8 @@
         padding: 0;
         box-sizing: border-box;
     }
+
+
     .arrow {
         opacity: 0;
         font-size: 18px;
@@ -163,14 +182,13 @@
         transform: translate(-50px, 0);
     }
     .container .card .pic img{
-        /*z-index: 100;*/
+        z-index: 100;
         width: 400px;
         height: 200px;
-        /*background-image: url("https://images.unsplash.com/photo-1525543907410-b2562b6796d6?ixlib=rb-0.3.5&s=9ff8e5e718a6a40cbd0e1471235912f4&auto=format&fit=crop&w=3452&q=80");*/
         background-size: 100% 100%;
         filter: grayscale(100%);
     }
-    .container .card .social {
+    .social {
         position: absolute;
         left: 60px;
         top: 0;
@@ -186,27 +204,19 @@
         height: 64px;
         border-radius: 80px;
     }
-    .container .card .social i:nth-of-type(1) {
-        -webkit-transition-delay: 0.4s;
-        transition-delay: 0.4s;
-    }
-    .container .card .social i:nth-of-type(2) {
-        -webkit-transition-delay: 0.3s;
-        transition-delay: 0.3s;
-    }
-    .container .card .social i:nth-of-type(3) {
-        -webkit-transition-delay: 0.2s;
-        transition-delay: 0.2s;
-    }
-    .container .card .social i:nth-of-type(4) {
-        -webkit-transition-delay: 0.1s;
-        transition-delay: 0.1s;
+    .social .social-icon {
+        z-index: 100;
+        position: absolute;
+        bottom: 20px;
+        font-size: 20px;
+        cursor: pointer;
     }
     .container .card:hover .arrow {
         opacity: 1;
         -webkit-transform: scale(1);
         transform: scale(1);
     }
+
     .container .card button {
         position: absolute;
         right: 14px;
@@ -232,12 +242,6 @@
     }
     .container .card:hover .pic img{
         filter: grayscale(0);
-    }
-    .container .card2 .pic {
-        background-image: url("https://images.unsplash.com/photo-1528785198459-ec50485704c7?ixlib=rb-0.3.5&s=3a2fc3039516555bbb2e9cd2967bd321&auto=format&fit=crop&w=1537&q=80");
-    }
-    .container .card2 button {
-        background-color: #2b26c3;
     }
 
 </style>

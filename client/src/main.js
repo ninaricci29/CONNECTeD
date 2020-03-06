@@ -15,9 +15,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLightbulb, faUserPlus, faStar, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { faFontAwesome, faGithub } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faLightbulb, faUserPlus, faStar, faArrowRight, faFontAwesome);
+library.add(faLightbulb, faUserPlus, faStar, faArrowRight, faFontAwesome, faGithub);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
