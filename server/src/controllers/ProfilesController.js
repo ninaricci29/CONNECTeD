@@ -56,6 +56,11 @@ module.exports = {
     }
   },
 
+  /* This method updates the profile information of a user
+     with the new data provided by the user. The profile
+     information is updated with a given user id, by looking 
+     up the id in the database.  */
+
   async update_profile (req, res){
     try{
       const user = await User.findOne({where: {
