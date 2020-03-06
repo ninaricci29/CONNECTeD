@@ -6,19 +6,20 @@
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Project', {
-        // Model attributes are defined here
+        /* Model attributes are defined here. We define the project_name attribute as
+        not necessarily unique, because collaborators may share a project. The object also
+        has a description attribute, desc, that summarizes the project.
+         */
+
         project_name: {
-            // A Project must be unique
-            type: DataTypes.STRING,
 
-            allowNull: false,
-            unique: true
-        }
-    }, {
-        desc: DataTypes.TEXT,
-        timestamps: false
-    });
-
-
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false
+},
+    desc: DataTypes.TEXT,
+}, {
+    timestamps: false
+});
 
 }

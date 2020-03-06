@@ -1,9 +1,13 @@
 const ProfileController = require('./controllers/ProfilesController')
-module.exports = (app, upload) => {
-  app.get('/profile', ProfileController.retrieve), 
+const RedirectController = require('./controllers/RedirectController')
+const ProjectController = require('./controllers/ProjectsController')
 
-  app.post('/profile', upload.single('profile_picture'), ProfileController.register);
-  app.get('/tags', ProfileController.tags);
-  app.post('/updateprofile', ProfileController.update_profile)
-
+module.exports = (app) => {
+  app.get('/connect/profile_info', ProfileController.retrieve),
+  app.get('/connect/tags', ProfileController.tags), 
+  app.post('/connect/create_profile', upload.single('profile_picture'),  uploadProfileController.register),
+  app.post('/connect/updateprofile', ProfileController.update_profile),
+  app.get('/connect/register', RedirectController.register_redirect),
+  app.post('/connect/post-projects',ProjectController.addProject);
+  app.post('/connect/update-project',ProjectController.updateProject); 
 }

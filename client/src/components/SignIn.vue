@@ -7,7 +7,7 @@
             </div>
             <form class="form">
                 <div id="button">
-                    <button href="/NewUserForm.vue" type="log-in" class="btn btn-primary">Sign In</button>
+                    <router-link to= "/info" tag = "b-button">Sign In</router-link>
                 </div>
             </form>
             </body>

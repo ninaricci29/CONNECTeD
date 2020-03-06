@@ -40,14 +40,14 @@
             }
         },
         mounted() {
-            this.id = this.$route.params.id;
-            axios.get('http://localhost:8081/profile?id='+this.id)
+            var id = this.$route.params.id;
+            axios.get('/connect/profile_info?id='+ id)
                 .then(response => (
                     this.name = response.data.first_name + ' ' + response.data.last_name,
                         this.description = response.data.bio,
                         this.year = response.data.year,
                         this.major = response.data.major,
-                        this.link = "http://localhost:8081/images/" + response.data.profile_picture
+                        this.link = "/images/" + response.data.profile_picture
                 ));
         }
     }

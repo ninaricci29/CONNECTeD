@@ -4,19 +4,20 @@
             <h1>Update your Profile</h1>
             <h6>Complete the form.</h6>
         </div>
-        <form class="form" method="update">
+        <div class="form" method="update">
+            <p> {{ message }} </p>
             <div class="form-group">
                 <label>First Name</label>
 
-                <input type="First Name" v-model= "fn" class="form-control active" placeholder="John">
+                <input type="First Name" v-model= "fn" class="form-control active" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith">
+                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
-                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1">
+                <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Major</label>
@@ -38,7 +39,7 @@
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="update" >SUBMIT</button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -103,14 +104,27 @@ export default {
       ln: '', 
       major: '',
       bio: '',
-      yos: ''
+      yos: '',
+      error: '',
+      message: ''
     }
   }, 
+  mounted() {
+    this.id = this.$route.params.id;
+    axios.get('http://localhost:8081/profile?id=' + this.id).then(response => (
+        this.fn = response.data.first_name,
+        this.ln = response.data.last_name,
+        this.bio = response.data.bio,
+        this.yos = response.data.year,
+        this.major = response.data.major
+                ));
+    },
+
     methods:{
     update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
-        axios.post('http://localhost:8081/updateprofile', {
+        axios.post('/connect/updateprofile', {
             // Still need to figure out the value 'id' will have
             id: this.$route.params.id,
             first_name: this.fn,
@@ -120,17 +134,18 @@ export default {
             year: this.yos
         })
         .then(response => {
+            
             this.id=response.data.id;
             this.first_name= response.data.first_name;
             this.last_name= response.data.last_name;
             this.major= response.data.major;
             this.bio= response.data.bio;
-            this.year= response.body.year;
-
-            console.log(response);
+            this.yos= response.data.year;
+            this.message = "Profile Updated Successfully!";
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch(error => {
+            this.error = error;
+          this.message = "Opps something went wrong."
         });
     }
     }

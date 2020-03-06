@@ -17,6 +17,14 @@
                 <a href="#">CONNECTED</a>
             </div>
 
+            <div class="h2 mb-2 gear-wheel">
+                <b-link class="update-button" href="/updateprofile/:id">
+                    <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
+                </b-link>
+
+
+            </div>
+
             <div class="nav-wrapper">
                 <ul>
                     <li v-on:click="collapse" v-for="(link, index) in navLinks" :key="index">
@@ -71,6 +79,23 @@
     nav {
         padding: 20px;
     }
+
+    .gear-wheel {
+        position: fixed;
+        right: 80px;
+        top: 25px;
+        display: block;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        z-index: 9999;
+        border-radius: 50%;
+    }
+
+    .update-button {
+        color: black;
+    }
+
     .search {
         border-color: lightslategrey;
         border-radius: 8px;
@@ -193,6 +218,10 @@
     }
 
     .nav-btn i:nth-child(3) {
+        margin-top: 4px;
+    }
+
+    .nav-btn i:nth-child(4) {
         margin-top: 4px;
     }
 
