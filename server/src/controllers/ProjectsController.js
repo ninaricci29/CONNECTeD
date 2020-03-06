@@ -1,5 +1,6 @@
 const Project = require('../models').Project
 const User = require('../models').User
+const UsersProject = require('../models').UsersProject
 
 module.exports = {
 async projects(req, res) {
@@ -33,7 +34,13 @@ async projects(req, res) {
 
   async addProject(req,res){
     try {
-      query = await Project.create(req.body);
+      project = await Project.create(req.body);
+      console.log(project.body);
+      const uid_pid = {
+        UserId: req.body.userid,
+        ProjectId: project.id
+      }
+      await UsersProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
@@ -60,5 +67,16 @@ async projects(req, res) {
             error: 'An error has occurred trying to update the project'
         })
     }
+  },
+
+  async searchProject(req,res){
+      try {
+        const project = await Project.findAll({where:{
+
+        }
+        })
+      } catch (error) {
+          
+      }
   }
 }
