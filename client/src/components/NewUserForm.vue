@@ -127,6 +127,8 @@
 
 <script>
 import axios from "axios";
+import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
   name: "submit",
   data() {
@@ -147,13 +149,10 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:8081/tags").then(response => {
+    axios.get("/connect/tags").then(response => {
         this.tags = response.data;
-        console.log("hiii")
-        console.log(response.data)
         for (var i = 0; i < this.tags.length; i++) {
           this.options.push(this.tags[i].tag_name);
-          console.log(this.tags[i]);
         }
       });
   },
@@ -169,7 +168,8 @@ export default {
         }
       }
       axios
-        .post("http://localhost:8081/profile", {
+        .post("/connect/create_profile", {
+          utorid: AuthenticationService.getUtorid(),
           first_name: this.firstname,
           last_name: this.lastname,
           bio: this.bio,
@@ -185,8 +185,9 @@ export default {
           this.yos = response.data.year;
           this.major = response.data.major;
         })
-        .catch(function(error) {
-          console.log(error);
+        .catch(function(error){
+            this.error = error;
+
         });
     }
   }

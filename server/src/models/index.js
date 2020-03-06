@@ -41,5 +41,6 @@ db.User = User
 db.Tag = Tag
 db.Project = Project
 db.UsersTag = User_Tag
+db.UsersProject = User_Project
 
 module.exports = db

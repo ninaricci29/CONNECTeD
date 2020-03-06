@@ -4,7 +4,8 @@
             <h1>Update your Profile</h1>
             <h6>Complete the form.</h6>
         </div>
-        <form class="form" method="update">
+        <div class="form" method="update">
+            <p> {{ message }} </p>
             <div class="form-group">
                 <label>First Name</label>
 
@@ -38,7 +39,7 @@
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="update" >SUBMIT</button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -103,7 +104,9 @@ export default {
       ln: '', 
       major: '',
       bio: '',
-      yos: ''
+      yos: '',
+      error: '',
+      message: ''
     }
   }, 
   mounted() {
@@ -121,7 +124,7 @@ export default {
     update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
-        axios.post('http://localhost:8081/updateprofile', {
+        axios.post('/connect/updateprofile', {
             // Still need to figure out the value 'id' will have
             id: this.$route.params.id,
             first_name: this.fn,
@@ -131,17 +134,18 @@ export default {
             year: this.yos
         })
         .then(response => {
+            
             this.id=response.data.id;
             this.first_name= response.data.first_name;
             this.last_name= response.data.last_name;
             this.major= response.data.major;
             this.bio= response.data.bio;
-            this.year= response.body.year;
-
-            console.log(response);
+            this.yos= response.data.year;
+            this.message = "Profile Updated Successfully!";
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch(error => {
+            this.error = error;
+          this.message = "Opps something went wrong."
         });
     }
     }
