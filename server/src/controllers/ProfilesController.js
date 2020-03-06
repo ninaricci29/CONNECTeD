@@ -1,6 +1,5 @@
 const User = require('../models').User
 const Tag = require('../models').Tag
-const Project = require('../models').Project
 const UsersTag = require('../models').UsersTag
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'an error has occurred trying to fetch the user'
+        err: 'an error has occurred trying to fetch the user'
       })
     }
   }, 
@@ -40,7 +39,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occurred trying to register the user'
+        err: 'an error has occurred trying to register the user'
       })
     }
   },
@@ -52,18 +51,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'an error has occurred trying to fetch tags'
-      })
-    }
-  },
-  async projects(req, res) {
-    try {
-      projects = await Project.findAll({})
-      res.send(projects)
-    } catch (err) {
-      console.log(err)
-      res.status(500).send({
-        error: 'an error has occurred trying to fetch projects'
+        err: 'an error has occurred trying to fetch tags'
       })
     }
   },
@@ -72,9 +60,9 @@ module.exports = {
      with the new data provided by the user. The profile
      information is updated with a given user id, by looking 
      up the id in the database.  */
+
   async update_profile (req, res){
     try{
-      console.log(req)
       const user = await User.findOne({where: {
         id: req.body.id
       }})
@@ -86,12 +74,12 @@ module.exports = {
       user.year=req.body.year;
       user.description=req.body.description;
       await user.save();
-      res.send("Successfully Updated")
+      res.send(user.toJSON())
     } 
     catch (err) {
       console.log(err);
       res.status(500).send({
-        error: 'an error has occurred trying to update the user'
+        err: 'an error has occurred trying to update the user'
 
       })
     }

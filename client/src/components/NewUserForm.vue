@@ -113,70 +113,72 @@
 </template>
 
 <script>
-    import axios from "axios";
-    export default {
-        name: "submit",
-        data() {
-            return {
-                firstname: "",
-                lastname: "",
-                bio: "",
-                yos: "",
-                major: "",
-                tags: null,
-                options: [],
-                value: []
-            };
-        },
-        computed: {
-            availableOptions() {
-                return this.options.filter(opt => this.value.indexOf(opt) === -1);
-            }
-        },
-        mounted() {
-            axios.get("http://localhost:8081/tags").then(response => {
-                this.tags = response.data;
-                console.log("hiii")
-                console.log(response.data)
-                for (var i = 0; i < this.tags.length; i++) {
-                    this.options.push(this.tags[i].tag_name);
-                    console.log(this.tags[i]);
-                }
-            });
-        },
-        methods: {
-            submit() {
-                var ids = []
-                for(var i = 0; i < this.value.length; i++){
-                    for (var j = 0; j < this.tags.length; j++){
-                        if (this.value[i] == this.tags[j].tag_name){
-                            ids.push(this.tags[j].id)
-                        }
-                    }
-                }
-                axios
-                    .post("http://localhost:8081/profile", {
-                        first_name: this.firstname,
-                        last_name: this.lastname,
-                        bio: this.bio,
-                        yos: this.yos,
-                        major: this.major,
-                        value: this.value,
-                        tag_ids: ids
-                    })
-                    .then(response => {
-                        (this.firstname = response.data.first_name),
-                            (this.lastname = response.data.last_name),
-                            (this.bio = response.data.bio);
-                        this.yos = response.data.yos;
-                        this.major = response.data.major;
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
-            }
-        }
+import axios from "axios";
+import AuthenticationService from '@/services/AuthenticationService'
+
+export default {
+  name: "submit",
+  data() {
+    return {
+      firstname: "",
+      lastname: "",
+      bio: "",
+      yos: "",
+      major: "",
+      tags: null,
+      options: [],
+      value: []
     };
+  },
+  computed: {
+    availableOptions() {
+      return this.options.filter(opt => this.value.indexOf(opt) === -1);
+    }
+  },
+  mounted() {
+    axios.get("/connect/tags").then(response => {
+        this.tags = response.data;
+        for (var i = 0; i < this.tags.length; i++) {
+          this.options.push(this.tags[i].tag_name);
+        }
+      });
+  },
+  methods: {
+    
+    submit() {
+      var ids = []
+      for(var i = 0; i < this.value.length; i++){
+        for (var j = 0; j < this.tags.length; j++){
+          if (this.value[i] == this.tags[j].tag_name){
+            ids.push(this.tags[j].id)
+          }
+        }
+      }
+      axios
+        .post("/connect/create_profile", {
+          utorid: AuthenticationService.getUtorid(),
+          first_name: this.firstname,
+          last_name: this.lastname,
+          bio: this.bio,
+          year: this.yos,
+          major: this.major,
+          value: this.value,
+          tag_ids: ids
+        })
+        .then(response => {
+          (this.firstname = response.data.first_name),
+            (this.lastname = response.data.last_name),
+            (this.bio = response.data.bio);
+          this.yos = response.data.year;
+          this.major = response.data.major;
+        })
+        .catch(function(error){
+            this.error = error;
+
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>

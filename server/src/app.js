@@ -5,12 +5,24 @@ const cors = require('cors')
 const models = require('./models')
 const app = express()
 const config = require("./config/config")
+const serveStatic = require('serve-static')
+const path = require('path')
+var history = require('connect-history-api-fallback');
+const cookieParser = require('cookie-parser')
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cors())
+app.use(cookieParser());
 
 require('./routes')(app)
+
+app.use('/connect', express.static(path.join(__dirname, 'dist')))
+console.log(`${path.join(__dirname, "/dist")}`)
+app.get("/connect/*", (req, res) => { 
+	res.sendFile(path.join(__dirname, '/dist/index.html'))})
+
+app.use("/connect/", history())
 
 models.sequelize.sync()
   .then( () => {

@@ -12,6 +12,15 @@ const routes = [
             import(/* webpackChunkName: "home"*/ "../views/Home.vue")
     },
     {
+        path: "/signIn",
+        name: "signIn",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import(/* webpackChunkName: "log-in" */ "../components/SignIn.vue")
+    },
+    {
         path: "/profile/:id",
         name: "profile",
         component: () =>
@@ -32,8 +41,8 @@ const routes = [
 
     // SUB PAGES
     {
-        path: "/info",
-        name: "info",
+        path: "/register",
+        name: "register",
         component: () =>
             import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
     },
