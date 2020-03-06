@@ -9,7 +9,11 @@
 
             <div>
                 <div class="info-inner">
-                    <li><a> About </a></li>
+                    <li>
+                        <a>
+                            <b-link href="/about"> About </b-link>
+                        </a>
+                    </li>
                 </div>
 
                 <b-row  class="info-inner">

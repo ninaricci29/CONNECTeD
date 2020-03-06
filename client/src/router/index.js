@@ -48,7 +48,13 @@ const routes = [
         name: "PostProjects",
         component: () =>
             import(/* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue")
-    }
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: () =>
+            import(/* webpackChunkName: "search"*/ "../components/About.vue")
+    },
 ];
 
 const router = new VueRouter({
