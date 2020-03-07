@@ -94,7 +94,7 @@
     }
 
     .abc{
-        transform: translate(120px, -420px);
+        transform: translate(115px, -420px);
         padding: 0 0 0 0;
         opacity: 0;
     }
@@ -116,15 +116,17 @@
         width: 18rem;
         display: inline-block;
         margin: 10px;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+
     }
     .card:hover {
-        box-shadow: 0 0 10px 10px rgba(0, 0, 0, .09);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .09);
     }
 
     .card .card-img {
         filter: grayscale(100%);
         width: 100%;
-        /*border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;*/
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
 
     .card:hover .abc{
