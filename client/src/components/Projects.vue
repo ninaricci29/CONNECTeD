@@ -13,11 +13,11 @@
                         <ProjectCards/>
                     </li>
                 </ul>
-                <ul>
-                    <li class="description">
-                        <ProjectCards/>
-                    </li>
-                </ul>
+<!--                <ul>-->
+<!--                    <li class="description">-->
+<!--                        <ProjectCards/>-->
+<!--                    </li>-->
+<!--                </ul>-->
             </div>
         </section>
     </div>

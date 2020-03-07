@@ -2,8 +2,16 @@
     <div class="container">
         <div class="card">
             <img class="card-img" src="../assets/1.jpg" />
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
-            
+            <div class="abc">
+                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
+                    <template v-slot:button-content>
+                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
+                    </template>
+                    <b-dropdown-item href="#">Edit</b-dropdown-item>
+                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                </b-dropdown>
+            </div>
+
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">TRAVEL</p>
@@ -20,7 +28,15 @@
 
         <div class="card">
             <img class="card-img" src="../assets/10.jpg" alt="Travel Photography" />
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
+            <div class="abc">
+                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
+                    <template v-slot:button-content>
+                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
+                    </template>
+                    <b-dropdown-item href="#">Edit</b-dropdown-item>
+                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                </b-dropdown>
+            </div>
 
             <div class="card-body">
                 <div class="card-footer">
@@ -38,7 +54,15 @@
 
         <div class="card">
             <img class="card-img" src="../assets/2.jpg" alt="Airplanes" />
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
+            <div class="abc">
+                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
+                    <template v-slot:button-content>
+                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
+                    </template>
+                    <b-dropdown-item href="#">Edit</b-dropdown-item>
+                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                </b-dropdown>
+            </div>
 
             <div class="card-body">
                 <div class="card-footer">
@@ -52,14 +76,13 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
 <script>
-    export default {
-        name: "ProjectCards",
 
+    export default {
+        name: "ProjectCards"
     };
 </script>
 
@@ -71,11 +94,15 @@
     }
 
     .abc{
-        color: white;
-        transform: translate(115px, -420px);
+        transform: translate(120px, -420px);
         padding: 0 0 0 0;
-        opacity: 0%;
+        opacity: 0;
     }
+
+    .efg {
+        color: white;
+    }
+
     .text-muted {
         opacity: 0.4;
     }
@@ -90,15 +117,20 @@
         display: inline-block;
         margin: 10px;
     }
+    .card:hover {
+        box-shadow: 0 0 10px 10px rgba(0, 0, 0, .09);
+    }
 
     .card .card-img {
         filter: grayscale(100%);
         width: 100%;
-        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+        /*border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;*/
     }
 
     .card:hover .abc{
         opacity: 100%;
+        cursor: pointer;
+        color: white;
     }
 
     .card:hover .card-img {
@@ -110,7 +142,6 @@
         transition: height 0.4s ease;
         overflow: hidden;
         filter: grayscale(0);
-
     }
 
     .card:hover .desc {
