@@ -1,5 +1,5 @@
 const Project = require('../models').Project
-const UsersProject = require('../models').UsersProject
+const UserProject = require('../models').UserProject
 
 module.exports = {
 async projects(req, res) {
@@ -22,7 +22,7 @@ async projects(req, res) {
         UserId: req.body.userid,
         ProjectId: project.id
       }
-      await UsersProject.create(uid_pid)
+      await UserProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
