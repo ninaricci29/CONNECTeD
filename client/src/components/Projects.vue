@@ -13,6 +13,11 @@
                         <ProjectCards/>
                     </li>
                 </ul>
+                <ul>
+                    <li class="description">
+                        <ProjectCards/>
+                    </li>
+                </ul>
             </div>
         </section>
     </div>
@@ -49,7 +54,7 @@
     ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        grid-gap: 20px;
+        grid-gap: 5px;
         margin: 0px;
         padding: 0px;
     }

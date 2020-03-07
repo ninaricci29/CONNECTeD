@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="card">
-            <img class="card-img" src="../assets/1.jpg"/>
+            <img class="card-img" src="../assets/1.jpg" />
+            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
+            
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">TRAVEL</p>
@@ -11,12 +13,15 @@
                         Mong Kok is a buzzing maze of narrow streets, known for shopping.
                         Home to Ladies’ Market, Flower Market, and Fa Yuen Street.
                     </p>
+
                 </div>
             </div>
         </div>
 
         <div class="card">
             <img class="card-img" src="../assets/10.jpg" alt="Travel Photography" />
+            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
+
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">UI/UX</p>
@@ -32,19 +37,22 @@
         </div>
 
         <div class="card">
-            <img class="card-img" src="../assets/1.jpg"/>
+            <img class="card-img" src="../assets/2.jpg" alt="Airplanes" />
+            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="abc"/>
+
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">TRAVEL</p>
-                    <h4 class="title">Mong Kok, Hong Kong</h4>
-                    <p class="byline">by Dan Smith</p>
+                    <h1 class="title">Georgia Aquarium, USA</h1>
+                    <p class="byline">by Dave Soder</p>
                     <p class="desc text-muted-2">
-                        Mong Kok is a buzzing maze of narrow streets, known for shopping.
-                        Home to Ladies’ Market, Flower Market, and Fa Yuen Street.
+                        Dive inside Georgia Aquarium and explore a world under the sea
+                        with whale sharks, beluga whales and other marine life.
                     </p>
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -62,6 +70,12 @@
         font-family: "Montserrat", sans-serif;
     }
 
+    .abc{
+        color: white;
+        transform: translate(115px, -420px);
+        padding: 0 0 0 0;
+        opacity: 0%;
+    }
     .text-muted {
         opacity: 0.4;
     }
@@ -74,12 +88,17 @@
         position: relative;
         width: 18rem;
         display: inline-block;
+        margin: 10px;
     }
 
     .card .card-img {
         filter: grayscale(100%);
         width: 100%;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .card:hover .abc{
+        opacity: 100%;
     }
 
     .card:hover .card-img {
