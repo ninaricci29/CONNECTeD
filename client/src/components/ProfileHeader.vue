@@ -47,7 +47,7 @@
                         this.description = response.data.bio,
                         this.year = response.data.year,
                         this.major = response.data.major,
-                        this.link = "/images/" + response.data.profile_picture
+                        this.link = response.data.profile_picture
                 ));
         }
     }

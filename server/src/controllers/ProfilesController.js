@@ -22,9 +22,9 @@ module.exports = {
   async register(req, res){
     try {
       if (req.file == null){
-        req.body.profile_picture = 'default.jpg'
+        req.body.profile_picture = '/images/default.jpg'
       } else {
-        req.body.profile_picture = req.file.filename
+        req.body.profile_picture = '/images/' + req.file.filename
       }
       console.log(req.body);
       user = await User.create(req.body);
