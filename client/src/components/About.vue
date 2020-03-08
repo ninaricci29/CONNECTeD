@@ -3,7 +3,7 @@
     <header>
         <div class="logo" cent>
             <br>
-            <img class ="logo" src="../assets/logo.png"/>
+<!--            <img class ="logo" src="../assets/logo.png"/>-->
         </div>
     </header>
 
@@ -61,9 +61,9 @@
         width: 50%;
     }
     h4, h5 {
-        color: white
+        color: black
     }
-    body {background-color: black;}
+    body {background-color: white;}
     img.logo {
         display: block;
         margin: 0 auto;
