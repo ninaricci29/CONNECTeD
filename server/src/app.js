@@ -9,8 +9,6 @@ var path = require('path');
 const models = require('./models')
 const app = express()
 const config = require("./config/config")
-const serveStatic = require('serve-static')
-const path = require('path')
 var history = require('connect-history-api-fallback');
 const cookieParser = require('cookie-parser')
 
