@@ -117,7 +117,7 @@
           <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
       </div>   
 
-                  <div id="button">
+      <div id="button">
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
