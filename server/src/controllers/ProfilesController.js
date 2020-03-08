@@ -21,7 +21,11 @@ module.exports = {
 
   async register(req, res){
     try {
-      req.body.profile_picture = req.file.filename;
+      if (req.file == null){
+        req.body.profile_picture = 'default.jpg'
+      } else {
+        req.body.profile_picture = req.file.filename
+      }
       console.log(req.body);
       user = await User.create(req.body);
       

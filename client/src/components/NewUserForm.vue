@@ -111,10 +111,11 @@
           </b-form-tags>
         </b-form-group>
       </div>
-
-            <label>Profile Picture
-                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
-            </label>
+       <div class="form-group">
+          <label>Profile Picture </label>
+          <br/>
+          <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+      </div>   
 
                   <div id="button">
         <button
