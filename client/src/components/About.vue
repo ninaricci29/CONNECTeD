@@ -2,6 +2,7 @@
     <body class="about">
     <header>
         <div class="logo" cent>
+            <br>
             <img class ="logo" src="../assets/logo.png"/>
         </div>
     </header>
