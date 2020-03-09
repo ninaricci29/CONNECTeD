@@ -10,7 +10,7 @@
             <div class="project-cards">
                 <ul>
                     <li class="description">
-                        <ProjectCard v-for="project in project_list" v-bind:key="project"
+                        <ProjectCards v-for="project in project_list" v-bind:key="project"
                                       v-bind:project_name = project.project_name
                                       v-bind:project_description = project.desc />
                     </li>
@@ -22,7 +22,7 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCard from "@/components/ProjectCard.vue";
+    import ProjectCards from "@/components/ProjectCard.vue";
     import AuthenticationService from "@/services/AuthenticationService";
     import axios from 'axios';
     export default {
