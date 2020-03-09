@@ -1,23 +1,21 @@
 <template>
     <div class="projects">
-        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /></h4>
+        <h4> PROJECTS </h4>
 
         <section class="container">
-            <b-button class="btn-sm">
-                <b-link class="project-button" href="/post-projects">NEW PROJECT</b-link>
+            <b-button v-if="isLoggedIn()" class="btn-sm">
+                <b-link class="project-button" href="/connect/post-projects">NEW PROJECT</b-link>
+
             </b-button>
 
             <div class="project-cards">
-                <ul>
+                <ul id="projects">
                     <li class="description">
-                        <ProjectCards/>
+                        <ProjectCards v-for="project in project_list" v-bind:key="project"
+                                      v-bind:project_name = project.project_name
+                                      v-bind:project_description = project.desc />
                     </li>
                 </ul>
-<!--                <ul>-->
-<!--                    <li class="description">-->
-<!--                        <ProjectCards/>-->
-<!--                    </li>-->
-<!--                </ul>-->
             </div>
         </section>
     </div>
@@ -25,11 +23,35 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCards from "../components/testing.vue";
+    import ProjectCards from "@/components/ProjectCards.vue";
+    import AuthenticationService from "@/services/AuthenticationService";
+    import axios from 'axios';
     export default {
         name: "projects",
+        data() {
+            return {
+                utorid: '',
+                project_list: null
+             }
+        },
         components: {
             ProjectCards
+        }, 
+        mounted() {
+            var id = this.$route.params.id;
+            axios.get('/connect/profile_info?id='+ id)
+                .then(response => (
+                    this.utorid = response.data.utorid
+                ));
+            axios.get('/connect/project?id='+ id)
+                .then(response => (
+                    this.project_list = response.data
+                ));
+        },
+        methods:{
+            isLoggedIn(){
+                return AuthenticationService.userIsLoggedIn(this.utorid);
+            }
         }
     };
 </script>
@@ -47,6 +69,14 @@
         padding: 20px 40px 0 40px;
     }
 
+    .text-box {
+        font-size: 14px;
+        height: 80px;
+        border-color: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
+        padding-bottom: 20px;
+    }
+
     li {
         list-style-type: none;
     }
@@ -54,7 +84,7 @@
     ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        grid-gap: 5px;
+        grid-gap: 20px;
         margin: 0px;
         padding: 0px;
     }
@@ -66,6 +96,5 @@
     .project-button {
         color: white;
         text-decoration: none;
-
     }
 </style>

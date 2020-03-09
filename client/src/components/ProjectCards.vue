@@ -1,18 +1,20 @@
-<template>
-    <div class="project-cards">
-        <img src="../assets/saul-flores-wBLis5RllUE-unsplash.jpg"/>
-        <div class="container">
-            <div class="project-name"> Project Name </div>
-            <p class="project-description"> This is my project description. Hi Nina is da best, da oNly best. </p>
-        </div>
 
-    </div>
-</template>
+Vue.Component('ProjectCards', {
+    <template>
+        <div class="project-cards">
+            <img src="../assets/saul-flores-wBLis5RllUE-unsplash.jpg"/>
+            <div class="container">
+                <div class="project-name"> {{project_name}} </div>
+                <p class="project-description"> {{project_description}} </p>
+            </div>
+        </div>
+    </template>
+})
 
 <script>
     export default {
-        name: "ProjectCards"
-    };
+        props: ['project_name', 'project_description']
+    }
 </script>
 
 <style>

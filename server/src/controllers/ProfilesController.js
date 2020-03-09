@@ -51,7 +51,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        err: 'an error has occurred trying to fetch tags'
+        error: 'an error has occurred trying to fetch tags'
       })
     }
   },

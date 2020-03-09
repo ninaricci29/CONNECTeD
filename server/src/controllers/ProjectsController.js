@@ -1,18 +1,31 @@
 const Project = require('../models').Project
+const User = require('../models').User
 const UsersProject = require('../models').UsersProject
 
 module.exports = {
-async projects(req, res) {
-    try {
-      projects = await Project.findAll({})
-      res.send(projects)
-    } catch (err) {
-      console.log(err)
-      res.status(500).send({
-        err: 'an error has occurred trying to fetch projects'
-      })
+async getProjects(req, res) {
+  try {
+    user = await UsersProject.findAll({
+      where: {
+        UserId: req.query.id
+      }
+    })
+    var projects_list = []
+    for (var i = 0; i < user.length; i++) {
+      projects_list.push(user[i].ProjectId)
     }
-  },
+    projects = await Project.findAll({
+          where: {
+            id: projects_list
+          }
+        })
+    res.send(projects);
+  } catch (err) {
+    console.log(err)
+    res.status(500).send({
+      error: 'an error has occurred trying to fetch projects'
+    })
+  }},
 
   async addProject(req,res){
     try {
@@ -22,7 +35,7 @@ async projects(req, res) {
         UserId: req.body.userid,
         ProjectId: project.id
       }
-      await UsersProject.create(uid_pid)
+      await UserProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
