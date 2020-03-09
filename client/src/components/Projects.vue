@@ -9,17 +9,11 @@
             </b-button>
 
             <div class="project-cards">
-                <ul>
+                <ul id="projects">
                     <li class="description">
-                        <ProjectCards/>
-                    </li>
-
-                    <li>
-                        <ProjectCards/>
-                    </li>
-
-                    <li>
-                        <ProjectCards/>
+                        <ProjectCards v-for="project in project_list" v-bind:key="project"
+                                      v-bind:project_name = project.project_name
+                                      v-bind:project_description = project.desc />
                     </li>
                 </ul>
             </div>
@@ -37,6 +31,7 @@
         data() {
             return {
                 utorid: '',
+                project_list: null
              }
         },
         components: {
@@ -44,11 +39,15 @@
         }, 
         mounted() {
             var id = this.$route.params.id;
-            axios.get('/connect/profile_info?id='+ id)
+            axios.get('http://localhost:8081/connect/profile_info?id='+ id)
                 .then(response => (
                     this.utorid = response.data.utorid
                 ));
-        }, 
+            axios.get('http://localhost:8081/connect/project?id='+ id)
+                .then(response => (
+                    this.project_list = response.data
+                ));
+        },
         methods:{
             isLoggedIn(){
                 return AuthenticationService.userIsLoggedIn(this.utorid);
