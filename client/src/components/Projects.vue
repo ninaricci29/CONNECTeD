@@ -39,11 +39,11 @@
         }, 
         mounted() {
             var id = this.$route.params.id;
-            axios.get('http://localhost:8081/connect/profile_info?id='+ id)
+            axios.get('/connect/profile_info?id='+ id)
                 .then(response => (
                     this.utorid = response.data.utorid
                 ));
-            axios.get('http://localhost:8081/connect/project?id='+ id)
+            axios.get('/connect/project?id='+ id)
                 .then(response => (
                     this.project_list = response.data
                 ));
