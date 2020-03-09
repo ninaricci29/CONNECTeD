@@ -3,7 +3,7 @@
             <body>
             <div>
                 <h1 class="brand">CONNECTeD</h1>
-                <h6 class="sub"> JOIN CONNECTeD TODAY </h6>
+                <h6 class="sub"> JOIN US TODAY </h6>
             </div>
             <form class="form">
                 <div id="button">

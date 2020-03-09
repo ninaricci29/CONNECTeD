@@ -4,7 +4,7 @@
 
             <div class="logo-container info">
                 <a>
-                    <b-link href="/home"> <h3>ConnectEd</h3> </b-link>
+                    <b-link href="/home"> <h3>CONNECTeD</h3> </b-link>
                 </a>
             </div>
 

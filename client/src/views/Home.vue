@@ -4,7 +4,7 @@
             <div class="logo" cent>
             <br>
             <img class ="logo" src="../assets/home.png"/>
-        </div>
+            </div>
         </header>
         <section class="about-text">
             <b-container class="top">
@@ -30,8 +30,8 @@
 <style scoped>
 
     img.logo {
-        height: 80%;
-        width: 80%;
+        height: 65%;
+        width: 65%;
         display: block;
         margin: 0 auto;
 
