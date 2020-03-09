@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h6>Post a new project!</h6>
+            <h6>Update your project!</h6>
         </div>
         <form class="form" method="addProject">
             <div class="form-group">
