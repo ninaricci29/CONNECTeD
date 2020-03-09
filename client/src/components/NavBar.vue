@@ -108,7 +108,7 @@
     .logo {
         float: left;
         /*padding-left: 40px;*/
-        position: fixed;
+        /*position: fixed;*/
         /*padding-top: 20px;*/
     }
 
