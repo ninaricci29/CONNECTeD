@@ -45,6 +45,23 @@ async getProjects(req, res) {
       })
     }
   },
+  
+  async deleteProject(req,res){
+    try{
+      const project = await Project.findOne({where:{
+        id: req.body.id
+      }})
+      project.destroy()
+      res.send("Successfully deleted")
+    }
+    catch (err) {
+      console.log(req.body);
+      console.log(err)
+      res.status(500).send({
+        err: 'an error has occurred trying to delete the project'
+    })
+    }
+  },
 
   async updateProject(req,res){
     try {

@@ -11,4 +11,5 @@ module.exports = (app) => {
   app.post('/connect/post-projects',ProjectController.addProject);
   app.post('/connect/update-project',ProjectController.updateProject);
   app.get('/connect/project', ProjectController.getProjects)
+  app.post('/connect/delete-project', ProjectController.deleteProject);
 }
