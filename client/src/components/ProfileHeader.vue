@@ -80,7 +80,7 @@
     }
 
     header {
-        padding-top: 140px;
+        padding-top: 200px;
         -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
     }
 

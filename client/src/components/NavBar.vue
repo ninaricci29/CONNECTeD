@@ -85,7 +85,7 @@
         float: right;
         display: inline-flex;
         padding-right: 120px;
-        padding-top: 5px;
+        padding-bottom: 80px;
         width: 48px;
         height: 48px;
         cursor: pointer;
@@ -106,15 +106,17 @@
     }
 
     .logo {
-        display: inline-block;
-        /*margin-left: 16px;*/
+        float: left;
+        /*padding-left: 40px;*/
+        position: fixed;
+        /*padding-top: 20px;*/
     }
 
     .logo a {
         color: #000;
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 35px;
+        font-size: 28px;
         letter-spacing: 1px;
         text-decoration: none;
     }
