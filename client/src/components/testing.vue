@@ -7,7 +7,7 @@
                     <template v-slot:button-content>
                         <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
                     </template>
-                    <b-dropdown-item href="#">Edit</b-dropdown-item>
+                    <b-dropdown-item href="/update-projects">Edit</b-dropdown-item>
                     <b-dropdown-item href="#">Delete</b-dropdown-item>
                 </b-dropdown>
             </div>
