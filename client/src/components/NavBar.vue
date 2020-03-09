@@ -7,11 +7,12 @@
                 <i></i>
                 <i></i>
             </label>
+<!--        THE SEARCH  BAR-->
 
-            <b-nav-form>
-                <b-form-input size="sm" class="search" placeholder="search.." style="width: 300px;" ></b-form-input>
-<!--                <b-button size="sm" class="my-2 my-sm-0" type="submit">search..</b-button>-->
-            </b-nav-form>
+<!--            <b-nav-form>-->
+<!--                <b-form-input size="sm" class="search" placeholder="search.." style="width: 300px;" ></b-form-input>-->
+<!--&lt;!&ndash;                <b-button size="sm" class="my-2 my-sm-0" type="submit">search..</b-button>&ndash;&gt;-->
+<!--            </b-nav-form>-->
 
             <div class="logo">
                 <a href="#">CONNECTED</a>
