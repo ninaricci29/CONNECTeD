@@ -15,75 +15,24 @@
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">TRAVEL</p>
-                    <h4 class="title">Mong Kok, Hong Kong</h4>
+                    <h4 class="title">{{project_name}}</h4>
                     <p class="byline">by Dan Smith</p>
                     <p class="desc text-muted-2">
-                        Mong Kok is a buzzing maze of narrow streets, known for shopping.
-                        Home to Ladies’ Market, Flower Market, and Fa Yuen Street.
+                        {{project_description}}
                     </p>
 
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="card-img" src="../assets/10.jpg" alt="Travel Photography" />
-            <div class="abc">
-                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
-                    <template v-slot:button-content>
-                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
-                    </template>
-                    <b-dropdown-item href="#">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
-                </b-dropdown>
-            </div>
-
-            <div class="card-body">
-                <div class="card-footer">
-                    <p class="category text-muted">UI/UX</p>
-                    <h4 class="title">Designing a Travel App</h4>
-                    <p class="byline">by Chris Lake</p>
-                    <p class="desc text-muted-2">
-                        Travelling can be a pain. My team at AirTravels implemented
-                        user-centric design to build a travel experience with ease and
-                        usability in mind.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="card-img" src="../assets/2.jpg" alt="Airplanes" />
-            <div class="abc">
-                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
-                    <template v-slot:button-content>
-                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
-                    </template>
-                    <b-dropdown-item href="#">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
-                </b-dropdown>
-            </div>
-
-            <div class="card-body">
-                <div class="card-footer">
-                    <p class="category text-muted">TRAVEL</p>
-                    <h1 class="title">Georgia Aquarium, USA</h1>
-                    <p class="byline">by Dave Soder</p>
-                    <p class="desc text-muted-2">
-                        Dive inside Georgia Aquarium and explore a world under the sea
-                        with whale sharks, beluga whales and other marine life.
-                    </p>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
 
+<script>
     export default {
-        name: "ProjectCards"
-    };
+        name: 'projects',
+        props: ['project_name', 'project_description']
+    }
 </script>
 
 <style scoped>

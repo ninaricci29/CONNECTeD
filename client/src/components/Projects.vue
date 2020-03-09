@@ -1,17 +1,16 @@
 <template>
     <div class="projects">
-        <h4> PROJECTS </h4>
+        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /></h4>
 
         <section class="container">
             <b-button v-if="isLoggedIn()" class="btn-sm">
                 <b-link class="project-button" href="/connect/post-projects">NEW PROJECT</b-link>
-
             </b-button>
 
             <div class="project-cards">
-                <ul id="projects">
+                <ul>
                     <li class="description">
-                        <ProjectCards v-for="project in project_list" v-bind:key="project"
+                        <ProjectCard v-for="project in project_list" v-bind:key="project"
                                       v-bind:project_name = project.project_name
                                       v-bind:project_description = project.desc />
                     </li>
@@ -23,7 +22,7 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCards from "@/components/ProjectCards.vue";
+    import ProjectCard from "@/components/ProjectCard.vue";
     import AuthenticationService from "@/services/AuthenticationService";
     import axios from 'axios';
     export default {
@@ -36,7 +35,7 @@
         },
         components: {
             ProjectCards
-        }, 
+        },
         mounted() {
             var id = this.$route.params.id;
             axios.get('/connect/profile_info?id='+ id)
@@ -84,7 +83,7 @@
     ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        grid-gap: 20px;
+        grid-gap: 5px;
         margin: 0px;
         padding: 0px;
     }
