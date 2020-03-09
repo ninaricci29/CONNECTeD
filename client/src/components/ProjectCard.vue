@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class="card">
             <img class="card-img" src="../assets/1.jpg" />
             <div class="abc">
@@ -14,9 +14,8 @@
 
             <div class="card-body">
                 <div class="card-footer">
-                    <p class="category text-muted">TRAVEL</p>
+                    <p class="category text-muted"></p>
                     <h4 class="title">{{project_name}}</h4>
-                    <p class="byline">by Dan Smith</p>
                     <p class="desc text-muted-2">
                         {{project_description}}
                     </p>

@@ -41,7 +41,7 @@ const routes = [
 
     // SUB PAGES
     {
-        path: "/info",
+        path: "/register",
         name: "info" ,
         component: () =>
             import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
