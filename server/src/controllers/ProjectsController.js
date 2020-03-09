@@ -35,7 +35,7 @@ async getProjects(req, res) {
         UserId: req.body.userid,
         ProjectId: project.id
       }
-      await UsersProject.create(uid_pid)
+      await UserProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
