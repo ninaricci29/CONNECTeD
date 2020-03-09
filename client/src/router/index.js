@@ -59,7 +59,7 @@ const routes = [
         path: "/home",
         name: "Home",
         component: () =>
-            import(/* webpackChunkName: "search"*/ "../components/Home.vue")
+            import(/* webpackChunkName: "log-in" */ "../views/Home.vue")
     }
 
 ];

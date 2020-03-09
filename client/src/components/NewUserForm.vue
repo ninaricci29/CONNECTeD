@@ -12,7 +12,7 @@
         <input
           type="First Name"
           class="form-control active"
-          placeholder="John"
+          placeholder="Jane"
           v-model="firstname"
         />
       </div>
@@ -36,7 +36,7 @@
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>4+</option>
+              <option>5+</option>
             </select>
           </div>
           <div class="form-group">
@@ -45,14 +45,14 @@
 
         <select
           class="form-control form-control-md"
-          placeholder="select your major"
+          placeholder="select your primary program"
           v-model="major"
         >
           <option value="" disabled selected>select your major</option>
           <option>Computer Science</option>
-          <option>Math & Statistics</option>
-          <option>Biology</option>
-          <option>Drama</option>
+          <option>Mathematics</option>
+          <option>Statistics</option>
+
         </select>
       </div>
       <div class="form-group">
@@ -62,17 +62,17 @@
         <input
           type="bio"
           class="form-control active"
-          placeholder="Got a project? Let's collaborate!"
+          placeholder="got a project? let's collaborate!"
           maxlength="100"
           v-model="bio"
         />
         <small id="bio-type" class="form-text text-muted"
-          >Describe your self!</small
+          >Describe yourself!</small
         >
       </div>
 
       <div>
-        <b-form-group label="select your tags:">
+        <b-form-group label="Select your tags:">
           <!-- prop `add-on-change` is needed to enable adding tags vie the `change` event -->
           <b-form-tags
             v-model="value"
@@ -104,7 +104,7 @@
               >
                 <template v-slot:first>
                   <!-- This is required to prevent bugs with Safari -->
-                  <option disabled value="">Choose a tag...</option>
+                  <option disabled value="">choose a tag...</option>
                 </template>
               </b-form-select>
             </template>
