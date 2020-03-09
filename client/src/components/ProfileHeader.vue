@@ -40,7 +40,7 @@
         },
         mounted() {
             var id = this.$route.params.id;
-            axios.get('http://localhost:8081/connect/profile_info?id='+ id)
+            axios.get('/connect/profile_info?id='+ id)
                 .then(response => (
                     this.name = response.data.first_name + ' ' + response.data.last_name,
                     this.description = response.data.bio,
