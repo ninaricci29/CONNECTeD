@@ -19,6 +19,7 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
+
 const User = UserModel(sequelize, Sequelize)
 const Tag = TagModel(sequelize, Sequelize)
 const Project = ProjectModel(sequelize, Sequelize)
@@ -33,11 +34,13 @@ Tag.belongsToMany(User, {through: Users_Tag});
 User.belongsToMany(Project, {through: Users_Project});
 Project.belongsToMany(User, {through: Users_Project});
 
+Project.belongsToMany(Tag, {through: Project_Tag});
+Tag.belongsToMany(Project, {through: Project_Tag});
 
 db.User = User
 db.Tag = Tag
 db.Project = Project
-db.UsersTag = Users_Tag
-db.UsersProject = Users_Project
+db.UsersTag = User_Tag
+db.UsersProject = User_Project
 
 module.exports = db
