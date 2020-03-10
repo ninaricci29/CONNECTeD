@@ -111,7 +111,7 @@ export default {
   }, 
   mounted() {
     this.id = this.$route.params.id;
-    axios.get('http://localhost:8081/profile?id=' + this.id).then(response => (
+    axios.get(process.env.VUE_APP_API_URL+'/connect/profile_info?id=' + this.id).then(response => (
         this.fn = response.data.first_name,
         this.ln = response.data.last_name,
         this.bio = response.data.bio,
@@ -124,7 +124,7 @@ export default {
     update(){
         // The url for the post request has
         // to be the url to the update page we need to make.
-        axios.post('/connect/updateprofile', {
+        axios.post(process.env.VUE_APP_API_URL+'/connect/updateprofile', {
             // Still need to figure out the value 'id' will have
             id: this.$route.params.id,
             first_name: this.fn,

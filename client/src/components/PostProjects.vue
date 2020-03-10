@@ -75,7 +75,7 @@
         },
         methods:{
             addProject(){
-                axios.post('/connect/post-projects',{
+                axios.post(process.env.VUE_APP_API_URL+'/connect/post-projects',{
                     // userid is hardcoded, need to use cookie to get it
                     userid: 1,
                     project_name: this.name,

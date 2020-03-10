@@ -136,7 +136,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/connect/tags").then(response => {
+    axios.get(process.env.VUE_APP_API_URL+"/connect/tags").then(response => {
         this.tags = response.data;
         for (var i = 0; i < this.tags.length; i++) {
           this.options.push(this.tags[i].tag_name);
@@ -155,7 +155,7 @@ export default {
         }
       }
       axios
-        .post("/connect/create_profile", {
+        .post(process.env.VUE_APP_API_URL+"/connect/create_profile", {
           utorid: AuthenticationService.getUtorid(),
           first_name: this.firstname,
           last_name: this.lastname,
