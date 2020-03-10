@@ -24,8 +24,8 @@
 </template>
 
 <script>
-    import SearchTags from "../components/SearchTags.vue";
-    import SearchCard from "../components/SearchCards.vue";
+    import SearchTags from "../Unused/SearchTags1.vue";
+    import SearchCard from "../Unused/SearchCards1.vue";
     export default {
         name: "search",
         components: {
