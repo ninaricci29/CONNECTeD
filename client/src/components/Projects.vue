@@ -1,19 +1,18 @@
 <template>
     <div class="projects">
-        <h4> PROJECTS </h4>
+        <h4> PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /></h4>
 
         <section class="container">
             <b-button v-if="isLoggedIn()" class="btn-sm">
                 <b-link class="project-button" href="/connect/post-projects">NEW PROJECT</b-link>
-
             </b-button>
 
-            <div class="project-cards">
-                <ul id="projects">
-                    <li class="description">
-                        <ProjectCards v-for="project in project_list" v-bind:key="project"
-                                      v-bind:project_name = project.project_name
-                                      v-bind:project_description = project.desc />
+            <div class="project-cards" v-for="i in rowCount()" v-bind:key="i">
+                <ul>
+                    <li class="description" v-for="j in cols" v-bind:key="j">
+                        <ProjectCards v-if="projectExists(i,j)" v-bind:key="project"
+                                      v-bind:project_name = getProject(i,j).project_name
+                                      v-bind:project_description = getProject(i,j).desc />
                     </li>
                 </ul>
             </div>
@@ -23,7 +22,7 @@
 
 <script>
     // @ is an alias to /src
-    import ProjectCards from "@/components/ProjectCards.vue";
+    import ProjectCards from "@/components/ProjectCard.vue";
     import AuthenticationService from "@/services/AuthenticationService";
     import axios from 'axios';
     export default {
@@ -31,12 +30,13 @@
         data() {
             return {
                 utorid: '',
-                project_list: null
+                project_list: null,
+                cols: 3
              }
         },
         components: {
             ProjectCards
-        }, 
+        },
         mounted() {
             var id = this.$route.params.id;
             axios.get('/connect/profile_info?id='+ id)
@@ -51,6 +51,20 @@
         methods:{
             isLoggedIn(){
                 return AuthenticationService.userIsLoggedIn(this.utorid);
+            },
+            rowCount() {
+                const quotient = Math.floor(this.project_list.length / this.cols);
+                const remainder = this.project_list.length % this.cols;
+                return quotient + (remainder === 0 ? 0 : 1);
+            },
+            projectIndex(row, col){
+                return (row - 1) * this.cols + (col -1)
+            }, 
+            getProject(row, col){
+                return this.project_list[this.projectIndex(row,col)]
+            },
+            projectExists(row, col){
+                return this.getProject(row,col) != null
             }
         }
     };
@@ -83,8 +97,8 @@
 
     ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-gap: 5px;
         margin: 0px;
         padding: 0px;
     }

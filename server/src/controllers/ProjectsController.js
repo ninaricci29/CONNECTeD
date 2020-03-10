@@ -1,6 +1,7 @@
 const Project = require('../models').Project
-const User = require('../models').User
 const UsersProject = require('../models').UsersProject
+const Tag = require('../models').Tag
+
 
 module.exports = {
 async getProjects(req, res) {
@@ -35,7 +36,8 @@ async getProjects(req, res) {
         UserId: req.body.userid,
         ProjectId: project.id
       }
-      await UserProject.create(uid_pid)
+      console.log(uid_pid.body)
+      await UsersProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
@@ -83,12 +85,21 @@ async getProjects(req, res) {
 
   async searchProject(req,res){
       try {
-        const project = await Project.findAll({where:{
-
+        const tags = []
+        for (var i=0;i<req.body.tag_ids.length;i++){
+          tags.push(req.body.tag_ids[i])
         }
-        })
+        const project = await Project.findAll({ include: {
+          model: Tag,
+          where: {
+            id: tags
+          }
+        }});
+        res.send({project})
       } catch (error) {
-          
+          res.status(500).send({
+            error: 'Error'
+          })
       }
   }
 }

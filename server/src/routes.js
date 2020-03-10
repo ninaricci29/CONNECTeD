@@ -9,7 +9,10 @@ module.exports = (app) => {
   app.post('/connect/updateprofile', ProfileController.update_profile),
   app.get('/connect/register', RedirectController.register_redirect),
   app.post('/connect/post-projects',ProjectController.addProject);
-  app.post('/connect/update-project',ProjectController.updateProject);
-  app.get('/connect/project', ProjectController.getProjects)
+
+  app.post('/connect/update-project',ProjectController.updateProject); 
+  app.get('/connect/search',ProjectController.searchProject);
+  app.get('/connect/project', ProjectController.getProjects);
   app.post('/connect/delete-project', ProjectController.deleteProject);
+
 }
