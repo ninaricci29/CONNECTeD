@@ -55,19 +55,17 @@ async projects(req, res) {
 
   async searchProject(req,res){
       try {
-        const project = await Project.findAll({ include: Tag});
-        console.log(project);
-        const projects = []
-        for (var i=0;i<project.length;i++){
-          for(var j=0;j<project[i].Tags.length;j++){
-            for(var k=0;k<req.body.tag_ids.length;k++){
-              if(project[i].Tags[j].id==req.body.tag_ids[k]){
-                projects.push(project[i])
-              }
-            }
-          }
+        const tags = []
+        for (var i=0;i<req.body.tag_ids.length;i++){
+          tags.push(req.body.tag_ids[i])
         }
-        res.send({projects})
+        const project = await Project.findAll({ include: {
+          model: Tag,
+          where: {
+            id: tags
+          }
+        }});
+        res.send({project})
       } catch (error) {
           res.status(500).send({
             error: 'Error'
