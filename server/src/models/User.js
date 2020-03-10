@@ -10,5 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     major: DataTypes.STRING,
     bio: DataTypes.TEXT,
     year: DataTypes.INTEGER,
+    profile_picture: DataTypes.STRING,
   });
 }

@@ -111,7 +111,7 @@ export default {
   }, 
   mounted() {
     this.id = this.$route.params.id;
-    axios.get('http://localhost:8081/profile?id=' + this.id).then(response => (
+    axios.get('/connect/profile_info?id=' + this.id).then(response => (
         this.fn = response.data.first_name,
         this.ln = response.data.last_name,
         this.bio = response.data.bio,

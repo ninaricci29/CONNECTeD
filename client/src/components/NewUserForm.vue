@@ -57,7 +57,6 @@
                        placeholder="https://myWebsite.ca" maxlength="100"/>
                 <small id="website-type" class="form-text text-muted">Link your Github!</small>
             </div>
-
             <div>
                 <b-form-group label="select your tags:">
                     <!-- prop `add-on-change` is needed to enable adding tags vie the `change` event -->
@@ -125,6 +124,7 @@ export default {
       bio: "",
       yos: "",
       major: "",
+      file: "",
       tags: null,
       options: [],
       value: []
@@ -141,6 +141,7 @@ export default {
         for (var i = 0; i < this.tags.length; i++) {
           this.options.push(this.tags[i].tag_name);
         }
+
       });
   },
   methods: {
@@ -154,28 +155,31 @@ export default {
           }
         }
       }
-      axios
-        .post("/connect/create_profile", {
-          utorid: AuthenticationService.getUtorid(),
-          first_name: this.firstname,
-          last_name: this.lastname,
-          bio: this.bio,
-          year: this.yos,
-          major: this.major,
-          value: this.value,
-          tag_ids: ids
-        })
+
+        var form = new FormData();
+        form.append('utorid', AuthenticationService.getUtorid())
+        form.append('first_name', this.firstname)
+        form.append('last_name', this.lastname)
+        form.append('bio', this.bio)
+        form.append('major', this.major)
+        form.append('year', this.yos)
+        form.append('profile_picture', this.file);
+        form.append('tag_ids', ids);
+        axios.post('/connect/create_profile', form , {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
           (this.firstname = response.data.first_name),
             (this.lastname = response.data.last_name),
             (this.bio = response.data.bio);
-          this.yos = response.data.year;
-          this.major = response.data.major;
+            this.yos = response.data.year;
+            this.major = response.data.major;
         })
         .catch(function(error){
             this.error = error;
 
         });
+    },
+    handleFileUpload(){
+       this.file = this.$refs.file.files[0];
     }
   }
 };
