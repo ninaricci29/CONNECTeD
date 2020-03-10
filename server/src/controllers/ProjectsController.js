@@ -1,20 +1,33 @@
 const Project = require('../models').Project
 const User = require('../models').User
 const UsersProject = require('../models').UsersProject
+const Tag = require('../models').Tag
+
 
 module.exports = {
-async projects(req, res) {
-    try {
-      user = await User.findOne({where: {id: req.query.id}});
-      projects = await user.getProjects();
-      res.send(projects)
-    } catch (err) {
-      console.log(err)
-      res.status(500).send({
-        err: 'an error has occurred trying to fetch projects'
-      })
+async getProjects(req, res) {
+  try {
+    user = await UsersProject.findAll({
+      where: {
+        UserId: req.query.id
+      }
+    })
+    var projects_list = []
+    for (var i = 0; i < user.length; i++) {
+      projects_list.push(user[i].ProjectId)
     }
-  },
+    projects = await Project.findAll({
+          where: {
+            id: projects_list
+          }
+        })
+    res.send(projects);
+  } catch (err) {
+    console.log(err)
+    res.status(500).send({
+      error: 'an error has occurred trying to fetch projects'
+    })
+  }},
 
   async addProject(req,res){
     try {
@@ -24,6 +37,7 @@ async projects(req, res) {
         UserId: req.body.userid,
         ProjectId: project.id
       }
+      console.log(uid_pid.body)
       await UsersProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
@@ -55,12 +69,21 @@ async projects(req, res) {
 
   async searchProject(req,res){
       try {
-        const project = await Project.findAll({where:{
-
+        const tags = []
+        for (var i=0;i<req.body.tag_ids.length;i++){
+          tags.push(req.body.tag_ids[i])
         }
-        })
+        const project = await Project.findAll({ include: {
+          model: Tag,
+          where: {
+            id: tags
+          }
+        }});
+        res.send({project})
       } catch (error) {
-          
+          res.status(500).send({
+            error: 'Error'
+          })
       }
   }
 }

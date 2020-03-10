@@ -1,3 +1,5 @@
+
+
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
@@ -21,18 +23,17 @@ db.Sequelize = Sequelize
 const User = UserModel(sequelize, Sequelize)
 const Tag = TagModel(sequelize, Sequelize)
 const Project = ProjectModel(sequelize, Sequelize)
+// Sets up the associations between Tag and User (a many to many relationship).
+const Users_Tag = sequelize.define('Users_Tag', {}, { timestamps: false} )
+const Users_Project = sequelize.define('Users_Project', {}, {timestamps: false} )
+const Project_Tag = sequelize.define('Projects_tag', {}, {timestamps: false})
 
-// Creating associations for each model-to-model many-to-many relationship;
-// there are databases for the following relationships: User-Tag, User-Project, Project-Tag.
-const User_Tag = sequelize.define('User_Tag', {}, { timestamps: false} )
-const User_Project = sequelize.define('User_Project', {}, {timestamps: false} )
-const Project_Tag = sequelize.define('Project_Tag', {}, {timestamps: false} )
 
-User.belongsToMany(Tag, {through: User_Tag});
-Tag.belongsToMany(User, {through: User_Tag});
+User.belongsToMany(Tag, {through: Users_Tag});
+Tag.belongsToMany(User, {through: Users_Tag});
 
-User.belongsToMany(Project, {through: User_Project});
-Project.belongsToMany(User, {through: User_Project});
+User.belongsToMany(Project, {through: Users_Project});
+Project.belongsToMany(User, {through: Users_Project});
 
 Project.belongsToMany(Tag, {through: Project_Tag});
 Tag.belongsToMany(Project, {through: Project_Tag});
@@ -40,7 +41,13 @@ Tag.belongsToMany(Project, {through: Project_Tag});
 db.User = User
 db.Tag = Tag
 db.Project = Project
-db.UsersTag = User_Tag
-db.UsersProject = User_Project
+
+
+
+db.ProjectTag = Projects_Tag
+
+db.UsersTag = Users_Tag
+db.UsersProject = Users_Project
+
 
 module.exports = db
