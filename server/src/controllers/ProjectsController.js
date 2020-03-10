@@ -1,10 +1,12 @@
 const Project = require('../models').Project
+const User = require('../models').User
 const UsersProject = require('../models').UsersProject
 
 module.exports = {
 async projects(req, res) {
     try {
-      projects = await Project.findAll({})
+      user = await User.findOne({where: {id: req.query.id}});
+      projects = await user.getProjects();
       res.send(projects)
     } catch (err) {
       console.log(err)
