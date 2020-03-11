@@ -4,30 +4,33 @@
 
             <div class="logo-container info">
                 <a>
-                    <b-link href="/home"> <h3>CONNECTeD</h3> </b-link>
+                    <b-link href="/home">CONNECTeD</b-link>
                 </a>
             </div>
 
             <div>
                 <div class="info-inner">
-                    <li>
-                        <a>
-                            <b-link href="/FAQ"> <h5>FAQ for new users</h5> </b-link>
-                        </a>
-                    </li>
+                    <li><a> About </a></li>
                 </div>
 
                 <b-row  class="info-inner">
                     <li>
-                        <div class="text-muted">  <h5> Have an account?</h5></div>
+                        <div class="text-muted">Have an account?</div>
                     </li>
 
                     <li>
                         <a>
-                            <b-link href="/log-in">  <h5> Sign in </h5>  </b-link>
+                            <b-link href="/log-in">Sign In</b-link>
                         </a>
                     </li>
                 </b-row>
+                <div class="info-inner">
+                    <li>
+                        <a>
+                            <b-link href="/FAQ"> FAQ </b-link>
+                        </a>
+                    </li>
+                </div>
 
 
 
@@ -35,7 +38,7 @@
             </div>
 
             <div class="info-inner">
-                &copy; {{ new Date().getFullYear() }} Nanobanano Co.
+                &copy; {{ new Date().getFullYear() }} NanoBanano Co.
             </div>
         </div>
     </div>
@@ -47,6 +50,7 @@
 
     };
 </script>
+
 
 <style scoped>
     * {
