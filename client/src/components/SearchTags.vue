@@ -1,70 +1,133 @@
 <template>
     <header>
-        <div class="container">
-            <h4> Based on your interests... </h4>
-            <b-row class="tags">
-                <li><a> AI </a></li>
-                <li><a> PHOTOGRAPHY </a></li>
-                <li><a> STOCKS </a></li>
-                <li><a> COMPUTER </a></li>
-            </b-row>
-            <h5> We think you will click with:</h5>
+        <div>
+            <h6>Search:</h6>
         </div>
+        <form class="form">
+            <div>
+                <b-form-group>
+                    <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
+                        <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                            <ul v-if="tags.length > 0" class="list-inline">
+                                <li v-for="tag in tags" :key="tag" class="abc">
+                                    <b-form-tag
+                                            @remove="removeTag(tag)"
+                                            :title="tag"
+                                            :disabled="disabled"
+                                            variant="info">{{ tag }}</b-form-tag>
+                                </li>
+                            </ul>
+                            <b-form-select
+                                    class="form-control abc"
+                                    v-bind="inputAttrs"
+                                    v-on="inputHandlers"
+                                    :disabled="disabled || availableOptions.length === 0"
+                                    :options="availableOptions">
+                                <template v-slot:first>
+                                    <option disabled value="">search for a tag..</option>
+                                </template>
+                            </b-form-select>
+                        </template>
+                    </b-form-tags>
+                </b-form-group>
+            </div>
 
+            <div id="button">
+                <button class="btn btn-primary"><font-awesome-icon :icon="['fa', 'search']" /></button>
+            </div>
+        </form>
     </header>
-
 </template>
 
 <script>
     export default {
-        name: "SearchTags"
-    };
+        name:"addProject",
+        data() {
+            return {
+                name: '',
+                description: '',
+                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                value: [],
+                error: ''
+            }
+        },
+        computed: {
+            availableOptions() {
+                return this.options.filter(opt => this.value.indexOf(opt) === -1)
+            }
+        }
+    }
 </script>
 
 <style scoped>
-    * {
-        box-sizing: border-box;
+    body {
+        padding-top: 40px;
+        background-color: white;
+        color: black;
+        text-align: center;
+    }
+
+    body h6{
+        font-weight: bold;
+        font-size: 20px;
+        padding-top: 10px;
     }
 
     header {
         padding-top: 40px;
-        -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.09);
-        text-align: left;
+        -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
     }
 
-    .container {
-        padding-left: 40px;
+    .form{
+        display: inline-block;
+    }
+
+    .form-control{
+        width: 500px;
+        border-color: black;
+    }
+
+    #button{
         padding-bottom: 20px;
+        padding-top: 20px;
     }
 
-    .tags li {
-        /*padding-top: 20px;*/
-        list-style-type: none;
-        text-decoration: none;
-        text-transform: uppercase;
-        padding-left: 40px;
+    .btn{
+        background-color: #2e2e2e;
     }
 
-    .tags li a {
-        padding: 0 25px;
-        border-radius: 5px;
-        font-size: 14px;
-        font-weight: 300;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+    .btn-primary{
+        border-color: white;
+        background-color: #2e2e2e;
     }
 
-    .tags li a:hover {
-        font-size: 16px;
-        font-weight: bold;
+    .btn:hover{
+        background-color: white;
+        color: black;
+        border-color: black;
     }
 
-    h4 {
-        font-weight: bold;
-    }
-    h5 {
-        font-weight: lighter;
-        padding-top: 40px;
+    .star{
+        color: red;
     }
 
+    .abc {
+        display: inline;
 
+    }
+
+    .abc:not(:first-child){
+        padding-left: 10px;
+    }
+
+    .outer {
+        border-color: white;
+        padding: 0;
+    }
+
+    .outer span {
+        background-color: lightslategrey;
+        border-color: black;
+        color: white;
+    }
 </style>
