@@ -1,7 +1,7 @@
 <template>
     <body>
     <br> <br><br> <u>Frequently Asked Questions</u><br><br>
-    <div class="h5">
+
         <i><p style="color:seagreen"> Q: I'm a University of Toronto student. Why should I use CONNECTeD?</p></i>
         A: Say you know how to use powerful tools like Python, Java, and R. Perhaps you want to combine those tools
         with hobbies or side interests. If there's something (anything!) you've been meaning to create, you can trust our platform to find collaborators and turn dream projects
@@ -19,6 +19,7 @@
         simply navigate to their cards. Have fun!
         <br> <br>
     </body>
+
 
 
 

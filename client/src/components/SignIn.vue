@@ -2,8 +2,8 @@
         <div class="signIn">
             <body>
             <div>
-                <h1 class="brand">CONNECTeD</h1>
-                <h6 class="sub"> JOIN US TODAY </h6>
+                <h1 class="brand">JOIN TODAY</h1>
+
             </div>
             <form class="form">
                 <div id="button">

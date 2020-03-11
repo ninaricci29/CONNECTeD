@@ -9,13 +9,6 @@
             </div>
 
             <div>
-                <div class="info-inner">
-                    <li>
-                        <a>
-                            <b-link href="/about"> <h5>About</h5> </b-link>
-                        </a>
-                    </li>
-                </div>
 
                 <b-row  class="info-inner">
                     <li>
@@ -28,6 +21,15 @@
                         </a>
                     </li>
                 </b-row>
+
+                <div class="info-inner">
+                    <li>
+                        <a>
+                            <b-link href="/FAQ"> <h5>New here? Get started by reading our FAQ</h5> </b-link>
+                        </a>
+                    </li>
+                </div>
+
 
             </div>
 
