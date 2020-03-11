@@ -3,12 +3,12 @@
         <div class="card">
             <img class="card-img" src="../assets/1.jpg" />
             <div class="abc">
-                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
-                    <template v-slot:button-content>
-                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
-                    </template>
-                    <b-dropdown-item href="#">Save</b-dropdown-item>
-                </b-dropdown>
+<!--                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>-->
+<!--                    <template v-slot:button-content>-->
+<!--                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>-->
+<!--                    </template>-->
+<!--                    <b-dropdown-item href="#">Save</b-dropdown-item>-->
+<!--                </b-dropdown>-->
             </div>
 
             <div class="card-body">
@@ -60,7 +60,7 @@
 
     .card {
         position: relative;
-        width: 18rem;
+        width: 16rem;
         display: inline-block;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
         background: none;
@@ -87,7 +87,7 @@
     }
 
     .card:hover .card-body{
-        height: 13rem;
+        height: 10rem;
         transition: height 0.4s ease;
         overflow: hidden;
         filter: grayscale(0);
