@@ -8,14 +8,6 @@
                     <li>
                         <SearchCard class="card"/>
                     </li>
-
-                    <li>
-                        <SearchCard class="card"/>
-                    </li>
-
-                    <li>
-                        <SearchCard class="card"/>
-                    </li>
                 </ul>
             </div>
         </section>
@@ -24,7 +16,7 @@
 </template>
 
 <script>
-    import SearchTags from "../components/SearchTags.vue";
+    import SearchTags from "../Unused/SearchTags.vue";
     import SearchCard from "../components/SearchCards.vue";
     export default {
         name: "search",
