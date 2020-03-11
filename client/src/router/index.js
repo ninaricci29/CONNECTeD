@@ -64,13 +64,19 @@ const routes = [
         component: () =>
             import(/* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue")
     },
-    {
-        path: "/404",
-        name: "404",
-        component: () =>
-            import(/* webpackChunkName: "upload-projects"*/ "../components/404.vue")
-    }
 
+    {
+        path: "/home",
+        name: "Home",
+        component: () =>
+            import(/* webpackChunkName: "log-in" */ "../views/Home.vue")
+    },
+    {
+        path: "/faq",
+        name: "FAQ",
+        component: () =>
+            import(/* webpackChunkName: "faq" */ "../views/FAQ.vue")
+    }
 
 ];
 
