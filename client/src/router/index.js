@@ -47,7 +47,7 @@ const routes = [
             import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
     },
     {
-        path: "/update-projects",
+        path: "/update-projects/:id",
         name: "updateProjects",
         component: () =>
             import(/* webpackChunkName: "register"*/ "../components/UpdateProjects.vue")

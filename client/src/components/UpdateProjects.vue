@@ -3,7 +3,7 @@
         <div>
             <h6>Update your project!</h6>
         </div>
-        <form class="form" method="addProject">
+        <form class="form" method="updateProject">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
@@ -49,7 +49,7 @@
             </div>
 
             <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="updateProject">PUBLISH</button>
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
 <script>
     import axios from 'axios'
     export default {
-        name:"addProject",
+        name:"updateProject",
         data() {
             return {
                 name: '',
@@ -74,14 +74,14 @@
             }
         },
         methods:{
-            addProject(){
-                axios.post('/connect/post-projects',{
-                    // userid is hardcoded, need to use cookie to get it
-                    userid: 1,
+            updateProject(){
+                axios.post('/connect/update-projects',{
+                    id: this.$route.params.id,
                     project_name: this.name,
                     desc: this.description
                 })
                     .then(response => {
+                        this.id=response.data.id;
                         this.projectname= response.data.project_name;
                         this.desc= response.data.desc;
                     })
