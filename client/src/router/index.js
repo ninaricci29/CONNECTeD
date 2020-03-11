@@ -4,11 +4,12 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
+    // MAIN PAGES
     {
-        path: "/search",
-        name: "search",
+        path: "/home",
+        name: "home",
         component: () =>
-            import(/* webpackChunkName: "log-in" */ "../views/Search.vue")
+            import(/* webpackChunkName: "home"*/ "../views/Home.vue")
     },
     {
         path: "/signIn",
@@ -20,22 +21,36 @@ const routes = [
             import(/* webpackChunkName: "log-in" */ "../components/SignIn.vue")
     },
     {
-        path: "/info",
-        name: "info",
-        component: () =>
-            import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
-    },
-    {
         path: "/profile/:id",
         name: "profile",
         component: () =>
             import(/* webpackChunkName: "profile"*/ "../views/Profile.vue")
     },
     {
+        path: "/search",
+        name: "search",
+        component: () =>
+            import(/* webpackChunkName: "search" */ "../views/Search.vue")
+    },
+    {
         path: "/log-in",
         name: "Log In",
         component: () =>
             import(/* webpackChunkName: "search"*/ "../components/SignIn.vue")
+    },
+
+    // SUB PAGES
+    {
+        path: "/register",
+        name: "info" ,
+        component: () =>
+            import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
+    },
+    {
+        path: "/update-projects",
+        name: "updateProjects",
+        component: () =>
+            import(/* webpackChunkName: "register"*/ "../components/UpdateProjects.vue")
     },
     {
         path: "/updateprofile/:id",

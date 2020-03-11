@@ -7,7 +7,7 @@
 
 <script>
     import ProfileHeader from "../components/ProfileHeader.vue";
-    import Projects from "../components/Projects";
+    import Projects from "../components/Projects.vue";
     export default {
         name: "profile",
         components: {
