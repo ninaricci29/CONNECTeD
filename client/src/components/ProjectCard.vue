@@ -8,7 +8,7 @@
                         <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
                     </template>
                     <b-dropdown-item href="/update-projects">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                    <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
                 </b-dropdown>
             </div>
 
@@ -28,9 +28,17 @@
 
 
 <script>
+import axios from "axios"
     export default {
         name: 'projects',
-        props: ['project_name', 'project_description']
+        props: ['project_name', 'project_description', 'project_id'],
+        methods:{
+            deleteProject(){
+                axios.post('/connect/delete-project',{
+                    id: this.project_id
+                })
+            }
+        }
     }
 </script>
 
@@ -48,7 +56,7 @@
     }
 
     .efg {
-        color: white;
+        color: black;
     }
 
     .text-muted {
