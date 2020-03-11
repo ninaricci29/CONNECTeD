@@ -15,7 +15,7 @@
 <!--            </b-nav-form>-->
 
             <div class="logo">
-                <a href="#">CONNECTED</a>
+                <a href="#">CONNECTeD</a>
             </div>
 
             <div class="h2 mb-2 gear-wheel">

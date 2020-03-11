@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label>First Name</label>
 
-                <input type="First Name" v-model= "fn" class="form-control active" autocomplete="on">
+                <input type="First Name" v-model= "fn" class="form-control active" placeholder="Jane" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
@@ -20,20 +20,20 @@
                 <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1" autocomplete="on">
             </div>
             <div class="form-group">
-                <label>Major</label>
+                <label>Primary major</label>
                 <select class="form-control form-control-md" v-model= "major">
-                    <option>select your major</option>
+                    <option>Select your major</option>
                     <option>Computer Science</option>
-                    <option>Math & Statistics</option>
-                    <option>Biology</option>
-                    <option>Drama</option>
+                    <option>Mathematics</option>
+                    <option>Statistics</option>
+
                 </select>
             </div>
             <div class="form-group">
                 <label>Bio</label>
 
-                <input type="bio" v-model= "bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
-                <small id="bio-type" class="form-text text-muted">Describe your self!</small>
+                <input type="bio" v-model= "bio" class="form-control active" placeholder="got a project? let's collaborate!">
+                <small id="bio-type" class="form-text text-muted">Describe yourself!</small>
             </div>
 
             <div id="button">

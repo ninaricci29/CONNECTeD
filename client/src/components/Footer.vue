@@ -1,33 +1,41 @@
 <template>
     <div class="footer">
         <div class="inner-footer">
+
             <div class="logo-container info">
                 <a>
-                    <b-link href="/home"> ConnectEd </b-link>
+                    <b-link href="/home"> <h3>CONNECTeD</h3> </b-link>
                 </a>
             </div>
 
             <div>
                 <div class="info-inner">
-                    <li><a> About </a></li>
+                    <li>
+                        <a>
+                            <b-link href="/FAQ"> <h5>FAQ for new users</h5> </b-link>
+                        </a>
+                    </li>
                 </div>
 
                 <b-row  class="info-inner">
                     <li>
-                        <div class="text-muted"> Have an account? </div>
+                        <div class="text-muted">  <h5> Have an account?</h5></div>
                     </li>
 
                     <li>
                         <a>
-                            <b-link href="/log-in"> Sign In </b-link>
+                            <b-link href="/log-in">  <h5> Sign in </h5>  </b-link>
                         </a>
                     </li>
                 </b-row>
 
+
+
+
             </div>
 
             <div class="info-inner">
-                &copy; {{ new Date().getFullYear() }} NanoBanano Co.
+                &copy; {{ new Date().getFullYear() }} Nanobanano Co.
             </div>
         </div>
     </div>
