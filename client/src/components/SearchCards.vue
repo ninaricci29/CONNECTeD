@@ -42,7 +42,7 @@
     }
 
     .abc{
-        transform: translate(240px, -420px);
+        transform: translate(115px, -420px);
         padding: 0 0 0 0;
         opacity: 0;
     }

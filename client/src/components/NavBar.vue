@@ -85,7 +85,6 @@
         float: right;
         display: inline;
         padding-right: 120px;
-        padding-top: 15px;
         width: 45px;
         height: 45px;
         cursor: pointer;
@@ -107,7 +106,6 @@
 
     .logo {
         float: left;
-        padding-top: 10px;
         /*padding-left: 40px;*/
         /*position: fixed;*/
         /*padding-top: 20px;*/
