@@ -1,7 +1,6 @@
 <template>
     <div class="footer">
         <div class="inner-footer">
-
             <div class="logo-container info">
                 <a>
                     <b-link href="/home">CONNECTeD</b-link>
@@ -13,7 +12,7 @@
                     <li><a> About </a></li>
                 </div>
 
-                <b-row  class="info-inner">
+                <b-row class="info-inner">
                     <li>
                         <div class="text-muted">Have an account?</div>
                     </li>
@@ -31,10 +30,6 @@
                         </a>
                     </li>
                 </div>
-
-
-
-
             </div>
 
             <div class="info-inner">
@@ -46,11 +41,9 @@
 
 <script>
     export default {
-        name:"footer"
-
+        name: "footer"
     };
 </script>
-
 
 <style scoped>
     * {
@@ -73,7 +66,6 @@
         /*width: 1100px;*/
         height: 100%;
         margin: 40px;
-
     }
 
     .logo-container a {
@@ -85,7 +77,6 @@
 
     .logo-container a:hover {
         cursor: pointer;
-
     }
 
     .info {
@@ -97,7 +88,6 @@
         font-size: 14px;
         margin: 10px 0 0 120px;
         padding-bottom: 0px;
-
     }
 
     .info-inner li:not(:first-child) {
@@ -111,7 +101,5 @@
 
     .info-inner li a:hover {
         cursor: pointer;
-
     }
-
 </style>

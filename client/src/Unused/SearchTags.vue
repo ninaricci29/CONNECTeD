@@ -1,18 +1,16 @@
 <template>
     <header>
         <div class="container">
-            <h4> Based on your interests... </h4>
+            <h4>Based on your interests...</h4>
             <b-row class="tags">
                 <li><a> AI </a></li>
                 <li><a> PHOTOGRAPHY </a></li>
                 <li><a> STOCKS </a></li>
                 <li><a> COMPUTER </a></li>
             </b-row>
-            <h5> We think you will click with:</h5>
+            <h5>We think you will click with:</h5>
         </div>
-
     </header>
-
 </template>
 
 <script>
@@ -65,6 +63,4 @@
         font-weight: lighter;
         padding-top: 40px;
     }
-
-
 </style>

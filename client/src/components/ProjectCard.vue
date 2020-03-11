@@ -3,9 +3,16 @@
         <div class="card">
             <img class="card-img" src="../assets/1.jpg" />
             <div class="abc">
-                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
+                <b-dropdown
+                        size="sm"
+                        right
+                        text="Right align"
+                        variant="link"
+                        toggle-class="text-decoration-none"
+                        no-caret
+                >
                     <template v-slot:button-content>
-                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
+                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg" />
                     </template>
                     <b-dropdown-item href="/update-projects">Edit</b-dropdown-item>
                     <b-dropdown-item href="#">Delete</b-dropdown-item>
@@ -15,23 +22,21 @@
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted"></p>
-                    <h4 class="title">{{project_name}}</h4>
+                    <h4 class="title">{{ project_name }}</h4>
                     <p class="desc text-muted-2">
-                        {{project_description}}
+                        {{ project_description }}
                     </p>
-
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-
 <script>
     export default {
-        name: 'projects',
-        props: ['project_name', 'project_description']
-    }
+        name: "projects",
+        props: ["project_name", "project_description"]
+    };
 </script>
 
 <style scoped>
@@ -41,7 +46,7 @@
         font-family: "Montserrat", sans-serif;
     }
 
-    .abc{
+    .abc {
         transform: translate(115px, -420px);
         padding: 0 0 0 0;
         opacity: 0;
@@ -65,10 +70,9 @@
         display: inline-block;
         margin: 10px;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-
     }
     .card:hover {
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .09);
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
     }
 
     .card .card-img {
@@ -77,7 +81,7 @@
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
 
-    .card:hover .abc{
+    .card:hover .abc {
         opacity: 100%;
         cursor: pointer;
         color: white;
@@ -87,7 +91,7 @@
         filter: grayscale(0);
     }
 
-    .card:hover .card-body{
+    .card:hover .card-body {
         height: 13rem;
         transition: height 0.4s ease;
         overflow: hidden;
@@ -122,7 +126,7 @@
 
     .card .desc {
         display: none;
-        font-size: 0.70rem;
+        font-size: 0.7rem;
     }
 
     .card .title {

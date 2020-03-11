@@ -6,15 +6,25 @@
         <form class="form">
             <div>
                 <b-form-group>
-                    <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
-                        <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                    <b-form-tags
+                            v-model="value"
+                            size="sm"
+                            add-on-change
+                            no-outer-focus
+                            class="mb-2 outer"
+                    >
+                        <template
+                                v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }"
+                        >
                             <ul v-if="tags.length > 0" class="list-inline">
                                 <li v-for="tag in tags" :key="tag" class="abc">
                                     <b-form-tag
                                             @remove="removeTag(tag)"
                                             :title="tag"
                                             :disabled="disabled"
-                                            variant="info">{{ tag }}</b-form-tag>
+                                            variant="info"
+                                    >{{ tag }}</b-form-tag
+                                    >
                                 </li>
                             </ul>
                             <b-form-select
@@ -22,7 +32,8 @@
                                     v-bind="inputAttrs"
                                     v-on="inputHandlers"
                                     :disabled="disabled || availableOptions.length === 0"
-                                    :options="availableOptions">
+                                    :options="availableOptions"
+                            >
                                 <template v-slot:first>
                                     <option disabled value="">search for a tag..</option>
                                 </template>
@@ -33,7 +44,9 @@
             </div>
 
             <div id="button">
-                <button class="btn btn-primary"><font-awesome-icon :icon="['fa', 'search']" /></button>
+                <button class="btn btn-primary">
+                    <font-awesome-icon :icon="['fa', 'search']" />
+                </button>
             </div>
         </form>
     </header>
@@ -41,22 +54,28 @@
 
 <script>
     export default {
-        name:"addProject",
+        name: "addProject",
         data() {
             return {
-                name: '',
-                description: '',
-                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                name: "",
+                description: "",
+                options: [
+                    "Computer Science",
+                    "Java",
+                    "A.I.",
+                    "Machine Learning",
+                    "Python"
+                ],
                 value: [],
-                error: ''
-            }
+                error: ""
+            };
         },
         computed: {
             availableOptions() {
-                return this.options.filter(opt => this.value.indexOf(opt) === -1)
+                return this.options.filter(opt => this.value.indexOf(opt) === -1);
             }
         }
-    }
+    };
 </script>
 
 <style scoped>
@@ -67,7 +86,7 @@
         text-align: center;
     }
 
-    body h6{
+    body h6 {
         font-weight: bold;
         font-size: 20px;
         padding-top: 10px;
@@ -78,45 +97,44 @@
         -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
     }
 
-    .form{
+    .form {
         display: inline-block;
     }
 
-    .form-control{
+    .form-control {
         width: 500px;
         border-color: black;
     }
 
-    #button{
+    #button {
         padding-bottom: 20px;
         padding-top: 20px;
     }
 
-    .btn{
+    .btn {
         background-color: #2e2e2e;
     }
 
-    .btn-primary{
+    .btn-primary {
         border-color: white;
         background-color: #2e2e2e;
     }
 
-    .btn:hover{
+    .btn:hover {
         background-color: white;
         color: black;
         border-color: black;
     }
 
-    .star{
+    .star {
         color: red;
     }
 
     .abc {
         display: inline;
-
     }
 
-    .abc:not(:first-child){
+    .abc:not(:first-child) {
         padding-left: 10px;
     }
 

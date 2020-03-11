@@ -1,55 +1,58 @@
-    <template>
+<template>
     <body class="profile">
-        <header>
-            <div class="profile-picture">
-                <img :src="link"/>
-            </div>
-        </header>
+    <header>
+        <div class="profile-picture">
+            <img :src="link" />
+        </div>
+    </header>
 
-        <section class="profile-info">
-            <b-container class="container">
-                <b-row class="profile-components">
+    <section class="profile-info">
+        <b-container class="container">
+            <b-row class="profile-components">
+                <b-col class="first-col">
+                    <b-row class="first-row">
+                        <li class="name">
+                            <h5>{{ name }}</h5>
+                        </li>
+                        <li>
+                            <a>
+                                <font-awesome-icon :icon="['fas', 'user-plus']" />
+                            </a>
+                        </li>
+                    </b-row>
+                    <b-row class="desc">
+                        <h8> {{ description }} </h8></b-row
+                    >
+                    <b-row class="url"
+                    ><a><h8> url.ca </h8></a></b-row
+                    >
+                </b-col>
 
-                    <b-col class="first-col">
-                        <b-row class="first-row">
-                            <li class="name"><h5> {{name}} </h5></li>
-                            <li>
-                                <a>
-                                    <font-awesome-icon :icon="['fas', 'user-plus']" />
-                                </a>
-                            </li>
-                        </b-row>
-                        <b-row class="desc"> <h8> {{description}} </h8></b-row>
-                        <b-row class="url"><a><h8>  url.ca </h8></a></b-row>
-                    </b-col>
+                <b-col class="sec-col">
+                    <b-row>
+                        <li class="abc">Avg. Rating:</li>
+                        <li class="efg"><font-awesome-icon :icon="['fas', 'star']" /></li>
+                    </b-row>
 
-                    <b-col class="sec-col">
-                        <b-row>
-                            <li class="abc">Avg. Rating: </li>
-                            <li class="efg"> <font-awesome-icon :icon="['fas', 'star']"/></li>
-                        </b-row>
+                    <b-row>
+                        <li class="abc">Year of Study:</li>
+                        <li class="efg">{{ year }}</li>
+                    </b-row>
 
-                        <b-row>
-                            <li class="abc">Year of Study: </li>
-                            <li class="efg"> {{year}} </li>
-                        </b-row>
-
-                        <b-row>
-                            <li class="abc">Major: </li>
-                            <li class="efg">{{major}}</li>
-                        </b-row>
-
-                    </b-col>
-                </b-row>
-            </b-container>
-        </section>
+                    <b-row>
+                        <li class="abc">Major:</li>
+                        <li class="efg">{{ major }}</li>
+                    </b-row>
+                </b-col>
+            </b-row>
+        </b-container>
+    </section>
     </body>
 </template>
 
 <script>
-    import axios from 'axios';
+    import axios from "axios";
     export default {
-
         data() {
             return {
                 name,
@@ -58,21 +61,24 @@
                 major: null,
                 rating: null,
                 link: null
-            }
+            };
         },
         mounted() {
             var id = this.$route.params.id;
-            axios.get('/connect/profile_info?id='+ id)
-                .then(response => (
-                    this.name = response.data.first_name + ' ' + response.data.last_name,
-                    this.description = response.data.bio,
-                    this.year = response.data.year,
-                    this.major = response.data.major,
-                    this.link = response.data.profile_picture
-                ));
+            axios
+                .get("/connect/profile_info?id=" + id)
+                .then(
+                    response => (
+                        (this.name =
+                            response.data.first_name + " " + response.data.last_name),
+                            (this.description = response.data.bio),
+                            (this.year = response.data.year),
+                            (this.major = response.data.major),
+                            (this.link = response.data.profile_picture)
+                    )
+                );
         }
-    }
-
+    };
 </script>
 
 <style scoped>
@@ -93,7 +99,7 @@
         left: 50%;
         transform: translate(-50%, -70%);
         border: 3px solid #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         object-fit: cover;
     }
     .profile-info {
@@ -119,13 +125,13 @@
         color: lightslategrey;
     }
 
-    .url:hover{
+    .url:hover {
         color: lightslategrey;
         cursor: pointer;
     }
 
     .abc {
-        color: #9999A5;
+        color: #9999a5;
         font-weight: bold;
         padding-bottom: 5px;
     }
@@ -133,5 +139,4 @@
     .efg {
         padding-left: 20px;
     }
-
 </style>

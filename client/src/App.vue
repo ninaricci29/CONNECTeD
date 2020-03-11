@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <NavBar :nav-links="navLinks"/>
+        <NavBar :nav-links="navLinks" />
 
-        <router-view/>
+        <router-view />
 
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
 <script>
-    import NavBar from '@/components/NavBar'
-    import Footer from '@/components/Footer'
+    import NavBar from "@/components/NavBar";
+    import Footer from "@/components/Footer";
     export default {
         components: {
             NavBar,
@@ -19,24 +19,24 @@
         data: () => ({
             navLinks: [
                 {
-                    text: 'Home',
-                    path: '/home',
+                    text: "Home",
+                    path: "/home"
                 },
                 {
-                    text: 'Profile',
-                    path: '/profile/1',
+                    text: "Profile",
+                    path: "/profile/1"
                 },
                 {
-                    text: 'Search',
-                    path: '/search',
+                    text: "Search",
+                    path: "/search"
                 },
                 {
-                    text: 'Log In',
-                    path: '/log-in',
+                    text: "Log In",
+                    path: "/log-in"
                 }
             ]
         })
-    }
+    };
 </script>
 
 <style>
@@ -47,4 +47,3 @@
         text-align: center;
     }
 </style>
-

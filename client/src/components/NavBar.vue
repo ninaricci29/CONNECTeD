@@ -1,37 +1,39 @@
 <template>
     <nav id="NavBar">
         <div>
-            <input type="checkbox" id="nav" class="hidden">
+            <input type="checkbox" id="nav" class="hidden" />
             <label for="nav" class="nav-btn">
                 <i></i>
                 <i></i>
                 <i></i>
             </label>
-<!--        THE SEARCH  BAR-->
+            <!--        THE SEARCH  BAR-->
 
-<!--            <b-nav-form>-->
-<!--                <b-form-input size="sm" class="search" placeholder="search.." style="width: 300px;" ></b-form-input>-->
-<!--&lt;!&ndash;                <b-button size="sm" class="my-2 my-sm-0" type="submit">search..</b-button>&ndash;&gt;-->
-<!--            </b-nav-form>-->
+            <!--            <b-nav-form>-->
+            <!--                <b-form-input size="sm" class="search" placeholder="search.." style="width: 300px;" ></b-form-input>-->
+            <!--&lt;!&ndash;                <b-button size="sm" class="my-2 my-sm-0" type="submit">search..</b-button>&ndash;&gt;-->
+            <!--            </b-nav-form>-->
 
             <div class="logo">
                 <a href="#">CONNECTeD</a>
             </div>
 
-            <div class="h2 mb-2 gear-wheel">
+            <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
                 <b-link class="update-button" href="/updateprofile/:id">
                     <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
                 </b-link>
-
-
             </div>
 
             <div class="nav-wrapper">
                 <ul>
-                    <li v-on:click="collapse" v-for="(link, index) in navLinks" :key="index">
-                    <router-link :to="link.path">
-                        {{ link.text }}
-                    </router-link>
+                    <li
+                            v-on:click="collapse"
+                            v-for="(link, index) in navLinks"
+                            :key="index"
+                    >
+                        <router-link :to="link.path">
+                            {{ link.text }}
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -40,18 +42,22 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
+
     export default {
-        props: ['navLinks'],
+        props: ["navLinks"],
         methods: {
-            collapse: function () {
+            collapse: function() {
                 document.getElementById("nav").checked = false;
-
             }
-        }
+        },
+        computed: {
+            ...mapState([
+                'isLoggedIn',
+            ])
+        },
 
-    }
-
-
+    };
 </script>
 
 <style scoped>
@@ -101,7 +107,6 @@
         border-radius: 8px;
         position: absolute;
         transform: translate(20%, 80%);
-
     }
 
     .logo {
@@ -182,7 +187,7 @@
         transition: all 0.2s ease;
     }
 
-    nav ul li :hover{
+    nav ul li :hover {
         outline: none;
         color: lightslategrey;
         text-decoration: none;
@@ -207,7 +212,6 @@
         background: #000;
         border-radius: 4px;
         margin-left: 14px;
-
     }
 
     .nav-btn i:nth-child(1) {
@@ -261,5 +265,4 @@
     .hidden {
         display: none;
     }
-
 </style>
