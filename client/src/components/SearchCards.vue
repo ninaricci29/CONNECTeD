@@ -7,8 +7,7 @@
                     <template v-slot:button-content>
                         <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
                     </template>
-                    <b-dropdown-item href="/update-projects">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                    <b-dropdown-item href="#">Save</b-dropdown-item>
                 </b-dropdown>
             </div>
 
@@ -64,6 +63,7 @@
         width: 18rem;
         display: inline-block;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+        background: none;
 
     }
     .card:hover {

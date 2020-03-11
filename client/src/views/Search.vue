@@ -2,11 +2,11 @@
     <div class="search">
         <SearchTags class="search-tags"/>
 
-        <section class="container">
+        <section>
             <div class="search-cards">
                 <ul>
                     <li>
-                        <SearchCard class="card"/>
+                        <SearchCard/>
                     </li>
                 </ul>
             </div>
@@ -16,28 +16,43 @@
 </template>
 
 <script>
-    import SearchTags from "../Unused/SearchTags.vue";
+    import SearchTags from "../components/SearchTags.vue";
     import SearchCard from "../components/SearchCards.vue";
+
     export default {
         name: "search",
+        data() {
+            return {
+                project_list: null,
+                cols: 3
+            }
+        },
         components: {
             SearchTags,
             SearchCard
+        },
+        methods:{
+            rowCount() {
+                const quotient = Math.floor(this.project_list.length / this.cols);
+                const remainder = this.project_list.length % this.cols;
+                return quotient + (remainder === 0 ? 0 : 1);
+            },
+            projectIndex(row, col){
+                return (row - 1) * this.cols + (col -1)
+            },
+            getProject(row, col){
+                return this.project_list[this.projectIndex(row,col)]
+            },
+            projectExists(row, col){
+                return this.getProject(row,col) != null
+            }
         }
-    }
+    };
 </script>
 
 <style scoped>
     * {
         box-sizing: border-box;
-    }
-    h4 {
-        transform: translate(-40%, 10%);
-        font-weight: bold;
-    }
-
-    .container{
-        padding: 20px 40px 0 40px;
     }
 
     li {
@@ -56,13 +71,4 @@
         padding: 1rem 0 1rem 0;
     }
 
-    .card {
-        border-color: white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
-    }
-
-    .card:hover {
-        border-color: white;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
-    }
 </style>
