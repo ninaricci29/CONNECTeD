@@ -9,6 +9,13 @@
             </div>
 
             <div>
+                <div class="info-inner">
+                    <li>
+                        <a>
+                            <b-link href="/FAQ"> <h5>FAQ for new users</h5> </b-link>
+                        </a>
+                    </li>
+                </div>
 
                 <b-row  class="info-inner">
                     <li>
@@ -22,13 +29,7 @@
                     </li>
                 </b-row>
 
-                <div class="info-inner">
-                    <li>
-                        <a>
-                            <b-link href="/FAQ"> <h5>New here? Get started by reading our FAQ</h5> </b-link>
-                        </a>
-                    </li>
-                </div>
+
 
 
             </div>
