@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.get('/connect/register', RedirectController.register_redirect),
   app.post('/connect/post-projects',ProjectController.addProject);
 
-  app.post('/connect/update-project',ProjectController.updateProject); 
+  app.post('/connect/update-projects',ProjectController.updateProject); 
   app.get('/connect/search',ProjectController.searchProject);
   app.get('/connect/project', ProjectController.getProjects);
 

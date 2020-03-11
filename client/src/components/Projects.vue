@@ -12,7 +12,8 @@
                     <li class="description" v-for="j in cols" v-bind:key="j">
                         <ProjectCards v-if="projectExists(i,j)" v-bind:key="project"
                                       v-bind:project_name = getProject(i,j).project_name
-                                      v-bind:project_description = getProject(i,j).desc />
+                                      v-bind:project_description = getProject(i,j).desc
+                                      v-bind:project_id = getProject(i,j).id             />
                     </li>
                 </ul>
             </div>

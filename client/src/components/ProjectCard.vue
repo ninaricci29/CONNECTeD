@@ -30,7 +30,7 @@
 <script>
     export default {
         name: 'projects',
-        props: ['project_name', 'project_description']
+        props: ['project_name', 'project_description', 'project_id']
     }
 </script>
 
