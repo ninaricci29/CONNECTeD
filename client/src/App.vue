@@ -41,7 +41,7 @@
 
 <style>
     #app {
-        font-family: Montserrat;
+        font-family: "Montserrat", Montserrat, serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
