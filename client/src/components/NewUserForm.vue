@@ -39,9 +39,8 @@
                 <select class="form-control form-control-md" v-model="major">
                     <option value="" disabled selected>select your major</option>
                     <option>Computer Science</option>
-                    <option>Math & Statistics</option>
-                    <option>Biology</option>
-                    <option>Drama</option>
+                    <option>Mathematics</option>
+                    <option>Statistics</option>
                 </select>
             </div>
             <div class="form-group">
@@ -100,6 +99,11 @@
                     </b-form-tags>
                 </b-form-group>
             </div>
+            <div class="form-group">
+                <label>Profile Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </div>
 
 
             <div id="button">
@@ -140,6 +144,7 @@ export default {
     }
   },
   mounted() {
+    
     axios.get("/connect/tags").then(response => {
         this.tags = response.data;
         for (var i = 0; i < this.tags.length; i++) {
@@ -168,7 +173,7 @@ export default {
         form.append('major', this.major)
         form.append('year', this.yos)
         form.append('profile_picture', this.file);
-        form.append('tag_ids', ids);
+        form.append('tag_ids', JSON.stringify(ids));
         axios.post('/connect/create_profile', form , {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
           (this.firstname = response.data.first_name),
