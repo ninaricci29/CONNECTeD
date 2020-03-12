@@ -1,10 +1,13 @@
 <template>
         <div class="signIn">
             <body>
-            <div>
-                <h1 class="brand">JOIN TODAY</h1>
+            <header>
+                <div class="join" cent>
+                    <br>
+                    <img class ="join" src="../assets/join.png"/>
+                </div>
+            </header>
 
-            </div>
             <form class="form">
                 <div id="button">
                     <router-link to= "/info" tag = "b-button">Sign In</router-link>
@@ -25,6 +28,7 @@
     body{
         color: black;
         text-align: center;
+        font-family: "Montserrat", Montserrat, serif;
     }
     .brand{
         font-weight: bolder;
@@ -54,5 +58,12 @@
         background-color: white;
         color: black;
         border-color: black;
+    }
+    img.join {
+        height: 50%;
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+
     }
 </style>

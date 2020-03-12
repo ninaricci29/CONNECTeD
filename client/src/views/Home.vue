@@ -8,14 +8,13 @@
         </header>
         <section class="about-text">
             <b-container class="top">
-                <h3>
+                <div class="intro">
                     <br>
                     <span style="color:darkslateblue">CONNECTeD </span> was <span style="color:lightskyblue"> created for students, by students. </span> We are <span style ="color: lightseagreen"> Math and Computer Science Students </span> who wanted to foster <span style ="color: lightpink">collaboration </span> and <span style ="color: mediumpurple">creation</span> on campus.
-                    This platform is a <span style="color:gold">digital safe space </span>for students to share personal
-                    pre-professional objectives, and find peers interested in collaborating.
+                    This platform is a <span style="color:gold">digital safe space </span>for students at the <span style="color:darkblue">University of Toronto </span>to share personal
+                    pre-professional objectives and find project partners.
                     <br> <br>
-
-                </h3>
+                </div>
             </b-container>
         </section>
     </body>
@@ -39,5 +38,8 @@
     }
     body {
         background-color: white;
+        font-family: "Montserrat", Montserrat, serif;
+        font-size: 28px;
     }
+
 </style>
