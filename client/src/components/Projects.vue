@@ -12,7 +12,8 @@
                     <li class="description" v-for="j in cols" v-bind:key="j">
                         <ProjectCards v-if="projectExists(i,j)" v-bind:key="project"
                                       v-bind:project_name = getProject(i,j).project_name
-                                      v-bind:project_description = getProject(i,j).desc />
+                                      v-bind:project_description = getProject(i,j).desc
+                                      v-bind:project_id = getProject(i,j).id             />
                     </li>
                 </ul>
             </div>
@@ -53,6 +54,9 @@
                 return AuthenticationService.userIsLoggedIn(this.utorid);
             },
             rowCount() {
+                if(this.project_list == null) {
+                    return 0;
+                }
                 const quotient = Math.floor(this.project_list.length / this.cols);
                 const remainder = this.project_list.length % this.cols;
                 return quotient + (remainder === 0 ? 0 : 1);
