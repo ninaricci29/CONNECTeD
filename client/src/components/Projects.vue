@@ -54,6 +54,9 @@
                 return AuthenticationService.userIsLoggedIn(this.utorid);
             },
             rowCount() {
+                if(this.project_list == null) {
+                    return 0;
+                }
                 const quotient = Math.floor(this.project_list.length / this.cols);
                 const remainder = this.project_list.length % this.cols;
                 return quotient + (remainder === 0 ? 0 : 1);
