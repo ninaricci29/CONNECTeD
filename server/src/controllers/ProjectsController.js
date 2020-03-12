@@ -1,6 +1,7 @@
 const Project = require('../models').Project
 const UsersProject = require('../models').UsersProject
 const Tag = require('../models').Tag
+const ProjectTag = require('../models').ProjectTag
 
 
 module.exports = {
@@ -31,13 +32,25 @@ async getProjects(req, res) {
   async addProject(req,res){
     try {
       project = await Project.create(req.body);
-      console.log(project.body);
+      console.log(project)
       const uid_pid = {
         UserId: req.body.userid,
         ProjectId: project.id
       }
       console.log(uid_pid.body)
       await UsersProject.create(uid_pid)
+      for (var i = 0; i < req.body.tags.length; i++) {
+           pid = project.id;
+           tag = await Tag.findOne({where: {
+             tag_name: req.body.tags[i]
+             }});
+           tid = tag.id;
+           const pid_tid = {
+             ProjectId: pid,
+             TagId: tid
+           }
+           await ProjectTag.create(pid_tid)
+      }
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
