@@ -15,11 +15,13 @@
                 <label>Last Name</label>
                 <span class="star">*</span>
 
+
                 <input type="Last Name" class="form-control active" placeholder="Smith" v-model="lastname"/>
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
                 <span class="star">*</span>
+
 
                 <select class="form-control form-control-md" v-model="yos">
                     <option value="" selected>1</option>
@@ -32,6 +34,7 @@
             <div class="form-group">
                 <label>Major</label>
                 <span class="star">*</span>
+
 
                 <select class="form-control form-control-md" v-model="major">
                     <option value="" disabled selected>select your major</option>
@@ -97,6 +100,7 @@
                     </b-form-tags>
                 </b-form-group>
             </div>
+
 
             <div id="button">
                 <button
