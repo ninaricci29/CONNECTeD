@@ -21,6 +21,11 @@ module.exports = {
 
   async register(req, res){
     try {
+      if (req.file == null){
+        req.body.profile_picture = '/images/default.jpg'
+      } else {
+        req.body.profile_picture = '/images/' + req.file.filename
+      }
       console.log(req.body);
       user = await User.create(req.body);
       
@@ -51,7 +56,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        err: 'an error has occurred trying to fetch tags'
+        error: 'an error has occurred trying to fetch tags'
       })
     }
   },
@@ -63,7 +68,6 @@ module.exports = {
 
   async update_profile (req, res){
     try{
-      console.log(req)
       const user = await User.findOne({where: {
         id: req.body.id
       }})
@@ -75,7 +79,7 @@ module.exports = {
       user.year=req.body.year;
       user.description=req.body.description;
       await user.save();
-      res.send("Successfully Updated")
+      res.send(user.toJSON())
     } 
     catch (err) {
       console.log(err);

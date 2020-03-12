@@ -10,7 +10,7 @@
 
             <form class="form">
                 <div id="button">
-                    <router-link to= "/info" tag = "b-button">Sign In</router-link>
+                    <router-link to= "/register" tag = "b-button">Sign In</router-link>
                 </div>
             </form>
             </body>

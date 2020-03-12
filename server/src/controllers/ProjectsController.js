@@ -1,21 +1,43 @@
 const Project = require('../models').Project
+const UsersProject = require('../models').UsersProject
+const Tag = require('../models').Tag
+
 
 module.exports = {
-async projects(req, res) {
-    try {
-      projects = await Project.findAll({})
-      res.send(projects)
-    } catch (err) {
-      console.log(err)
-      res.status(500).send({
-        err: 'an error has occurred trying to fetch projects'
-      })
+async getProjects(req, res) {
+  try {
+    user = await UsersProject.findAll({
+      where: {
+        UserId: req.query.id
+      }
+    })
+    var projects_list = []
+    for (var i = 0; i < user.length; i++) {
+      projects_list.push(user[i].ProjectId)
     }
-  },
+    projects = await Project.findAll({
+          where: {
+            id: projects_list
+          }
+        })
+    res.send(projects);
+  } catch (err) {
+    console.log(err)
+    res.status(500).send({
+      error: 'an error has occurred trying to fetch projects'
+    })
+  }},
 
   async addProject(req,res){
     try {
-      query = await Project.create(req.body);
+      project = await Project.create(req.body);
+      console.log(project.body);
+      const uid_pid = {
+        UserId: req.body.userid,
+        ProjectId: project.id
+      }
+      console.log(uid_pid.body)
+      await UsersProject.create(uid_pid)
       res.send("Successfully Updated")
     } catch (err) {
       console.log(req.body);
@@ -42,5 +64,25 @@ async projects(req, res) {
             error: 'An error has occurred trying to update the project'
         })
     }
+  },
+
+  async searchProject(req,res){
+      try {
+        const tags = []
+        for (var i=0;i<req.body.tag_ids.length;i++){
+          tags.push(req.body.tag_ids[i])
+        }
+        const project = await Project.findAll({ include: {
+          model: Tag,
+          where: {
+            id: tags
+          }
+        }});
+        res.send({project})
+      } catch (error) {
+          res.status(500).send({
+            error: 'Error'
+          })
+      }
   }
 }
