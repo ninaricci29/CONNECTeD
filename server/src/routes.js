@@ -5,6 +5,7 @@ const ProjectController = require('./controllers/ProjectsController')
 module.exports = (app, upload) => {
   app.get('/connect/profile_info', ProfileController.retrieve),
   app.get('/connect/tags', ProfileController.tags), 
+  app.post('/connect/create_tag', ProfileController.create_tag),
   app.post('/connect/create_profile', upload.single('profile_picture'), ProfileController.register),
   app.post('/connect/updateprofile', upload.single('profile_picture'), ProfileController.update_profile),
   app.get('/connect/register', RedirectController.register_redirect),

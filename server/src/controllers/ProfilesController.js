@@ -22,9 +22,9 @@ module.exports = {
   async register(req, res){
     try {
       if (req.file == null){
-        req.body.profile_picture = '/images/default.jpg'
+        req.body.profile_picture = '/connect/images/default.jpg'
       } else {
-        req.body.profile_picture = '/images/' + req.file.filename
+        req.body.profile_picture = '/connect/images/' + req.file.filename
       }
       console.log(req.body);
       tag_ids = JSON.parse(req.body.tag_ids);
@@ -61,6 +61,18 @@ module.exports = {
       })
     }
   },
+  
+  async create_tag(req, res){
+    try {
+      tag = await Tag.create(req.body)
+      res.send({tag: tag.toJSON()})
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'an error has occurred trying to create tag'
+      })
+    }
+  },
 
   /* This method updates the profile information of a user
      with the new data provided by the user. The profile
@@ -79,7 +91,7 @@ module.exports = {
       user.year=req.body.year;
       user.description=req.body.description;
       if (req.file != null){
-        user.profile_picture = '/images/' + req.file.filename
+        user.profile_picture = '/connect/images/' + req.file.filename
       }
       await user.save();
       res.send(user.toJSON())
