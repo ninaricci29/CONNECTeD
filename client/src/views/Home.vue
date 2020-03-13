@@ -18,13 +18,18 @@
                 </h3>
             </b-container>
         </section>
+        <div >
+            <Home1 class="abc"/>
+        </div>
     </body>
 
 </template>
 
 <script>
+    import Home1 from "../components/Home1.vue";
     export default {
-        name: "Home.vue"
+        name: "Home.vue",
+        components: {Home1},
     }
 </script>
 
@@ -40,4 +45,5 @@
     body {
         background-color: white;
     }
+
 </style>

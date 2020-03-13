@@ -4,7 +4,7 @@
 
             <div class="logo-container info">
                 <a>
-                    <b-link href="/home">CONNECTeD</b-link>
+                    <b-link href="/home">CONNECTED</b-link>
                 </a>
             </div>
 
@@ -27,14 +27,10 @@
                 <div class="info-inner">
                     <li>
                         <a>
-                            <b-link href="/FAQ"> FAQ </b-link>
+                            <b-link href="/faq"> FAQ </b-link>
                         </a>
                     </li>
                 </div>
-
-
-
-
             </div>
 
             <div class="info-inner">
