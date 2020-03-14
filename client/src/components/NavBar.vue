@@ -15,7 +15,7 @@
 <!--            </b-nav-form>-->
 
             <div class="logo">
-                <a href="#">CONNECTED</a>
+                <a href="#">CONNECTeD</a>
             </div>
 
             <div class="h2 mb-2 gear-wheel">
@@ -83,11 +83,10 @@
 
     .gear-wheel {
         float: right;
-        display: inline-flex;
+        display: inline;
         padding-right: 120px;
-        padding-bottom: 80px;
-        width: 48px;
-        height: 48px;
+        width: 45px;
+        height: 45px;
         cursor: pointer;
         z-index: 9999;
         border-radius: 50%;
@@ -191,8 +190,8 @@
 
     .nav-btn {
         position: fixed;
-        right: 20px;
-        top: 20px;
+        right: 25px;
+        top: 15px;
         display: block;
         width: 48px;
         height: 48px;
@@ -206,7 +205,7 @@
         width: 20px;
         height: 2px;
         background: #000;
-        border-radius: 2px;
+        border-radius: 4px;
         margin-left: 14px;
 
     }

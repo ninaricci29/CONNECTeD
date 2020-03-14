@@ -33,7 +33,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage , limits: {fileSize: 1000000 }}) //limit 1MB
 
 require('./routes')(app, upload)
-app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use('/connect/images', express.static(path.join(__dirname, 'images')))
   
 app.use('/connect', express.static(path.join(__dirname, 'dist')))
 console.log(`${path.join(__dirname, "/dist")}`)

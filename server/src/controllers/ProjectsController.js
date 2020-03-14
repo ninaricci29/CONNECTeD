@@ -1,4 +1,5 @@
 const Project = require('../models').Project
+const User = require('../models').User
 const UsersProject = require('../models').UsersProject
 const Tag = require('../models').Tag
 const ProjectTag = require('../models').ProjectTag
@@ -31,6 +32,12 @@ async getProjects(req, res) {
 
   async addProject(req,res){
     try {
+
+      if (req.file == null){
+        req.body.picture = '/connect/images/default_project.jpg'
+      } else {
+        req.body.picture = '/connect/images/' + req.file.filename
+      }
       project = await Project.create(req.body);
       console.log(project)
       const uid_pid = {
@@ -62,12 +69,16 @@ async getProjects(req, res) {
 
   async updateProject(req,res){
     try {
+      console.log(req.body);
       const project = await Project.findOne({where:{
         id: req.body.id
       }
       })
       project.project_name = req.body.project_name;
       project.desc = req.body.desc;
+      if (req.file != null){
+        project.picture = '/connect/images/' + req.file.filename
+      }
       await project.save();
       res.send("Project successfully updated")
     } catch (error) {

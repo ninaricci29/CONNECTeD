@@ -19,8 +19,8 @@
                                 </a>
                             </li>
                         </b-row>
-                        <b-row class="desc"> <h8> {{description}} </h8></b-row>
-                        <b-row class="url"><a><h8>  url.ca </h8></a></b-row>
+                        <b-row class="desc"> <h6> {{description}} </h6></b-row>
+                        <b-row class="url"><a><h6>  url.ca </h6></a></b-row>
                     </b-col>
 
                     <b-col class="sec-col">
