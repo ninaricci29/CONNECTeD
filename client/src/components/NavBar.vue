@@ -15,7 +15,7 @@
 <!--            </b-nav-form>-->
 
             <div class="logo">
-                <a href="#">CONNECTeD</a>
+                <a href="/home">CONNECTeD</a>
             </div>
 
             <div class="h2 mb-2 gear-wheel">
@@ -71,7 +71,6 @@
         padding: 0;
         width: 100%;
         height: 15vh;
-        font-family: Montserrat;
         font-weight: 400;
         background-position: center;
         background-size: cover;
@@ -101,7 +100,6 @@
         border-radius: 8px;
         position: absolute;
         transform: translate(20%, 80%);
-
     }
 
     .logo {
