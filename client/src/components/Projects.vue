@@ -10,10 +10,11 @@
             <div class="project-cards" v-for="i in rowCount()" v-bind:key="i">
                 <ul>
                     <li class="description" v-for="j in cols" v-bind:key="j">
-                        <ProjectCards v-if="projectExists(i,j)" v-bind:key="project"
+                        <ProjectCards v-if="projectExists(i,j)"
                                       v-bind:project_name = getProject(i,j).project_name
                                       v-bind:project_description = getProject(i,j).desc
-                                      v-bind:project_id = getProject(i,j).id             />
+                                      v-bind:project_id = getProject(i,j).id
+                                      v-bind:picture_link = getProject(i,j).picture             />
                     </li>
                 </ul>
             </div>

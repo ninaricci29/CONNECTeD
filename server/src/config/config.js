@@ -1,5 +1,7 @@
 module.exports = {
   port: process.env.PORT || 8081,
+  dialect: 'sqlite',
+  storage: '../connected.sqlite',
   db: {
     database: process.env.DB_NAME || 'connected_db',
     user: process.env.DB_USER || 'connected_user',
