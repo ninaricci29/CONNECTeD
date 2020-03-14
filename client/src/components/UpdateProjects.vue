@@ -3,7 +3,7 @@
         <div>
             <h6>Update your project!</h6>
         </div>
-        <form class="form" method="updateProject">
+        <div class="form">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
@@ -48,10 +48,16 @@
                 </b-form-group>
             </div>
 
+            <div class="form-group">
+                <label>Project Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </div>
+
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="updateProject">PUBLISH</button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -65,6 +71,7 @@
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: [],
+                file: '',
                 error: ''
             }
         },
@@ -75,19 +82,23 @@
         },
         methods:{
             updateProject(){
-                axios.post('/connect/update-projects',{
-                    id: this.$route.params.id,
-                    project_name: this.name,
-                    desc: this.description
+                var form = new FormData();
+                form.append('picture', this.file);
+                form.append('id', this.$route.params.id);
+                form.append('desc', this.description);
+                form.append('project_name', this.name);
+                axios.post('/connect/update-projects', form , {headers: {'Content-Type': 'multipart/form-data'}})
+                .then(response => {
+                    this.id=response.data.id;
+                    this.projectname= response.data.project_name;
+                    this.desc= response.data.desc;
                 })
-                    .then(response => {
-                        this.id=response.data.id;
-                        this.projectname= response.data.project_name;
-                        this.desc= response.data.desc;
-                    })
-                    .catch(function(error){
-                        this.error = error;
-                    });
+                .catch(error => {
+                    this.error = error;
+                });
+            },
+            handleFileUpload(){
+                 this.file = this.$refs.file.files[0];
             }
         }}
 </script>
