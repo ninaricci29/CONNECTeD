@@ -40,13 +40,12 @@ async getProjects(req, res) {
       console.log(uid_pid.body)
       await UsersProject.create(uid_pid)
       for (var i = 0; i < req.body.tags.length; i++) {
-           pid = project.id;
            tag = await Tag.findOne({where: {
              tag_name: req.body.tags[i]
              }});
            tid = tag.id;
            const pid_tid = {
-             ProjectId: pid,
+             ProjectId: project.id,
              TagId: tid
            }
            await ProjectTag.create(pid_tid)
