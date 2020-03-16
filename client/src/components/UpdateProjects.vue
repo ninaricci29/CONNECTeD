@@ -68,6 +68,13 @@
                 error: ''
             }
         },
+        mounted() {
+        this.id = this.$route.params.id;
+        axios.get('/coonect/getproject?id=' + this.id).then(response => (
+        this.name = response.data.project_name,
+        this.description = response.data.desc
+                ));
+    },
         computed: {
             availableOptions() {
                 return this.options.filter(opt => this.value.indexOf(opt) === -1)
