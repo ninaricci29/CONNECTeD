@@ -1,14 +1,16 @@
 <template>
     <div>
         <div class="card">
-            <img class="card-img" src="../assets/1.jpg" />
+            <img class="card-img" :src="picture_link" />
             <div class="abc">
                 <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>
                     <template v-slot:button-content>
                         <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
                     </template>
-                    <b-dropdown-item href="/update-projects">Edit</b-dropdown-item>
+
+                    <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
                     <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+
                 </b-dropdown>
             </div>
 
@@ -31,15 +33,20 @@
 import axios from "axios"
     export default {
         name: 'projects',
-        props: ['project_name', 'project_description', 'project_id'],
+        props: ['project_name', 'project_description', 'project_id', 'picture_link'],
+        computed: {
+            updateLink: function () {
+                return '/connect/update-projects/' + this.project_id
+            }
+        },
         methods:{
             deleteProject(){
                 axios.post('/connect/delete-project',{
                     id: this.project_id
                 })
-            }
         }
     }
+}
 </script>
 
 <style scoped>
@@ -50,7 +57,7 @@ import axios from "axios"
     }
 
     .abc{
-        transform: translate(115px, -420px);
+        transform: translate(115px, -400px);
         padding: 0 0 0 0;
         opacity: 0;
     }
@@ -82,11 +89,12 @@ import axios from "axios"
     .card .card-img {
         filter: grayscale(100%);
         width: 100%;
+        height: 400px;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
 
     .card:hover .abc{
-        opacity: 100%;
+        opacity: 1;
         cursor: pointer;
         color: white;
     }

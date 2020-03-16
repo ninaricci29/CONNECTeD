@@ -8,32 +8,37 @@
             <p> {{ message }} </p>
             <div class="form-group">
                 <label>First Name</label>
-
-                <input type="First Name" v-model= "fn" class="form-control active" autocomplete="on">
+                <input type="First Name" v-model= "first_name" class="form-control active" placeholder="Jane" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="Last Name" v-model= "ln" class="form-control active" placeholder="Smith" autocomplete="on">
+                <input type="Last Name" v-model= "last_name" class="form-control active" placeholder="Smith" autocomplete="on">
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
                 <input type="year-of-study" v-model= "yos" class="form-control active" placeholder="1" autocomplete="on">
             </div>
             <div class="form-group">
-                <label>Major</label>
+                <label>Primary major</label>
                 <select class="form-control form-control-md" v-model= "major">
-                    <option>select your major</option>
+                    <option>Select your major</option>
                     <option>Computer Science</option>
-                    <option>Math & Statistics</option>
-                    <option>Biology</option>
-                    <option>Drama</option>
+                    <option>Mathematics</option>
+                    <option>Statistics</option>
+
                 </select>
             </div>
             <div class="form-group">
                 <label>Bio</label>
 
-                <input type="bio" v-model= "bio" class="form-control active" placeholder="Got a project? Let's collaborate!">
-                <small id="bio-type" class="form-text text-muted">Describe your self!</small>
+                <input type="bio" v-model= "bio" class="form-control active" placeholder="got a project? let's collaborate!">
+                <small id="bio-type" class="form-text text-muted">Describe yourself!</small>
+            </div>
+
+            <div class="form-group">
+                <label>Profile Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
             </div>
 
             <div id="button">
@@ -59,6 +64,7 @@
         font-weight: bold;
         font-size: 20px;
         padding-top: 10px;
+        
     }
     .form{
         display: inline-block;
@@ -96,24 +102,27 @@
 
 <script>
 import axios from 'axios'
+import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
     name:"update",
     data() {
     return {
-      fn: '',
-      ln: '', 
+      first_name: '',
+      last_name: '', 
       major: '',
       bio: '',
       yos: '',
       error: '',
+      file: '',
       message: ''
     }
   }, 
   mounted() {
     this.id = this.$route.params.id;
-    axios.get('http://localhost:8081/profile?id=' + this.id).then(response => (
-        this.fn = response.data.first_name,
-        this.ln = response.data.last_name,
+    axios.get('/connect/profile_info?id=' + this.id).then(response => (
+        this.first_name = response.data.first_name,
+        this.last_name = response.data.last_name,
         this.bio = response.data.bio,
         this.yos = response.data.year,
         this.major = response.data.major
@@ -121,33 +130,36 @@ export default {
     },
 
     methods:{
-    update(){
-        // The url for the post request has
-        // to be the url to the update page we need to make.
-        axios.post('/connect/updateprofile', {
-            // Still need to figure out the value 'id' will have
-            id: this.$route.params.id,
-            first_name: this.fn,
-            last_name: this.ln,
-            major: this.major,
-            bio: this.bio,
-            year: this.yos
-        })
-        .then(response => {
-            
-            this.id=response.data.id;
-            this.first_name= response.data.first_name;
-            this.last_name= response.data.last_name;
-            this.major= response.data.major;
-            this.bio= response.data.bio;
-            this.yos= response.data.year;
-            this.message = "Profile Updated Successfully!";
-        })
-        .catch(error => {
-            this.error = error;
-          this.message = "Opps something went wrong."
-        });
-    }
+        update(){
+            // The url for the post request has
+            // to be the url to the update page we need to make.
+            var form = new FormData();
+            form.append('utorid', AuthenticationService.getUtorid())
+            form.append('first_name', this.first_name)
+            form.append('last_name', this.last_name)
+            form.append('bio', this.bio)
+            form.append('major', this.major)
+            form.append('year', this.yos)
+            form.append('profile_picture', this.file);
+            axios.post('/connect/updateprofile', form , {headers: {'Content-Type': 'multipart/form-data'}})
+            .then(response => {
+                
+                this.id=response.data.id;
+                this.first_name= response.data.first_name;
+                this.last_name= response.data.last_name;
+                this.major= response.data.major;
+                this.bio= response.data.bio;
+                this.yos= response.data.year;
+                this.message = "Profile Updated Successfully!";
+            })
+            .catch(error => {
+                this.error = error;
+            this.message = "Opps something went wrong."
+            });
+        },
+        handleFileUpload(){
+        this.file = this.$refs.file.files[0];
+        }
     }
 }
 </script>

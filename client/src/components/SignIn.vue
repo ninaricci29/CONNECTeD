@@ -2,12 +2,12 @@
         <div class="signIn">
             <body>
             <div>
-                <h1 class="brand">CONNECTeD</h1>
-                <h6 class="sub"> JOIN CONNECTeD TODAY </h6>
+                <h1 class="brand">JOIN TODAY</h1>
+
             </div>
             <form class="form">
                 <div id="button">
-                    <router-link to= "/info" tag = "b-button">Sign In</router-link>
+                    <router-link to= "/register" tag = "b-button">Sign In</router-link>
                 </div>
             </form>
             </body>

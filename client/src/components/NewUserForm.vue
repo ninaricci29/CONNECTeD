@@ -15,11 +15,13 @@
                 <label>Last Name</label>
                 <span class="star">*</span>
 
+
                 <input type="Last Name" class="form-control active" placeholder="Smith" v-model="lastname"/>
             </div>
             <div class="form-group">
                 <label>Year of Study</label>
                 <span class="star">*</span>
+
 
                 <select class="form-control form-control-md" v-model="yos">
                     <option value="" selected>1</option>
@@ -33,12 +35,12 @@
                 <label>Major</label>
                 <span class="star">*</span>
 
+
                 <select class="form-control form-control-md" v-model="major">
                     <option value="" disabled selected>select your major</option>
                     <option>Computer Science</option>
-                    <option>Math & Statistics</option>
-                    <option>Biology</option>
-                    <option>Drama</option>
+                    <option>Mathematics</option>
+                    <option>Statistics</option>
                 </select>
             </div>
             <div class="form-group">
@@ -57,7 +59,6 @@
                        placeholder="https://myWebsite.ca" maxlength="100"/>
                 <small id="website-type" class="form-text text-muted">Link your Github!</small>
             </div>
-
             <div>
                 <b-form-group label="select your tags:">
                     <!-- prop `add-on-change` is needed to enable adding tags vie the `change` event -->
@@ -98,6 +99,12 @@
                     </b-form-tags>
                 </b-form-group>
             </div>
+            <div class="form-group">
+                <label>Profile Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </div>
+
 
             <div id="button">
                 <button
@@ -125,6 +132,7 @@ export default {
       bio: "",
       yos: "",
       major: "",
+      file: "",
       tags: null,
       options: [],
       value: []
@@ -136,11 +144,13 @@ export default {
     }
   },
   mounted() {
+    
     axios.get("/connect/tags").then(response => {
         this.tags = response.data;
         for (var i = 0; i < this.tags.length; i++) {
           this.options.push(this.tags[i].tag_name);
         }
+
       });
   },
   methods: {
@@ -154,28 +164,31 @@ export default {
           }
         }
       }
-      axios
-        .post("/connect/create_profile", {
-          utorid: AuthenticationService.getUtorid(),
-          first_name: this.firstname,
-          last_name: this.lastname,
-          bio: this.bio,
-          year: this.yos,
-          major: this.major,
-          value: this.value,
-          tag_ids: ids
-        })
+
+        var form = new FormData();
+        form.append('utorid', AuthenticationService.getUtorid())
+        form.append('first_name', this.firstname)
+        form.append('last_name', this.lastname)
+        form.append('bio', this.bio)
+        form.append('major', this.major)
+        form.append('year', this.yos)
+        form.append('profile_picture', this.file);
+        form.append('tag_ids', JSON.stringify(ids));
+        axios.post('/connect/create_profile', form , {headers: {'Content-Type': 'multipart/form-data'}})
         .then(response => {
           (this.firstname = response.data.first_name),
             (this.lastname = response.data.last_name),
             (this.bio = response.data.bio);
-          this.yos = response.data.year;
-          this.major = response.data.major;
+            this.yos = response.data.year;
+            this.major = response.data.major;
         })
         .catch(function(error){
             this.error = error;
 
         });
+    },
+    handleFileUpload(){
+       this.file = this.$refs.file.files[0];
     }
   }
 };

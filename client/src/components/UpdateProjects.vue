@@ -3,7 +3,7 @@
         <div>
             <h6>Update your project!</h6>
         </div>
-        <form class="form" method="addProject">
+        <div class="form">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
@@ -48,23 +48,30 @@
                 </b-form-group>
             </div>
 
-            <div id="button">
-                <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
+            <div class="form-group">
+                <label>Project Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
             </div>
-        </form>
+
+            <div id="button">
+                <button type="log-in-via-utorid" class="btn btn-primary" @click="updateProject">PUBLISH</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
     export default {
-        name:"addProject",
+        name:"updateProject",
         data() {
             return {
                 name: '',
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: [],
+                file: '',
                 error: ''
             }
         },
@@ -81,20 +88,24 @@
             }
         },
         methods:{
-            addProject(){
-                axios.post('/connect/post-projects',{
-                    // userid is hardcoded, need to use cookie to get it
-                    userid: 1,
-                    project_name: this.name,
-                    desc: this.description
+            updateProject(){
+                var form = new FormData();
+                form.append('picture', this.file);
+                form.append('id', this.$route.params.id);
+                form.append('desc', this.description);
+                form.append('project_name', this.name);
+                axios.post('/connect/update-projects', form , {headers: {'Content-Type': 'multipart/form-data'}})
+                .then(response => {
+                    this.id=response.data.id;
+                    this.projectname= response.data.project_name;
+                    this.desc= response.data.desc;
                 })
-                    .then(response => {
-                        this.projectname= response.data.project_name;
-                        this.desc= response.data.desc;
-                    })
-                    .catch(function(error){
-                        this.error = error;
-                    });
+                .catch(error => {
+                    this.error = error;
+                });
+            },
+            handleFileUpload(){
+                 this.file = this.$refs.file.files[0];
             }
         }}
 </script>

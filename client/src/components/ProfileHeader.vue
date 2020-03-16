@@ -2,7 +2,7 @@
     <body class="profile">
         <header>
             <div class="profile-picture">
-                <img src="../assets/DSC02912.jpg"/>
+                <img :src="link"/>
             </div>
         </header>
 
@@ -19,8 +19,8 @@
                                 </a>
                             </li>
                         </b-row>
-                        <b-row class="desc"> <h8> {{description}} </h8></b-row>
-                        <b-row class="url"><a><h8>  url.ca </h8></a></b-row>
+                        <b-row class="desc"> <h6> {{description}} </h6></b-row>
+                        <b-row class="url"><a><h6>  url.ca </h6></a></b-row>
                     </b-col>
 
                     <b-col class="sec-col">
@@ -56,8 +56,8 @@
                 description: null,
                 year: null,
                 major: null,
-                rating: null
-
+                rating: null,
+                link: null
             }
         },
         mounted() {
@@ -67,7 +67,8 @@
                     this.name = response.data.first_name + ' ' + response.data.last_name,
                     this.description = response.data.bio,
                     this.year = response.data.year,
-                    this.major = response.data.major
+                    this.major = response.data.major,
+                    this.link = response.data.profile_picture
                 ));
         }
     }
