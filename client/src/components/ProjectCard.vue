@@ -44,9 +44,17 @@ import axios from "axios"
                 axios.post('/connect/delete-project',{
                     id: this.project_id
                 })
+        },
+        methods:{
+            deleteProject(){
+                axios.post('/connect/delete-project',{
+                    id: this.project_id
+                })
+        }
         }
     }
-}
+    }
+
 </script>
 
 <style scoped>
