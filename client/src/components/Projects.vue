@@ -25,7 +25,6 @@
 <script>
     // @ is an alias to /src
     import ProjectCards from "@/components/ProjectCard.vue";
-    import AuthenticationService from "@/services/AuthenticationService";
     import axios from 'axios';
     export default {
         name: "projects",
@@ -52,7 +51,7 @@
         },
         methods:{
             isLoggedIn(){
-                return AuthenticationService.userIsLoggedIn(this.utorid);
+                return this.$store.state.user.utorid == this.utorid
             },
             rowCount() {
                 if(this.project_list == null) {

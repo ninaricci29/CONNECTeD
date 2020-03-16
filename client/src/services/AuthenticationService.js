@@ -9,5 +9,9 @@ export default {
   
   getUtorid(){
     return window.$cookies.get('utorid')
+  },
+
+  getUserId(){
+    return window.$cookies.get('id')
   }
 }

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from '@/store'
 
 Vue.use(VueRouter);
 
@@ -92,5 +93,10 @@ const router = new VueRouter({
     base: "/connect",
     routes
 });
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('setUser')
+  next()
+})
 
 export default router;
