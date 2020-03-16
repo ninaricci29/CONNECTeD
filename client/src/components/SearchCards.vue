@@ -1,80 +1,135 @@
 <template>
-    <div class="search-cards">
-        <img class="profile-pic" src="../assets/DSC02912.jpg"/>
-        <div class="container">
+    <div>
+        <div class="card">
+            <img class="card-img" src="../assets/1.jpg" />
+            <div class="abc">
+<!--                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>-->
+<!--                    <template v-slot:button-content>-->
+<!--                        <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>-->
+<!--                    </template>-->
+<!--                    <b-dropdown-item href="#">Save</b-dropdown-item>-->
+<!--                </b-dropdown>-->
+            </div>
 
-            <div class="name"> Neil Emmanuel Lu </div>
-            <p class="description"> Got a project? </p>
-        </div>
+            <div class="card-body">
+                <div class="card-footer">
+                    <p class="category text-muted">UI/UX</p>
+                    <h4 class="title">Project Name</h4>
+                    <p class="byline">by Dan Smith</p>
+                    <p class="desc text-muted-2">
+                        Here is my project description.
+                    </p>
 
-        <div class="project-covers">
-            <b-row>
-                <ul>
-                    <li> <img src="../assets/mitchell-hollander-kSmTaltv9KU-unsplash.jpg"/> </li>
-                    <li> <img src="../assets/matheo-jbt-ZMEmMguGD1I-unsplash.jpg"/> </li>
-                    <li> <img src="../assets/nathan-dumlao-c2Y16tC3yO8-unsplash.jpg"/> </li>
-                </ul>
-            </b-row>
-
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
+
 <script>
     export default {
-        name: "SearchCards"
-    };
+        name: 'projects',
+    }
 </script>
 
 <style scoped>
-    * {
-        box-sizing: border-box;
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
     }
 
-    li {
-        list-style-type: none;
-        padding: 20px 50px 20px 40px;
+    .abc{
+        transform: translate(115px, -420px);
+        padding: 0 0 0 0;
+        opacity: 0;
+    }
+
+    .efg {
+        color: white;
+    }
+
+    .text-muted {
+        opacity: 0.4;
+    }
+
+    .text-muted-2 {
+        opacity: 0.85;
+    }
+
+    .card {
+        position: relative;
+        width: 16rem;
         display: inline-block;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+        background: none;
+
+    }
+    .card:hover {
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .09);
     }
 
-    .profile-pic {
-        width: 90px;
-        height: 90px;
-        border-radius: 1000px;
-        position: absolute;
-        transform: translate(40%, 20%);
-        border: 3px solid #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, .09);
-        object-fit: cover;
+    .card .card-img {
+        filter: grayscale(100%);
+        width: 100%;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .card:hover .abc{
+        opacity: 100%;
         cursor: pointer;
+        color: white;
     }
 
-     .project-covers li img{
-         width: 80px;
-         height: 80px;
-         position: absolute;
-         box-shadow: 0 0 20px rgba(0, 0, 0, .09);
-         transform: translate(-10%, -140%);
-         object-fit: cover;
-         border-radius: 5px;
-         cursor: pointer;
+    .card:hover .card-img {
+        filter: grayscale(0);
     }
 
-    .container {
+    .card:hover .card-body{
+        height: 10rem;
+        transition: height 0.4s ease;
+        overflow: hidden;
+        filter: grayscale(0);
+    }
+
+    .card:hover .desc {
+        display: inline;
+    }
+
+    .card-body {
+        background-color: white;
+        height: 6rem;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        border-radius: 0rem 0rem 0.5rem 0.5rem;
+        transition: height 0.2s ease;
+        padding: 0 0 0 0;
+    }
+
+    .card .card-footer {
         text-align: left;
-        padding: 0 0 140px 140px;
+        background: none;
     }
 
-    .name{
-        padding: 20px 0 0 0;
-        font-size: 20px;
+    .card .category {
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        margin: 0 0 0 0;
     }
 
-    .description {
-        color: grey;
-        font-size: 14px;
-        border-color: white;
+    .card .desc {
+        display: none;
+        font-size: 0.70rem;
     }
 
-
+    .card .title {
+        font-size: 1.1rem;
+    }
+    .card .byline {
+        font-size: 0.8rem;
+        padding: 0 0 0 0;
+        color: #6d6d6d;
+    }
 </style>

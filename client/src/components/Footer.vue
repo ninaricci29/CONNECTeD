@@ -1,9 +1,10 @@
 <template>
     <div class="footer">
         <div class="inner-footer">
+
             <div class="logo-container info">
                 <a>
-                    <b-link href="/home"> ConnectEd </b-link>
+                    <b-link href="/home">CONNECTeD</b-link>
                 </a>
             </div>
 
@@ -14,15 +15,25 @@
 
                 <b-row  class="info-inner">
                     <li>
-                        <div class="text-muted"> Have an account? </div>
+                        <div class="text-muted">Have an account?</div>
                     </li>
 
                     <li>
                         <a>
-                            <b-link href="/log-in"> Sign In </b-link>
+                            <b-link href="/log-in">Sign In</b-link>
                         </a>
                     </li>
                 </b-row>
+                <div class="info-inner">
+                    <li>
+                        <a>
+                            <b-link href="/FAQ"> FAQ </b-link>
+                        </a>
+                    </li>
+                </div>
+
+
+
 
             </div>
 
@@ -39,6 +50,7 @@
 
     };
 </script>
+
 
 <style scoped>
     * {

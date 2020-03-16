@@ -21,16 +21,22 @@ module.exports = {
 
   async register(req, res){
     try {
+      if (req.file == null){
+        req.body.profile_picture = '/connect/images/default.jpg'
+      } else {
+        req.body.profile_picture = '/connect/images/' + req.file.filename
+      }
       console.log(req.body);
+      tag_ids = JSON.parse(req.body.tag_ids);
       user = await User.create(req.body);
       
-      for (var i = 0; i < req.body.tag_ids.length; i++){
+      for (var i = 0; i < tag_ids.length; i++){
         var tag = await Tag.findOne({
           where:{
-            id : req.body.tag_ids[i]}});
+            id : tag_ids[i]}});
         const uid_tid = {
           UserId: user.id,
-          TagId: req.body.tag_ids[i]
+          TagId: tag_ids[i]
         }
         console.log(uid_tid)
         const saved_uid_tid = await UsersTag.create(uid_tid)
@@ -55,6 +61,18 @@ module.exports = {
       })
     }
   },
+  
+  async create_tag(req, res){
+    try {
+      tag = await Tag.create(req.body)
+      res.send({tag: tag.toJSON()})
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'an error has occurred trying to create tag'
+      })
+    }
+  },
 
   /* This method updates the profile information of a user
      with the new data provided by the user. The profile
@@ -64,15 +82,17 @@ module.exports = {
   async update_profile (req, res){
     try{
       const user = await User.findOne({where: {
-        id: req.body.id
+        utorid: req.body.utorid
       }})
-      user.utorid=req.body.utorid;
       user.first_name=req.body.first_name;
       user.last_name=req.body.last_name;
       user.bio=req.body.bio;
       user.major=req.body.major;
       user.year=req.body.year;
       user.description=req.body.description;
+      if (req.file != null){
+        user.profile_picture = '/connect/images/' + req.file.filename
+      }
       await user.save();
       res.send(user.toJSON())
     } 

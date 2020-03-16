@@ -48,6 +48,12 @@
                 </b-form-group>
             </div>
 
+            <div class="form-group">
+                <label>Project Picture </label>
+                <br/>
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </div>
+
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
             </div>
@@ -65,6 +71,7 @@
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: [],
+                file:'',
                 error: ''
             }
         },
@@ -75,19 +82,22 @@
         },
         methods:{
             addProject(){
-                axios.post('/connect/post-projects',{
-                    // userid is hardcoded, need to use cookie to get it
-                    userid: 1,
-                    project_name: this.name,
-                    desc: this.description
-                })
-                    .then(response => {
+                var form = new FormData();
+                form.append('picture', this.file);
+                form.append('userid', 1);
+                form.append('desc', this.description);
+                form.append('project_name', this.name);
+                axios.post('/connect/post-projects', form , {headers: {'Content-Type': 'multipart/form-data'}})
+                .then(response => {
                         this.projectname= response.data.project_name;
                         this.desc= response.data.desc;
                     })
-                    .catch(function(error){
+                    .catch(error => {
                         this.error = error;
                     });
+            },
+            handleFileUpload(){
+                 this.file = this.$refs.file.files[0];
             }
         }}
 </script>
