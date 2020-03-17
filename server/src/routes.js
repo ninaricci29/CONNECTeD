@@ -10,7 +10,7 @@ module.exports = (app, upload) => {
   app.post('/connect/updateprofile', upload.single('profile_picture'), ProfileController.update_profile),
   app.get('/connect/register', RedirectController.register_redirect),
   app.post('/connect/post-projects',upload.single('picture'), ProjectController.addProject);
-
+  app.get('/connect/getproject', ProjectController.getProject),
   app.post('/connect/update-projects', upload.single('picture'), ProjectController.updateProject); 
   app.get('/connect/search',ProjectController.searchProject);
   app.get('/connect/project', ProjectController.getProjects);
