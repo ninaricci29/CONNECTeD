@@ -48,6 +48,20 @@
                 </b-form-group>
             </div>
 
+            <div>
+                <label>Collaborators:</label>
+                <b-form-tags
+                        input-id="tags-separators"
+                        v-model="value2"
+                        separator=" ,;"
+                        placeholder="@NinaRichie"
+                        no-add-on-enter
+                        remove-on-delete
+                        class="mb-2"
+                        :tag-validator="tagValidator"
+                ></b-form-tags>
+            </div>
+
             <div class="form-group">
                 <label>Project Picture </label>
                 <br/>
@@ -62,6 +76,7 @@
 </template>
 
 <script>
+
     import axios from 'axios'
     export default {
         name:"addProject",
@@ -71,6 +86,7 @@
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: [],
+                value2: ['ninaricci'],
                 file:'',
                 error: ''
             }
@@ -81,6 +97,10 @@
             }
         },
         methods:{
+            tagValidator(tag) {
+                return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6
+            },
+
             addProject(){
                 var form = new FormData();
                 form.append('picture', this.file);
@@ -117,7 +137,7 @@
     body h6{
         font-weight: bold;
         font-size: 20px;
-        padding-top: 10px;
+        padding-top: 40px;
     }
     .form{
         display: inline-block;
