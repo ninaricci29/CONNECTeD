@@ -6,6 +6,20 @@ const ProjectTag = require('../models').ProjectTag
 
 
 module.exports = {
+    async getProject(req, res) {
+        try {
+          project = await Project.findOne({
+            where: {
+              id: req.query.id
+            }
+          })
+          res.send(project);
+        } catch (err) {
+          console.log(err)
+          res.status(500).send({
+            err: 'an error has occurred trying to fetch projects'
+          })
+        }},
 async getProjects(req, res) {
   try {
     user = await UsersProject.findAll({
@@ -64,6 +78,23 @@ async getProjects(req, res) {
       res.status(500).send({
         err: 'an error has occurred trying to add the project'
       })
+    }
+  },
+  
+  async deleteProject(req,res){
+    try{
+      const project = await Project.findOne({where:{
+        id: req.body.id
+      }})
+      project.destroy()
+      res.send("Successfully deleted")
+    }
+    catch (err) {
+      console.log(req.body);
+      console.log(err)
+      res.status(500).send({
+        err: 'an error has occurred trying to delete the project'
+    })
     }
   },
 
