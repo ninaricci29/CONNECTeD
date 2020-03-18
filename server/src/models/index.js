@@ -26,7 +26,7 @@ const Project = ProjectModel(sequelize, Sequelize)
 // Sets up the associations between Tag and User (a many to many relationship).
 const Users_Tag = sequelize.define('Users_Tag', {}, { timestamps: false} )
 const Users_Project = sequelize.define('Users_Project', {}, {timestamps: false} )
-const Project_Tag = sequelize.define('Projects_tags', {}, {timestamps: false})
+const Project_Tag = sequelize.define('Projects_tag', {}, {timestamps: false})
 
 
 User.belongsToMany(Tag, {through: Users_Tag});
