@@ -8,14 +8,14 @@
                 <label>Project Name</label>
                 <span class="star">*</span>
 
-                <input type="Project-Name" v-model= "name" class="form-control active">
+                <input type="Project-Name" v-model="name" class="form-control active">
 
             </div>
             <div class="form-group">
                 <label>Description</label>
                 <span class="star">*</span>
 
-                <textarea type="Description" v-model= "description" class="form-control active description" placeholder="This project is.."
+                <textarea type="Description" v-model="description" class="form-control active description" placeholder="This project is.."
                           rows="4" cols="50" name="comment"/>
                 <small id="bio-type" class="form-text text-muted">Describe your project!</small>
             </div>
