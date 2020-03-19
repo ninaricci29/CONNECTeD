@@ -3,7 +3,7 @@
         <div>
             <h6>Post a new project!</h6>
         </div>
-        <form class="form" method="addProject">
+        <div class="form" method="addProject">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
@@ -54,7 +54,7 @@
                         input-id="tags-separators"
                         v-model="value2"
                         separator=" ,;"
-                        placeholder="@NinaRichie"
+                        placeholder="utorid"
                         no-add-on-enter
                         remove-on-delete
                         class="mb-2"
@@ -71,7 +71,7 @@
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -86,7 +86,7 @@
                 description: '',
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: [],
-                value2: ['ninaricci'],
+                value2: [],
                 file:'',
                 error: ''
             }

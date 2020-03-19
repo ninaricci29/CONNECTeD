@@ -22,21 +22,24 @@ module.exports = {
       }
     },
     async update_profile_redirect(req, res){
-      if (req.cookies.utorid == undefined){
-        res.redirect('/connect/register')
+      if (req.header.utorid == undefined){
+        res.redirect('/connect/404')
       }
       user = await User.findOne({
         where: {
-          utorid: req.cookies.utorid
+          utorid: req.header.utorid
         }
       })
+      res.cookie('utorid', req.headers.utorid)
       if (user!= null && user.id == req.params.id){
+        res.cookie('id', user.id)
         res.sendFile(path.join(__dirname, '../dist/index.html'))
       }else{
         res.redirect('/connect/register')
       }
     },
     async update_project_redirect(req, res){
+      console.log(req.cookies)
       if (req.cookies.utorid == undefined){
         res.redirect('/connect/register')
       }
