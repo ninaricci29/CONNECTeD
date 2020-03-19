@@ -35,7 +35,7 @@
         props: ['project_name', 'project_description', 'project_id', 'picture_link'],
         computed: {
             updateLink: function () {
-                return '/connect/update-projects/' + this.project_id
+                return '/connect/projects/' + this.project_id + '/update'
             }
         },
         methods:{

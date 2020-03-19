@@ -1,4 +1,5 @@
 const User = require('../models').User
+const UsersProject = require('../models').UsersProject
 const path = require('path')
 
 module.exports = {
@@ -19,5 +20,60 @@ module.exports = {
       }else{
         res.sendFile(path.join(__dirname, '../dist/index.html'))
       }
-    }
+    },
+    async update_profile_redirect(req, res){
+      if (req.cookies.utorid == undefined){
+        res.redirect('/connect/register')
+      }
+      user = await User.findOne({
+        where: {
+          utorid: req.cookies.utorid
+        }
+      })
+      if (user!= null && user.id == req.params.id){
+        res.sendFile(path.join(__dirname, '../dist/index.html'))
+      }else{
+        res.redirect('/connect/register')
+      }
+    },
+    async update_project_redirect(req, res){
+      if (req.cookies.utorid == undefined){
+        res.redirect('/connect/register')
+      }
+      user = await User.findOne({
+        where: {
+          utorid: req.cookies.utorid
+        }
+      })
+      if (user == null){
+        res.redirect('/connect/register')
+      }
+      project = await UsersProject.findOne({
+        where:{
+          ProjectId: req.params.id,
+          UserId: user.id
+        }
+      })
+      if (project){
+        res.sendFile(path.join(__dirname, '../dist/index.html'))
+      }else{
+        res.redirect('/connect/404')
+      }
+
+    },
+    async new_project_redirect(req, res){
+      if (req.cookies.utorid == undefined){
+        res.redirect('/connect/register')
+      }
+      user = await User.findOne({
+        where: {
+          utorid: req.cookies.utorid
+        }
+      })
+      if (user!= null){
+        res.sendFile(path.join(__dirname, '../dist/index.html'))
+      }else{
+        res.redirect('/connect/register')
+      }
+    },
 } 
