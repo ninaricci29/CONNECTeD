@@ -46,7 +46,6 @@ async getProjects(req, res) {
 
   async addProject(req,res){
     try {
-
       if (req.file == null){
         req.body.picture = '/connect/images/default_project.jpg'
       } else {
@@ -60,9 +59,10 @@ async getProjects(req, res) {
       }
       console.log(uid_pid.body)
       await UsersProject.create(uid_pid)
-      for (var i = 0; i < req.body.tags.length; i++) {
+      lst = JSON.parse(req.body.tags)
+      for (var i = 0; i < lst.length; i++) {
            tag = await Tag.findOne({where: {
-             tag_name: req.body.tags[i]
+             tag_name: lst[i]
              }});
            tid = tag.id;
            const pid_tid = {

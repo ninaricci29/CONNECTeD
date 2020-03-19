@@ -84,7 +84,7 @@
             return {
                 name: '',
                 description: '',
-                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                options: [],
                 value: [],
                 value2: ['ninaricci'],
                 file:'',
@@ -96,6 +96,14 @@
                 return this.options.filter(opt => this.value.indexOf(opt) === -1)
             }
         },
+
+        mounted() {
+            axios.get("/connect/tags").then(response => {
+                for (var i = 0; i < response.data.length; i++) {
+                    this.options.push(response.data[i].tag_name)
+                }
+            })},
+
         methods:{
             tagValidator(tag) {
                 return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6
@@ -107,9 +115,10 @@
                 form.append('userid', 1);
                 form.append('desc', this.description);
                 form.append('project_name', this.name);
+                form.append('tags', JSON.stringify(this.value));
                 axios.post('/connect/post-projects', form , {headers: {'Content-Type': 'multipart/form-data'}})
                 .then(response => {
-                        this.projectname= response.data.project_name;
+                        this.project_name= response.data.project_name;
                         this.desc= response.data.desc;
                     })
                     .catch(error => {
