@@ -14,4 +14,5 @@ module.exports = (app, upload) => {
   app.post('/connect/update-projects', upload.single('picture'), ProjectController.updateProject); 
   app.get('/connect/search',ProjectController.searchProject);
   app.get('/connect/project', ProjectController.getProjects);
+  app.get('/connect/profile/:id',RedirectController.profile_redirect);
 }
