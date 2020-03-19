@@ -30,7 +30,6 @@
 
 
 <script>
-import axios from "axios"
     export default {
         name: 'projects',
         props: ['project_name', 'project_description', 'project_id', 'picture_link'],
@@ -41,9 +40,8 @@ import axios from "axios"
         },
         methods:{
             deleteProject(){
-                axios.post('/connect/delete-project',{
-                    id: this.project_id
-                })
+                this.$emit('delete', this.project_id)
+
         },
     }
     }

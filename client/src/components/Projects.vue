@@ -11,6 +11,7 @@
                 <ul>
                     <li class="description" v-for="j in cols" v-bind:key="j">
                         <ProjectCards v-if="projectExists(i,j)"
+                                      v-on:delete="deleteProject"
                                       v-bind:project_name = getProject(i,j).project_name
                                       v-bind:project_description = getProject(i,j).desc
                                       v-bind:project_id = getProject(i,j).id
@@ -40,11 +41,11 @@
         },
         mounted() {
             var id = this.$route.params.id;
-            axios.get('/connect/profile_info?id='+ id)
+            axios.get('http://localhost:8081/connect/profile_info?id='+ id)
                 .then(response => (
                     this.utorid = response.data.utorid
                 ));
-            axios.get('/connect/project?id='+ id)
+            axios.get('http://localhost:8081/connect/project?id='+ id)
                 .then(response => (
                     this.project_list = response.data
                 ));
@@ -69,6 +70,14 @@
             },
             projectExists(row, col){
                 return this.getProject(row,col) != null
+            },
+            deleteProject(id){
+                axios.post('http://localhost:8081/connect/delete-project',{
+                    id: id
+                }).then(() => (
+                    this.project_list = this.project_list.filter(function(project){
+                        return project.id != id })
+                ));
             }
         }
     };
