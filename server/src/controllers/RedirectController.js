@@ -6,7 +6,7 @@ module.exports = {
       console.log(req.headers.utorid);
       res.cookie('utorid', req.headers.utorid)
       if (req.headers.utorid == undefined){
-        res.sendFile(path.join(__dirname, '../dist/index.html'))
+        res.redirect('/connect/404')
       }
       user = await User.findOne({
         where: {
@@ -14,6 +14,7 @@ module.exports = {
         }
       })
       if (user){
+        res.cookie('id', user.id)
         res.redirect('/connect/profile/' + user.id)
       }else{
         res.sendFile(path.join(__dirname, '../dist/index.html'))
