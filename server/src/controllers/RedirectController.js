@@ -19,5 +19,22 @@ module.exports = {
       }else{
         res.sendFile(path.join(__dirname, '../dist/index.html'))
       }
+    },
+
+    async profile_redirect(req, res){
+      console.log(req.params.id);
+      res.cookie('id', req.params.id)
+
+      user = await User.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      if (user){
+        res.sendFile(path.join(__dirname, '../dist/index.html'))
+
+      }else{
+        res.redirect('/connect/404')
+      }
     }
 } 
