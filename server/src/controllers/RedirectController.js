@@ -22,20 +22,26 @@ module.exports = {
       }
     },
     async update_profile_redirect(req, res){
-      if (req.header.utorid == undefined){
-        res.redirect('/connect/404')
-      }
-      user = await User.findOne({
-        where: {
-          utorid: req.header.utorid
+      try {
+        console.log(req.headers.utorid)
+        if (req.headers.utorid == null){
+          res.redirect('/connect/404')
         }
-      })
-      res.cookie('utorid', req.headers.utorid)
-      if (user!= null && user.id == req.params.id){
-        res.cookie('id', user.id)
-        res.sendFile(path.join(__dirname, '../dist/index.html'))
-      }else{
-        res.redirect('/connect/register')
+        user = await User.findOne({
+          where: {
+            utorid: req.headers.utorid
+          }
+        })
+        res.cookie('utorid', req.headers.utorid)
+        if (user!= null && user.id == req.params.id){
+          res.cookie('id', user.id)
+          res.sendFile(path.join(__dirname, '../dist/index.html'))
+        }else{
+          res.redirect('/connect/register')
+        }
+      } catch(error){
+        console.log(error)
+        res.redirect('/connect/404')
       }
     },
     async update_project_redirect(req, res){
@@ -65,7 +71,8 @@ module.exports = {
 
     },
     async new_project_redirect(req, res){
-      if (req.cookies.utorid == undefined){
+      console.log(req.cookies)
+      if (req.cookies.utorid == null){
         res.redirect('/connect/register')
       }
       user = await User.findOne({
@@ -97,4 +104,20 @@ module.exports = {
         res.redirect('/connect/register')
       }
     },
+    async profile_redirect(req, res){
+      console.log(req.params.id);
+      res.cookie('id', req.params.id)
+
+      user = await User.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      if (user){
+        res.sendFile(path.join(__dirname, '../dist/index.html'))
+
+      }else{
+        res.redirect('/connect/404')
+      }
+    }
 } 

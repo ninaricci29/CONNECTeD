@@ -40,13 +40,14 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name:"addProject",
         data() {
             return {
                 name: '',
                 description: '',
-                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                options: [],
                 value: [],
                 error: ''
             }
@@ -55,6 +56,14 @@
             availableOptions() {
                 return this.options.filter(opt => this.value.indexOf(opt) === -1)
             }
+        },
+        mounted() {
+            axios.get("/connect/tags").then(response => {
+                for (var i = 0; i < response.data.length; i++) {
+                    this.options.push(response.data[i].tag_name)
+                }
+            });
+
         }
     }
 </script>
