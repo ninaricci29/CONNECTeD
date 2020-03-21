@@ -40,26 +40,46 @@
             SearchCard
         },
         created() {
-        SearchTags.$on('SearchTag', (value) => {
-        this.value = value;
-        });
+            this.$on('SearchTags',(value) => {
+            this.value = value;
+            console.log(value);
+            this.search()
+            });
+        // SearchTags.$on('SearchTag', (value) => {
+        // this.value = value;
+        // });
         },
-        mounted(){
+        // mounted(){
+        //     var tag_ids = [];
+        //     console.log(this.value);
+        //     for(var i=0;i<this.value.length;i++){
+        //         axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
+        //             .then(response => (
+        //                 console.log(response)
+        //                 //tag_ids.push(response.data.id)
+        //             ));
+        //     }
+        //     axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
+        //         .then(response => (
+        //             this.project_list = response.data
+        //     ));
+        // },
+        methods:{
+            search(){
             var tag_ids = [];
             console.log(this.value);
             for(var i=0;i<this.value.length;i++){
-                axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
+                axios.get('https://localhost:8081/connect/get-tag?tag='+this.value[i])
                     .then(response => (
-                        console.log(response)
-                        //tag_ids.push(response.data.id)
+                        console.log(response),
+                        tag_ids.push(response.data.id)
                     ));
             }
-            axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
+            axios.get('https://localhost:8081/connect/search?tag_ids='+ tag_ids)
                 .then(response => (
                     this.project_list = response.data
             ));
-        },
-        methods:{
+            },
             rowCount() {
                 const quotient = Math.floor(this.project_list.length / this.cols);
                 const remainder = this.project_list.length % this.cols;
