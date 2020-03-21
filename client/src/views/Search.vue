@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <SearchTags class="search-tags"/>
+        <SearchTags class="search-tags"  @searchTags="search" />
 
         <section>
             <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
@@ -29,7 +29,7 @@
         name: "search",
         data() {
             return {
-                project_list: null,
+                project_list: [],
                 cols: 3,
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
                 value: []
@@ -39,35 +39,11 @@
             SearchTags,
             SearchCard
         },
-        created() {
-            this.$on('SearchTags',(value) => {
-            this.value = value;
-            console.log(value);
-            this.search()
-            });
-        // SearchTags.$on('SearchTag', (value) => {
-        // this.value = value;
-        // });
-        },
-        // mounted(){
-        //     var tag_ids = [];
-        //     console.log(this.value);
-        //     for(var i=0;i<this.value.length;i++){
-        //         axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
-        //             .then(response => (
-        //                 console.log(response)
-        //                 //tag_ids.push(response.data.id)
-        //             ));
-        //     }
-        //     axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
-        //         .then(response => (
-        //             this.project_list = response.data
-        //     ));
-        // },
         methods:{
-            search(){
+            search(value){
             var tag_ids = [];
-            console.log(this.value);
+            this.value = value
+            console.log(value);
             for(var i=0;i<this.value.length;i++){
                 axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
                     .then(response => (

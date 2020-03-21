@@ -3,7 +3,7 @@
         <div>
             <h6>Search:</h6>
         </div>
-        <form class="form" method="SearchTag">
+        <div class="form" method="SearchTag">
             <div>
                 <b-form-group>
                     <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
@@ -35,7 +35,7 @@
             <div id="button">
                 <button class="btn btn-primary" @click="SearchTag"><font-awesome-icon :icon="['fa', 'search']" /></button>
             </div>
-        </form>
+        </div>
     </header>
 </template>
 
@@ -57,8 +57,8 @@
             }
         },
         methods:{
-            SearchTag: function(){
-                this.$emit('SearchTag', this.value);
+            SearchTag(){
+                this.$emit('searchTags', this.value);
             }
         }
     }
