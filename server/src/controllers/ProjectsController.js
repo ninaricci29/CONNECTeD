@@ -89,6 +89,21 @@ async getProjects(req, res) {
     }
   },
 
+  async getTag(req,res){
+    console.log('hi');
+    try {
+      const tag_id = await Tag.findOne({where:{
+        tag_name: req.query.tag
+      }})
+      res.send({tag_id})
+    } catch (error) {
+      console.log(error)
+      res.status(500).send({
+        error: 'An error has occurred trying to fetch the tag'
+      })
+    }
+  },
+
   async searchProject(req,res){
       try {
         const tags = []

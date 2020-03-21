@@ -3,7 +3,7 @@
         <div>
             <h6>Search:</h6>
         </div>
-        <form class="form">
+        <form class="form" method="SearchTag">
             <div>
                 <b-form-group>
                     <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
@@ -33,7 +33,7 @@
             </div>
 
             <div id="button">
-                <button class="btn btn-primary"><font-awesome-icon :icon="['fa', 'search']" /></button>
+                <button class="btn btn-primary" @click="SearchTag"><font-awesome-icon :icon="['fa', 'search']" /></button>
             </div>
         </form>
     </header>
@@ -54,6 +54,11 @@
         computed: {
             availableOptions() {
                 return this.options.filter(opt => this.value.indexOf(opt) === -1)
+            }
+        },
+        methods:{
+            SearchTag: function(){
+                this.$emit('SearchTag', this.value);
             }
         }
     }

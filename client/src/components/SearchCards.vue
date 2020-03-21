@@ -1,7 +1,8 @@
+
 <template>
     <div>
         <div class="card">
-            <img class="card-img" src="../assets/1.jpg" />
+            <img class="card-img" :src="picture_link" />
             <div class="abc">
 <!--                <b-dropdown size="sm" right text="Right align" variant="link" toggle-class="text-decoration-none" no-caret>-->
 <!--                    <template v-slot:button-content>-->
@@ -14,10 +15,10 @@
             <div class="card-body">
                 <div class="card-footer">
                     <p class="category text-muted">UI/UX</p>
-                    <h4 class="title">Project Name</h4>
+                    <h4 class="title">{{project_name}}</h4>
                     <p class="byline">by Dan Smith</p>
                     <p class="desc text-muted-2">
-                        Here is my project description.
+                        {{project_description}}
                     </p>
 
                 </div>
@@ -30,6 +31,7 @@
 <script>
     export default {
         name: 'projects',
+        props: ['project_name', 'project_description', 'project_id', 'picture_link']
     }
 </script>
 
