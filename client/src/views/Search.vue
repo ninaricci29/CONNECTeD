@@ -69,13 +69,13 @@
             var tag_ids = [];
             console.log(this.value);
             for(var i=0;i<this.value.length;i++){
-                axios.get('https://localhost:8081/connect/get-tag?tag='+this.value[i])
+                axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
                     .then(response => (
                         console.log(response),
                         tag_ids.push(response.data.id)
                     ));
             }
-            axios.get('https://localhost:8081/connect/search?tag_ids='+ tag_ids)
+            axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
                 .then(response => (
                     this.project_list = response.data
             ));
