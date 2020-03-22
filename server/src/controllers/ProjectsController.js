@@ -43,7 +43,7 @@ async getProjects(req, res) {
       error: 'an error has occurred trying to fetch projects'
     })
   }},
-
+  
   async addProject(req,res){
     try {
       if (req.file == null){
@@ -53,12 +53,19 @@ async getProjects(req, res) {
       }
       project = await Project.create(req.body);
       console.log(project)
-      const uid_pid = {
-        UserId: req.body.userid,
-        ProjectId: project.id
-      }
-      console.log(uid_pid.body)
-      await UsersProject.create(uid_pid)
+      lst1 = JSON.parse(req.body.collab)
+        for (var i = 0; i <lst1.length; i++){
+            user = await User.findOne({
+                where:{utorid:lst1[i]}
+            });
+            uid = user.id
+            const uid_pid = {
+                UserId: uid,
+                ProjectId: project.id
+            }
+            await UsersProject.create(uid_pid)
+        }
+      
       lst = JSON.parse(req.body.tags)
       for (var i = 0; i < lst.length; i++) {
            tag = await Tag.findOne({where: {
@@ -80,7 +87,7 @@ async getProjects(req, res) {
       })
     }
   },
-  
+
   async deleteProject(req,res){
     try{
       const project = await Project.findOne({where:{
