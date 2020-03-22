@@ -53,12 +53,19 @@ async getProjects(req, res) {
       }
       project = await Project.create(req.body);
       console.log(project)
-      const uid_pid = {
-        UserId: req.body.userid,
-        ProjectId: project.id
-      }
-      console.log(uid_pid.body)
-      await UsersProject.create(uid_pid)
+      lst1 = JSON.parse(req.body.collab)
+        for (var i = 0; i <lst1.length; i++){
+            user = await User.findOne({
+                where:{utorid:lst1[i]}
+            });
+            uid = user.id
+            const uid_pid = {
+                UserId: uid,
+                ProjectId: project.id
+            }
+            await UsersProject.create(uid_pid)
+        }
+      
       lst = JSON.parse(req.body.tags)
       for (var i = 0; i < lst.length; i++) {
            tag = await Tag.findOne({where: {
@@ -123,8 +130,10 @@ async getProjects(req, res) {
   async searchProject(req,res){
       try {
         const tags = []
-        for (var i=0;i<req.body.tag_ids.length;i++){
-          tags.push(req.body.tag_ids[i])
+        const leny = req.query.tag_ids.length
+        const listy = req.query.tag_ids.substring(0, leny)
+        for (var i=0;i<listy.length;i++){
+          tags.push(listy[i])
         }
         const project = await Project.findAll({ include: {
           model: Tag,
@@ -135,7 +144,7 @@ async getProjects(req, res) {
         res.send({project})
       } catch (error) {
           res.status(500).send({
-            error: 'Error'
+            error
           })
       }
   }
