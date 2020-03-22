@@ -41,16 +41,16 @@
             SearchCard
         },
         methods:{
-            search(value){
+            async search(value){
             this.value = value
             for(var i=0;i<this.value.length;i++){
-                axios.get('/connect/get-tag?tag='+this.value[i])
+                await axios.get('/connect/get-tag?tag='+this.value[i])
                     .then(response => (
                         this.tag_ids.push(response.data.tag_id.id)
                     ));
             }
             console.log(this.tag_ids);
-            axios.get('/connect/search?tag_ids=['+ this.tag_ids+"]")
+            axios.get('/connect/search-projects?tag_ids=['+ this.tag_ids+']')
                 .then(response => (
                     this.project_list = response.data.project
             ));

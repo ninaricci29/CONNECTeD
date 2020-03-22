@@ -12,7 +12,7 @@ module.exports = (app, upload) => {
   app.post('/connect/post-projects',upload.single('picture'), ProjectController.addProject);
 
   app.post('/connect/update-projects', upload.single('picture'), ProjectController.updateProject); 
-  app.get('/connect/search',ProjectController.searchProject);
+  app.get('/connect/search-projects',ProjectController.searchProject);
   app.get('/connect/project', ProjectController.getProjects);
   app.get('/connect/get-tag',ProjectController.getTag);
 }
