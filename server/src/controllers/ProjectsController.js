@@ -43,7 +43,7 @@ async getProjects(req, res) {
       error: 'an error has occurred trying to fetch projects'
     })
   }},
-
+  
   async addProject(req,res){
     try {
       if (req.file == null){
@@ -87,7 +87,7 @@ async getProjects(req, res) {
       })
     }
   },
-  
+
   async deleteProject(req,res){
     try{
       const project = await Project.findOne({where:{
@@ -130,10 +130,8 @@ async getProjects(req, res) {
   async searchProject(req,res){
       try {
         const tags = []
-        const leny = req.query.tag_ids.length
-        const listy = req.query.tag_ids.substring(0, leny)
-        for (var i=0;i<listy.length;i++){
-          tags.push(listy[i])
+        for (var i=0;i<req.body.tag_ids.length;i++){
+          tags.push(req.body.tag_ids[i])
         }
         const project = await Project.findAll({ include: {
           model: Tag,
@@ -144,7 +142,7 @@ async getProjects(req, res) {
         res.send({project})
       } catch (error) {
           res.status(500).send({
-            error
+            error: 'Error'
           })
       }
   }
