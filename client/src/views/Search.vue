@@ -42,27 +42,16 @@
         },
         methods:{
             search(value){
-            //const tag_ids = []
             this.value = value
-            //console.log(this.value);
             for(var i=0;i<this.value.length;i++){
-                //console.log(this.value[i]);
                 axios.get('/connect/get-tag?tag='+this.value[i])
                     .then(response => (
-                        console.log(response),
-                        this.tag_ids.push(response.data.tag_id.id),
-                        console.log(response.data.tag_id.id)
-                        //console.log(this.tag_ids.push(4))
-                        //console.log(tag_ids.concat([4]))
-                        //console.log(tag_ids.concat([5]))
-                        //console.log(tag_ids)
+                        this.tag_ids.push(response.data.tag_id.id)
                     ));
             }
             console.log(this.tag_ids);
             axios.get('/connect/search?tag_ids=['+ this.tag_ids+"]")
                 .then(response => (
-                    // console.log(tag_ids),
-                    console.log(response.data),
                     this.project_list = response.data.project
             ));
             console.log(this.project_list);
