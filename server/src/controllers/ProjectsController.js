@@ -106,16 +106,13 @@ async getProjects(req, res) {
 
   async searchProject(req,res){
       try {
-        const tags = []
-        for (var i=0;i<req.body.tag_ids.length;i++){
-          tags.push(req.body.tag_ids[i])
-        }
+        const tag_ids = JSON.parse(req.query.tag_ids)
         const project = await Project.findAll({ include: {
-          model: Tag,
-          where: {
-            id: tags
-          }
-        }});
+            model: Tag,
+            where: {
+              id: tag_ids
+            }
+          }});
         res.send({project})
       } catch (error) {
           res.status(500).send({

@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <SearchTags class="search-tags"/>
+        <SearchTags class="search-tags"  @searchTags="search" />
 
         <section>
             <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
@@ -29,56 +29,44 @@
         name: "search",
         data() {
             return {
-                project_list: null,
+                project_list: [],
                 cols: 3,
                 options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
-                value: []
+                value: [],
+                tag_ids: []
             }
         },
         components: {
             SearchTags,
             SearchCard
         },
-        created() {
-            this.$on('SearchTags',(value) => {
-            this.value = value;
-            console.log(value);
-            this.search()
-            });
-        // SearchTags.$on('SearchTag', (value) => {
-        // this.value = value;
-        // });
-        },
-        // mounted(){
-        //     var tag_ids = [];
-        //     console.log(this.value);
-        //     for(var i=0;i<this.value.length;i++){
-        //         axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
-        //             .then(response => (
-        //                 console.log(response)
-        //                 //tag_ids.push(response.data.id)
-        //             ));
-        //     }
-        //     axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
-        //         .then(response => (
-        //             this.project_list = response.data
-        //     ));
-        // },
         methods:{
-            search(){
-            var tag_ids = [];
-            console.log(this.value);
+            search(value){
+            //const tag_ids = []
+            this.value = value
+            //console.log(this.value);
             for(var i=0;i<this.value.length;i++){
-                axios.get('http://localhost:8081/connect/get-tag?tag='+this.value[i])
+                //console.log(this.value[i]);
+                axios.get('/connect/get-tag?tag='+this.value[i])
                     .then(response => (
                         console.log(response),
-                        tag_ids.push(response.data.id)
+                        this.tag_ids.push(response.data.tag_id.id),
+                        console.log(response.data.tag_id.id)
+                        //console.log(this.tag_ids.push(4))
+                        //console.log(tag_ids.concat([4]))
+                        //console.log(tag_ids.concat([5]))
+                        //console.log(tag_ids)
                     ));
             }
-            axios.get('http://localhost:8081/connect/search?tag_ids='+ tag_ids)
+            console.log(this.tag_ids);
+            axios.get('/connect/search?tag_ids=['+ this.tag_ids+"]")
                 .then(response => (
-                    this.project_list = response.data
+                    // console.log(tag_ids),
+                    console.log(response.data),
+                    this.project_list = response.data.project
             ));
+            console.log(this.project_list);
+            this.tag_ids = [];
             },
             rowCount() {
                 const quotient = Math.floor(this.project_list.length / this.cols);
@@ -102,11 +90,9 @@
     * {
         box-sizing: border-box;
     }
-
     li {
         list-style-type: none;
     }
-
     ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
@@ -114,9 +100,7 @@
         margin: 0px;
         padding: 0px;
     }
-
     .search-cards {
         padding: 1rem 0 1rem 0;
     }
-
 </style>

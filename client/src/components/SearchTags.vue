@@ -3,7 +3,7 @@
         <div>
             <h6>Search:</h6>
         </div>
-        <form class="form" method="SearchTag">
+        <div class="form" method="SearchTag">
             <div>
                 <b-form-group>
                     <b-form-tags v-model="value" size="sm" add-on-change no-outer-focus class="mb-2 outer">
@@ -35,7 +35,7 @@
             <div id="button">
                 <button class="btn btn-primary" @click="SearchTag"><font-awesome-icon :icon="['fa', 'search']" /></button>
             </div>
-        </form>
+        </div>
     </header>
 </template>
 
@@ -57,8 +57,8 @@
             }
         },
         methods:{
-            SearchTag: function(){
-                this.$emit('SearchTag', this.value);
+            SearchTag(){
+                this.$emit('searchTags', this.value);
             }
         }
     }
@@ -71,65 +71,51 @@
         color: black;
         text-align: center;
     }
-
     body h6{
         font-weight: bold;
         font-size: 20px;
         padding-top: 10px;
     }
-
     header {
         padding-top: 40px;
         -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
     }
-
     .form{
         display: inline-block;
     }
-
     .form-control{
         width: 500px;
         border-color: black;
     }
-
     #button{
         padding-bottom: 20px;
         padding-top: 20px;
     }
-
     .btn{
         background-color: #2e2e2e;
     }
-
     .btn-primary{
         border-color: white;
         background-color: #2e2e2e;
     }
-
     .btn:hover{
         background-color: white;
         color: black;
         border-color: black;
     }
-
     .star{
         color: red;
     }
-
     .abc {
         display: inline;
-
     }
-
     .abc:not(:first-child){
         padding-left: 10px;
     }
-
     .outer {
         border-color: white;
         padding: 0;
     }
-
     .outer span {
         background-color: lightslategrey;
         border-color: black;
