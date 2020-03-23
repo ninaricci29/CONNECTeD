@@ -13,9 +13,7 @@
 
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted">UI/UX</p>
           <h4 class="title">{{ project_name }}</h4>
-          <p class="byline">by Dan Smith</p>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
@@ -65,6 +63,7 @@ body {
 .card .card-img {
   filter: grayscale(100%);
   width: 100%;
+  height: 400px;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 .card:hover .abc {

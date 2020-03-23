@@ -2,7 +2,7 @@
   <div class="search">
     <SearchTags class="search-tags" @searchTags="search" />
 
-    <section>
+    <section class="container">
       <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
           <li class="description" v-for="j in cols" v-bind:key="j">
@@ -53,11 +53,11 @@ export default {
           .get("/connect/get-tag?tag=" + this.value[i])
           .then(response => this.tag_ids.push(response.data.tag_id.id));
       }
-      
+
       axios
         .get("/connect/search-projects?tag_ids=[" + this.tag_ids + "]")
         .then(response => (this.project_list = response.data.project));
-      
+
       this.tag_ids = [];
     },
     rowCount() {
@@ -87,12 +87,16 @@ li {
 }
 ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  grid-gap: 5px;
   margin: 0px;
   padding: 0px;
 }
 .search-cards {
   padding: 1rem 0 1rem 0;
+}
+
+.container {
+  padding: 20px 40px 0 40px;
 }
 </style>
