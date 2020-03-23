@@ -8,14 +8,14 @@
                 <label>Project Name</label>
                 <span class="star">*</span>
 
-                <input type="Project-Name" v-model= "name" class="form-control active">
+                <input type="Project-Name" v-model="name" class="form-control active">
 
             </div>
             <div class="form-group">
                 <label>Description</label>
                 <span class="star">*</span>
 
-                <textarea type="Description" v-model= "description" class="form-control active description" placeholder="This project is.."
+                <textarea type="Description" v-model="description" class="form-control active description" placeholder="This project is.."
                           rows="4" cols="50" name="comment"/>
                 <small id="bio-type" class="form-text text-muted">Describe your project!</small>
             </div>
@@ -48,6 +48,20 @@
                 </b-form-group>
             </div>
 
+            <div>
+                <label>Collaborators:</label>
+                <b-form-tags
+                        input-id="tags-separators"
+                        v-model="value2"
+                        separator=" ,;"
+                        placeholder="@NinaRichie"
+                        no-add-on-enter
+                        remove-on-delete
+                        class="mb-2"
+                        :tag-validator="tagValidator"
+                ></b-form-tags>
+            </div>
+
             <div class="form-group">
                 <label>Project Picture </label>
                 <br/>
@@ -62,6 +76,7 @@
 </template>
 
 <script>
+
     import axios from 'axios'
     export default {
         name:"addProject",
@@ -69,8 +84,9 @@
             return {
                 name: '',
                 description: '',
-                options: ['Computer Science', 'Java', 'A.I.', 'Machine Learning', 'Python'],
+                options: [],
                 value: [],
+                value2: ['ninaricci'],
                 file:'',
                 error: ''
             }
@@ -80,16 +96,29 @@
                 return this.options.filter(opt => this.value.indexOf(opt) === -1)
             }
         },
+
+        mounted() {
+            axios.get("/connect/tags").then(response => {
+                for (var i = 0; i < response.data.length; i++) {
+                    this.options.push(response.data[i].tag_name)
+                }
+            })},
+
         methods:{
+            tagValidator(tag) {
+                return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6
+            },
+
             addProject(){
                 var form = new FormData();
                 form.append('picture', this.file);
                 form.append('userid', 1);
                 form.append('desc', this.description);
                 form.append('project_name', this.name);
+                form.append('tags', JSON.stringify(this.value));
                 axios.post('/connect/post-projects', form , {headers: {'Content-Type': 'multipart/form-data'}})
                 .then(response => {
-                        this.projectname= response.data.project_name;
+                        this.project_name= response.data.project_name;
                         this.desc= response.data.desc;
                     })
                     .catch(error => {
@@ -117,7 +146,7 @@
     body h6{
         font-weight: bold;
         font-size: 20px;
-        padding-top: 10px;
+        padding-top: 40px;
     }
     .form{
         display: inline-block;

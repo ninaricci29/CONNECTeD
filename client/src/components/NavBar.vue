@@ -18,7 +18,7 @@
                 <a href="#">CONNECTeD</a>
             </div>
 
-            <div class="h2 mb-2 gear-wheel">
+            <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
                 <b-link class="update-button" href="/updateprofile/:id">
                     <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
                 </b-link>
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex' 
+
     export default {
         props: ['navLinks'],
         methods: {
@@ -47,7 +49,12 @@
                 document.getElementById("nav").checked = false;
 
             }
-        }
+        },
+        computed: {
+            ...mapState([
+                'isLoggedIn',
+            ])
+        },
 
     }
 

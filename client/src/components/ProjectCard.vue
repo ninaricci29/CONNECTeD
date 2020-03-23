@@ -7,8 +7,10 @@
                     <template v-slot:button-content>
                         <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg"/>
                     </template>
+
                     <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                    <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+
                 </b-dropdown>
             </div>
 
@@ -28,6 +30,7 @@
 
 
 <script>
+import axios from "axios"
     export default {
         name: 'projects',
         props: ['project_name', 'project_description', 'project_id', 'picture_link'],
@@ -35,8 +38,16 @@
             updateLink: function () {
                 return '/connect/update-projects/' + this.project_id
             }
-        }
+        },
+        methods:{
+            deleteProject(){
+                axios.post('/connect/delete-project',{
+                    id: this.project_id
+                })
+        },
     }
+    }
+
 </script>
 
 <style scoped>
@@ -53,7 +64,7 @@
     }
 
     .efg {
-        color: white;
+        color: black;
     }
 
     .text-muted {
