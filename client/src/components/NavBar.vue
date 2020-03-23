@@ -31,9 +31,9 @@
             v-for="(link, index) in navLinks"
             :key="index"
           >
-            <router-link :to="link.path">
+            <a :href="link.path">
               {{ link.text }}
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
