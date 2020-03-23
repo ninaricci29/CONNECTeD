@@ -69,6 +69,7 @@
                 }
             });
         }
+    }
 </script>
 
 <style scoped>

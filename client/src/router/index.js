@@ -48,13 +48,13 @@ const routes = [
             import(/* webpackChunkName: "register"*/ "../components/NewUserForm.vue")
     },
     {
-        path: "/update-projects/:id",
+        path: "/projects/:id/update",
         name: "updateProjects",
         component: () =>
             import(/* webpackChunkName: "register"*/ "../components/UpdateProjects.vue")
     },
     {
-        path: "/updateprofile/:id",
+        path: "/profile/:id/edit",
         name: "UpdateProfile",
         component: () =>
             import(/* webpackChunkName: "updateprofile"*/ "../components/UpdateProfile.vue")
@@ -82,6 +82,11 @@ const routes = [
     {
         path: "/404",
         name: "404",
+        component: () =>
+            import(/* webpackChunkName: "log-in" */ "../components/404.vue")
+    },
+    {
+        path: "*",
         component: () =>
             import(/* webpackChunkName: "log-in" */ "../components/404.vue")
     }
