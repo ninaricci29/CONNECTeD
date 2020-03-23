@@ -18,6 +18,8 @@ module.exports = (app, upload) => {
   app.post('/connect/update-projects', upload.single('picture'), ProjectController.updateProject); 
   app.get('/connect/search-projects',ProjectController.searchProject);
   app.get('/connect/project', ProjectController.getProjects);
+  app.get('/connect/get-tag',ProjectController.getTag);
   app.get('/connect/profile/:id',RedirectController.profile_redirect);
   app.post('/connect/delete-project', ProjectController.deleteProject);
+
 }

@@ -76,8 +76,7 @@
 </template>
 
 <script>
-
-    import axios from 'axios'
+import axios from "axios"
     export default {
         name:"addProject",
         data() {
@@ -98,11 +97,12 @@
         },
 
         mounted() {
-            axios.get("/connect/tags").then(response => {
+                axios.get("/connect/tags").then(response => {
                 for (var i = 0; i < response.data.length; i++) {
                     this.options.push(response.data[i].tag_name)
                 }
-            })},
+                })
+            },
 
         methods:{
             tagValidator(tag) {

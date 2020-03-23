@@ -76,7 +76,8 @@
                     id: id
                 }).then(() => (
                     this.project_list = this.project_list.filter(function(project){
-                        return project.id != id })
+                        return project.id != id
+                    })
                 ));
             }
         }
