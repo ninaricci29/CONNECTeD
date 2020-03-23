@@ -3,7 +3,7 @@
         <div>
             <h6>Post a new project!</h6>
         </div>
-        <form class="form" method="addProject">
+        <div class="form" method="addProject">
             <div class="form-group">
                 <label>Project Name</label>
                 <span class="star">*</span>
@@ -54,7 +54,7 @@
                         input-id="tags-separators"
                         v-model="value2"
                         separator=" ,;"
-                        placeholder="@NinaRichie"
+                        placeholder="utorid"
                         no-add-on-enter
                         remove-on-delete
                         class="mb-2"
@@ -71,13 +71,12 @@
             <div id="button">
                 <button type="log-in-via-utorid" class="btn btn-primary" @click="addProject">PUBLISH</button>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
 <script>
-
-    import axios from 'axios'
+import axios from "axios"
     export default {
         name:"addProject",
         data() {
@@ -86,7 +85,7 @@
                 description: '',
                 options: [],
                 value: [],
-                value2: ['ninaricci'],
+                value2: [],
                 file:'',
                 error: ''
             }
@@ -98,11 +97,12 @@
         },
 
         mounted() {
-            axios.get("/connect/tags").then(response => {
+                axios.get("/connect/tags").then(response => {
                 for (var i = 0; i < response.data.length; i++) {
                     this.options.push(response.data[i].tag_name)
                 }
-            })},
+                })
+            },
 
         methods:{
             tagValidator(tag) {

@@ -19,7 +19,7 @@
             </div>
 
             <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
-                <b-link class="update-button" href="/updateprofile/:id">
+                <b-link class="update-button" href="/profile/:id/edit">
                     <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
                 </b-link>
 
