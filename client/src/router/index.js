@@ -103,6 +103,7 @@ const router = new VueRouter({
   routes
 });
 
+
 router.beforeEach((to, from, next) => {
   store.dispatch("setUser");
   next();
