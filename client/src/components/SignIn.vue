@@ -36,7 +36,7 @@ a:hover {
   background-color: white;
   color: black;
   border-color: black;
-  border-style:solid;
+  border-style: solid;
 }
 .brand {
   font-weight: bolder;
