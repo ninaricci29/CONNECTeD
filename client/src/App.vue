@@ -20,19 +20,19 @@ export default {
     navLinks: [
       {
         text: "Home",
-        path: "/home"
+        path: "/connect/home"
       },
       {
         text: "Profile",
-        path: "/profile/1"
+        path: "/connect/profile/1"
       },
       {
         text: "Search",
-        path: "/search"
+        path: "/connect/search"
       },
       {
         text: "Log In",
-        path: "/log-in"
+        path: "/connect/log-in"
       }
     ]
   })
