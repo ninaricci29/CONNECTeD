@@ -14,9 +14,13 @@
           <template v-slot:button-content>
             <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg" />
           </template>
-
-          <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
-          <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+          <b-button v-if="isLoggedIn() && user.id==req.params.id && user!=null" class="btn-sm">
+            <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
+          </b-button>
+          <b-button v-if="isLoggedIn() && user.id==req.params.id && user!=null" class="btn-sm">
+            <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+          </b-button>
+            
         </b-dropdown>
       </div>
 
