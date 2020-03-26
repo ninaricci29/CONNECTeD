@@ -99,28 +99,26 @@ export default {
     return {
       name: "",
       description: "",
-      options: [
-        "Computer Science",
-        "Java",
-        "A.I.",
-        "Machine Learning",
-        "Python"
-      ],
+      options: [],
       value: [],
       file: "",
       error: ""
     };
   },
-  mounted() {
+  async mounted() {
+    await axios.get("/connect/tags").then(response => {
+      for (var i = 0; i < response.data.length; i++) {
+        this.options.push(response.data[i].tag_name);
+      }
+    });
     this.id = this.$route.params.id;
-    axios
-      .get("/connect/getproject?id=" + this.id)
-      .then(
-        response => (
-          (this.name = response.data.project_name),
-          (this.description = response.data.desc)
-        )
-      );
+    axios.get("/connect/getproject?id=" + this.id).then(response => {
+      this.name = response.data.project_name;
+      this.description = response.data.desc;
+      for (var i = 0; i < response.data.Tags.length; i++) {
+        this.value.push(response.data.Tags[i].tag_name);
+      }
+    });
   },
   computed: {
     availableOptions() {
@@ -134,6 +132,7 @@ export default {
       form.append("id", this.$route.params.id);
       form.append("desc", this.description);
       form.append("project_name", this.name);
+      form.append("tags", JSON.stringify(this.value));
       axios
         .post("/connect/update-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -142,6 +141,8 @@ export default {
           this.id = response.data.id;
           this.projectname = response.data.project_name;
           this.desc = response.data.desc;
+          const userId = this.$store.state.user.id;
+          this.$router.push({ path: `/profile/${userId}` });
         })
         .catch(error => {
           this.error = error;

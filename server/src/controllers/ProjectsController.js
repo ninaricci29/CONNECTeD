@@ -11,6 +11,9 @@ module.exports = {
           project = await Project.findOne({
             where: {
               id: req.query.id
+            },
+            include: {
+              model: Tag
             }
           })
           res.send(project);
@@ -114,6 +117,13 @@ async getProjects(req, res) {
       })
       project.project_name = req.body.project_name;
       project.desc = req.body.desc;
+      lst = JSON.parse(req.body.tags)
+      tags = await Tag.findAll({
+        where: {
+          tag_name: lst
+        }
+      })
+      project.setTags(tags)
       if (req.file != null){
         project.picture = '/connect/images/' + req.file.filename
       }

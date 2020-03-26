@@ -53,11 +53,11 @@ export default {
           .get("/connect/get-tag?tag=" + this.value[i])
           .then(response => this.tag_ids.push(response.data.tag_id.id));
       }
-      
+
       axios
         .get("/connect/search-projects?tag_ids=[" + this.tag_ids + "]")
         .then(response => (this.project_list = response.data.project));
-      
+
       this.tag_ids = [];
     },
     rowCount() {
