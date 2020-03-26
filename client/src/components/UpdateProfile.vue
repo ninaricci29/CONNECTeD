@@ -193,7 +193,7 @@ export default {
           this.message = "Profile Updated Successfully!";
 
           const userId = this.$store.state.user.id;
-          this.$router.push({ path: `/connect/profile/${userId}` });;
+          this.$router.push({ path: `/profile/${userId}` });;
 
         })
         .catch(error => {

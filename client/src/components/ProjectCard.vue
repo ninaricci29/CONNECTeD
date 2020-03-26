@@ -14,10 +14,10 @@
           <template v-slot:button-content>
             <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg" />
           </template>
-          <b-button v-if="isLoggedIn() && user.id == req.params.id && user!=null" class="btn-sm">
+          <b-button v-if="isLoggedIn()" class="btn-sm">
             <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
           </b-button>
-          <b-button v-if="isLoggedIn() && user.id == req.params.id && user!=null" class="btn-sm">
+          <b-button v-if="isLoggedIn()" class="btn-sm">
             <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
           </b-button>
 
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     isLoggedIn() {
-      return this.$store.state.user.utorid == this.utorid;
+      return this.$store.state.user.utorid == this.utorid && this.$store.state.user.id == req.params.id && this.$store.state.user!=null;
     },
     deleteProject() {
       this.$emit("delete", this.project_id);
