@@ -191,10 +191,14 @@ export default {
           this.bio = response.data.bio;
           this.yos = response.data.year;
           this.message = "Profile Updated Successfully!";
+
+          const userId = this.$store.state.user.id;
+          this.$router.push({ path: `/profile/${userId}` });;
+
         })
         .catch(error => {
           this.error = error;
-          this.message = "Opps something went wrong.";
+          this.message = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
