@@ -68,6 +68,7 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
+        <p>{{ error }}</p>
       </div>
 
       <div id="button">
@@ -193,8 +194,7 @@ export default {
           this.message = "Profile Updated Successfully!";
 
           const userId = this.$store.state.user.id;
-          this.$router.push({ path: `/profile/${userId}` });;
-
+          this.$router.push({ path: `/profile/${userId}` });
         })
         .catch(error => {
           this.error = error;
@@ -202,7 +202,16 @@ export default {
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };

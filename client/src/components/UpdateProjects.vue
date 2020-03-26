@@ -28,7 +28,7 @@
         >
       </div>
 
-      <div>
+      <div class="form group">
         <b-form-group label="select your tags:">
           <b-form-tags
             v-model="value"
@@ -76,6 +76,7 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
+        <p>{{ error }}</p>
       </div>
 
       <div id="button">
@@ -149,7 +150,16 @@ export default {
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };
@@ -225,8 +235,5 @@ body h6 {
   background-color: lightslategrey;
   border-color: black;
   color: white;
-}
-
-.description {
 }
 </style>

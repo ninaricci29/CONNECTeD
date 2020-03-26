@@ -29,10 +29,10 @@
           </b-col>
 
           <b-col class="sec-col">
-<!--            <b-row>-->
-<!--              <li class="abc">Avg. Rating:</li>-->
-<!--              <li class="efg"><font-awesome-icon :icon="['fas', 'star']" /></li>-->
-<!--            </b-row>-->
+            <!--            <b-row>-->
+            <!--              <li class="abc">Avg. Rating:</li>-->
+            <!--              <li class="efg"><font-awesome-icon :icon="['fas', 'star']" /></li>-->
+            <!--            </b-row>-->
 
             <b-row>
               <li class="abc">Year of Study:</li>
