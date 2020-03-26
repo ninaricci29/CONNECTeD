@@ -60,6 +60,21 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+                type="website"
+                class="form-control active"
+                placeholder="https://myWebsite.ca"
+                maxlength="100"
+                v-model="website"
+        />
+        <small id="website-type" class="form-text text-muted"
+        >Link your Github!</small
+        >
+      </div>
+
+      <div class="form-group">
         <label>Profile Picture </label>
         <br />
         <input
@@ -146,6 +161,7 @@ export default {
       last_name: "",
       major: "",
       bio: "",
+      website: "",
       yos: "",
       error: "",
       file: "",
@@ -162,7 +178,8 @@ export default {
           (this.last_name = response.data.last_name),
           (this.bio = response.data.bio),
           (this.yos = response.data.year),
-          (this.major = response.data.major)
+          (this.major = response.data.major),
+          (this.website = response.data.website)
         )
       );
   },
@@ -178,6 +195,7 @@ export default {
       form.append("bio", this.bio);
       form.append("major", this.major);
       form.append("year", this.yos);
+      form.append("website", this.website);
       form.append("profile_picture", this.file);
       axios
         .post("/connect/updateprofile", form, {
@@ -190,6 +208,7 @@ export default {
           this.major = response.data.major;
           this.bio = response.data.bio;
           this.yos = response.data.year;
+          this.website = response.data.website;
           this.message = "Profile Updated Successfully!";
         })
         .catch(error => {

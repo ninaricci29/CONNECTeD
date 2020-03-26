@@ -90,6 +90,7 @@ module.exports = {
       user.major=req.body.major;
       user.year=req.body.year;
       user.description=req.body.description;
+      user.website=req.body.website;
       if (req.file != null){
         user.profile_picture = '/connect/images/' + req.file.filename
       }
