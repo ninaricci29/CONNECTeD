@@ -22,9 +22,9 @@
         name: 'signIn'
     }
     /*
- * Very quick, very rough recreation of the JamHot 'Uncover Edinburgh' effect
- * https://www.thisisjamhot.com/work/uncover-edinburgh
- */
+     * Very quick, very rough recreation of the JamHot 'Uncover Edinburgh' effect
+     * https://www.thisisjamhot.com/work/uncover-edinburgh
+     */
 
     let wrappers, tl;
 
@@ -212,10 +212,7 @@
         margin-right: 0;
     }
     /*FROM CODEPEN*/
-    body{
-        color: black;
-        text-align: center;
-    }
+
     .brand{
         font-weight: bolder;
         font-size: 60px;
