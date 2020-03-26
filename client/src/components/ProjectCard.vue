@@ -27,6 +27,13 @@
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
+          <br /><br />
+          <p class="desc contributors">CONTRIBUTORS</p>
+          <div v-for="user in users" v-bind:key="user.id">
+            <a class="desc" :href="profilePath(user.id)">
+              {{ user.first_name + " " + user.last_name }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -36,7 +43,13 @@
 <script>
 export default {
   name: "projects",
-  props: ["project_name", "project_description", "project_id", "picture_link"],
+  props: [
+    "project_name",
+    "project_description",
+    "project_id",
+    "picture_link",
+    "users"
+  ],
   computed: {
     updateLink: function() {
       return "/connect/projects/" + this.project_id + "/update";
@@ -45,6 +58,9 @@ export default {
   methods: {
     deleteProject() {
       this.$emit("delete", this.project_id);
+    },
+    profilePath(id) {
+      return "/connect/profile/" + id;
     }
   }
 };
@@ -62,7 +78,10 @@ body {
   padding: 0 0 0 0;
   opacity: 0;
 }
-
+a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
 .efg {
   color: black;
 }

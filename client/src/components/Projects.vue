@@ -19,6 +19,7 @@
               v-bind:project_description="getProject(i, j).desc"
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
+              v-bind:users="getProject(i, j).Users"
             />
           </li>
         </ul>

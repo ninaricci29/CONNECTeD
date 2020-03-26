@@ -13,12 +13,17 @@
 
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted">UI/UX</p>
           <h4 class="title">{{ project_name }}</h4>
-          <p class="byline">by Dan Smith</p>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
+          <br /><br />
+          <p class="desc contributors">CONTRIBUTORS</p>
+          <div v-for="user in users" v-bind:key="user.id">
+            <a class="desc" :href="profilePath(user.id)">
+              {{ user.first_name + " " + user.last_name }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -28,7 +33,18 @@
 <script>
 export default {
   name: "projects",
-  props: ["project_name", "project_description", "project_id", "picture_link"]
+  props: [
+    "project_name",
+    "project_description",
+    "project_id",
+    "picture_link",
+    "users"
+  ],
+  methods: {
+    profilePath(id) {
+      return "/connect/profile/" + id;
+    }
+  }
 };
 </script>
 
@@ -43,6 +59,11 @@ body {
   padding: 0 0 0 0;
   opacity: 0;
 }
+a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
 .efg {
   color: white;
 }
@@ -65,6 +86,7 @@ body {
 .card .card-img {
   filter: grayscale(100%);
   width: 100%;
+  height: 400px;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 .card:hover .abc {
@@ -110,6 +132,7 @@ body {
 .card .title {
   font-size: 1.1rem;
 }
+
 .card .byline {
   font-size: 0.8rem;
   padding: 0 0 0 0;

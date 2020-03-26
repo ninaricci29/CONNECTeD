@@ -2,7 +2,7 @@
   <div class="search">
     <SearchTags class="search-tags" @searchTags="search" />
 
-    <section>
+    <section class="container">
       <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
           <li class="description" v-for="j in cols" v-bind:key="j">
@@ -12,6 +12,7 @@
               v-bind:project_description="getProject(i, j).desc"
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
+              v-bind:users="getProject(i, j).Users"
             />
           </li>
         </ul>
@@ -87,12 +88,16 @@ li {
 }
 ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  grid-gap: 5px;
   margin: 0px;
   padding: 0px;
 }
 .search-cards {
   padding: 1rem 0 1rem 0;
+}
+
+.container {
+  padding: 20px 40px 0 40px;
 }
 </style>

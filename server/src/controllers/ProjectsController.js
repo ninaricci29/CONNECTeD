@@ -37,6 +37,9 @@ async getProjects(req, res) {
     projects = await Project.findAll({
           where: {
             id: projects_list
+          }, 
+          include: {
+            model:User
           }
         })
     res.send(projects);
@@ -155,12 +158,15 @@ async getProjects(req, res) {
   async searchProject(req,res){
       try {
         const tag_ids = JSON.parse(req.query.tag_ids)
-        const project = await Project.findAll({ include: {
+        const project = await Project.findAll({ include: [{
             model: Tag,
             where: {
               id: tag_ids
             }
-          }});
+          },
+          {
+            model:User,
+          }]});
         res.send({project})
       } catch (error) {
           res.status(500).send({
