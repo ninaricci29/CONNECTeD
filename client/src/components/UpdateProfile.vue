@@ -58,6 +58,44 @@
           >Describe yourself!</small
         >
       </div>
+      <div>
+        <b-form-group label="select your tags:">
+          <b-form-tags
+            v-model="value"
+            size="sm"
+            add-on-change
+            no-outer-focus
+            class="mb-2 outer"
+          >
+            <template
+              v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }"
+            >
+              <ul v-if="tags.length > 0" class="list-inline">
+                <li v-for="tag in tags" :key="tag" class="abc">
+                  <b-form-tag
+                    @remove="removeTag(tag)"
+                    :title="tag"
+                    :disabled="disabled"
+                    variant="info"
+                    >{{ tag }}</b-form-tag
+                  >
+                </li>
+              </ul>
+              <b-form-select
+                class="form-control abc"
+                v-bind="inputAttrs"
+                v-on="inputHandlers"
+                :disabled="disabled || availableOptions.length === 0"
+                :options="availableOptions"
+              >
+                <template v-slot:first>
+                  <option disabled value="">Choose a tag...</option>
+                </template>
+              </b-form-select>
+            </template>
+          </b-form-tags>
+        </b-form-group>
+      </div>
 
       <div class="form-group">
         <label>Profile Picture </label>
@@ -82,6 +120,97 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+import AuthenticationService from "@/services/AuthenticationService";
+
+export default {
+  name: "update",
+  data() {
+    return {
+      first_name: "",
+      last_name: "",
+      major: "",
+      bio: "",
+      yos: "",
+      error: "",
+      file: "",
+      message: "",
+      options: [],
+      value: []
+    };
+  },
+  computed: {
+    availableOptions() {
+      return this.options.filter(opt => this.value.indexOf(opt) === -1);
+    }
+  },
+  async mounted() {
+    await axios.get("/connect/tags").then(response => {
+      for (var i = 0; i < response.data.length; i++) {
+        this.options.push(response.data[i].tag_name);
+      }
+    });
+
+    this.id = this.$route.params.id;
+    axios
+      .get("/connect/profile_info?id=" + this.id)
+      .then(
+        response => {
+          this.first_name = response.data.first_name
+          this.last_name = response.data.last_name
+          this.bio = response.data.bio
+          this.yos = response.data.year
+          this.major = response.data.major
+          for (var i = 0; i < response.data.Tags.length; i++) {
+            this.value.push(response.data.Tags[i].tag_name);
+          }
+        }
+      );
+  },
+
+  methods: {
+    update() {
+      // The url for the post request has
+      // to be the url to the update page we need to make.
+      var form = new FormData();
+      form.append("utorid", AuthenticationService.getUtorid());
+      form.append("first_name", this.first_name);
+      form.append("last_name", this.last_name);
+      form.append("bio", this.bio);
+      form.append("major", this.major);
+      form.append("year", this.yos);
+      form.append("tags", JSON.stringify(this.value));
+      form.append("profile_picture", this.file);
+      axios
+        .post("/connect/updateprofile", form, {
+          headers: { "Content-Type": "multipart/form-data" }
+        })
+        .then(response => {
+          this.id = response.data.id;
+          this.first_name = response.data.first_name;
+          this.last_name = response.data.last_name;
+          this.major = response.data.major;
+          this.bio = response.data.bio;
+          this.yos = response.data.year;
+          this.message = "Profile Updated Successfully!";
+
+          const userId = this.$store.state.user.id;
+          this.$router.push({ path: `/profile/${userId}` });;
+
+        })
+        .catch(error => {
+          this.error = error;
+          this.message = "Something went wrong, please try again shortly.";
+        });
+    },
+    handleFileUpload() {
+      this.file = this.$refs.file.files[0];
+    }
+  }
+};
+</script>
 
 <style scoped>
 body {
@@ -132,78 +261,21 @@ body h6 {
   color: black;
   border-color: black;
 }
+.abc {
+  display: inline;
+}
+.abc:not(:first-child) {
+  padding-left: 10px;
+}
+
+.outer {
+  border-color: white;
+  padding: 0;
+}
+
+.outer span {
+  background-color: lightslategrey;
+  border-color: black;
+  color: white;
+}
 </style>
-
-<script>
-import axios from "axios";
-import AuthenticationService from "@/services/AuthenticationService";
-
-export default {
-  name: "update",
-  data() {
-    return {
-      first_name: "",
-      last_name: "",
-      major: "",
-      bio: "",
-      yos: "",
-      error: "",
-      file: "",
-      message: ""
-    };
-  },
-  mounted() {
-    this.id = this.$route.params.id;
-    axios
-      .get("/connect/profile_info?id=" + this.id)
-      .then(
-        response => (
-          (this.first_name = response.data.first_name),
-          (this.last_name = response.data.last_name),
-          (this.bio = response.data.bio),
-          (this.yos = response.data.year),
-          (this.major = response.data.major)
-        )
-      );
-  },
-
-  methods: {
-    update() {
-      // The url for the post request has
-      // to be the url to the update page we need to make.
-      var form = new FormData();
-      form.append("utorid", AuthenticationService.getUtorid());
-      form.append("first_name", this.first_name);
-      form.append("last_name", this.last_name);
-      form.append("bio", this.bio);
-      form.append("major", this.major);
-      form.append("year", this.yos);
-      form.append("profile_picture", this.file);
-      axios
-        .post("/connect/updateprofile", form, {
-          headers: { "Content-Type": "multipart/form-data" }
-        })
-        .then(response => {
-          this.id = response.data.id;
-          this.first_name = response.data.first_name;
-          this.last_name = response.data.last_name;
-          this.major = response.data.major;
-          this.bio = response.data.bio;
-          this.yos = response.data.year;
-          this.message = "Profile Updated Successfully!";
-
-          const userId = this.$store.state.user.id;
-          this.$router.push({ path: `/profile/${userId}` });;
-
-        })
-        .catch(error => {
-          this.error = error;
-          this.message = "Something went wrong, please try again shortly.";
-        });
-    },
-    handleFileUpload() {
-      this.file = this.$refs.file.files[0];
-    }
-  }
-};
-</script>
