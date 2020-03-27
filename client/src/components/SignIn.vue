@@ -42,11 +42,6 @@ a:hover {
   font-weight: bolder;
   font-size: 60px;
 }
-.sub {
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 10px;
-}
 .form {
   padding-top: 50px;
   padding-bottom: 40px;
