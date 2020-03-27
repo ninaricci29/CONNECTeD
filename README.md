@@ -23,6 +23,8 @@ npm install
 cd ..
 cd server
 npm install
+npm run client
+npm run start
 ```
 
 ## Credits

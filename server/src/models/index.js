@@ -44,7 +44,7 @@ db.Project = Project
 
 
 
-// db.ProjectTag = Projects_Tag
+db.ProjectTag = Project_Tag
 
 db.UsersTag = Users_Tag
 db.UsersProject = Users_Project
