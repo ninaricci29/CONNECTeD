@@ -21,7 +21,7 @@
           placeholder="This project is.."
           rows="4"
           cols="50"
-          maxlength="300"
+          maxlength="230"
           name="comment"
         />
         <small id="bio-type" class="form-text text-muted"
