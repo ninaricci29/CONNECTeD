@@ -1,13 +1,12 @@
 <template>
     <div>
         <b-link class="angle abc efg" href="/log-in">GET STARTED</b-link>
-
     </div>
 </template>
 
 <script>
     export default {
-        name: "home1"
+        name: "Home1"
     }
 </script>
 
@@ -33,7 +32,7 @@
         font-size: 40px;
         cursor: pointer;
         -webkit-text-stroke-color: black;
-        /*-webkit-text-stroke-width: 0.02em;*/
+        -webkit-text-stroke-width: 0.02em;
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
         background-repeat: no-repeat;

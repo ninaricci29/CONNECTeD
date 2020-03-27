@@ -27,13 +27,18 @@
           <br />
         </h3>
       </b-container>
+      <Home1/>
     </section>
   </body>
 </template>
 
 <script>
+  import Home1 from"../components/Home1";
 export default {
-  name: "Home.vue"
+  name: "Home.vue",
+  components: {
+    Home1
+  }
 };
 </script>
 
