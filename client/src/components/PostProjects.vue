@@ -83,6 +83,16 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+            type="website"
+            class="form-control active"
+            placeholder="https://myProjectRepo.ca"/>
+        <small id="website-type" class="form-text text-muted">Link your repo!</small>
+      </div>
+
+      <div class="form-group">
         <label>Project Picture </label>
         <br />
         <input

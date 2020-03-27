@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card">
-      <img class="card-img" :src="picture_link" />
+      <img class="card-img" src="../assets/1.jpg" />
       <div class="contributors top-left">
         <b-link class="angle ghi jkl" href="#">CONTRIBUTORS</b-link>
 
@@ -28,6 +28,10 @@
           <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
         </b-dropdown>
       </div>
+
+      <b-link href="#">
+        <font-awesome-icon :icon="['fab', 'github']" class="abc def"/>
+      </b-link>
 
       <div class="card-body">
         <div class="card-footer">
