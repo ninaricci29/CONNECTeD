@@ -53,6 +53,7 @@
           v-model="bio"
           class="form-control active"
           placeholder="got a project? let's collaborate!"
+          maxlength="50"
         />
         <small id="bio-type" class="form-text text-muted"
           >Describe yourself!</small
