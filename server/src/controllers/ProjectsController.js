@@ -53,18 +53,18 @@ async getProjects(req, res) {
       }
       project = await Project.create(req.body);
       console.log(project)
-      // lst1 = JSON.parse(req.body.collab)
-      //   for (var i = 0; i <lst1.length; i++){
-      //       user = await User.findOne({
-      //           where:{utorid:lst1[i]}
-      //       });
-      //       uid = user.id
-      //       const uid_pid = {
-      //           UserId: uid,
-      //           ProjectId: project.id
-      //       }
-      //       await UsersProject.create(uid_pid)
-      //   }
+      lst1 = JSON.parse(req.body.collab)
+        for (var i = 0; i <lst1.length; i++){
+            user = await User.findOne({
+                where:{utorid:lst1[i]}
+            });
+            uid = user.id
+            const uid_pid = {
+                UserId: uid,
+                ProjectId: project.id
+            }
+            await UsersProject.create(uid_pid)
+        }
       const uid_pid = {
         UserId: req.body.userid,
         ProjectId: project.id
