@@ -93,6 +93,7 @@ module.exports = {
       user.major=req.body.major;
       user.year=req.body.year;
       user.description=req.body.description;
+      user.website=req.body.website;
       lst = JSON.parse(req.body.tags)
       tags = await Tag.findAll({
         where: {

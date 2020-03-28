@@ -24,7 +24,7 @@
               <h6>{{ description }}</h6></b-row
             >
             <b-row class="url"
-              ><a><h6>url.ca</h6></a></b-row
+              ><a><h6>{{ website }}</h6></a></b-row
             >
           </b-col>
 
@@ -60,7 +60,8 @@ export default {
       year: null,
       major: null,
       rating: null,
-      link: null
+      link: null,
+      website: null
     };
   },
   mounted() {
@@ -74,6 +75,7 @@ export default {
           (this.description = response.data.bio),
           (this.year = response.data.year),
           (this.major = response.data.major),
+                  (this.website = response.data.website),
           (this.link = response.data.profile_picture)
         )
       );

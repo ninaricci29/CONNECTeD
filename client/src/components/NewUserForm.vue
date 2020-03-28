@@ -74,6 +74,7 @@
           class="form-control active"
           placeholder="https://myWebsite.ca"
           maxlength="100"
+          v-model="website"
         />
         <small id="website-type" class="form-text text-muted"
           >Link your Github!</small
@@ -154,6 +155,7 @@ export default {
       firstname: "",
       lastname: "",
       bio: "",
+      website: "",
       yos: "",
       major: "",
       file: "",
@@ -193,6 +195,7 @@ export default {
       form.append("bio", this.bio);
       form.append("major", this.major);
       form.append("year", this.yos);
+      form.append("website", this.website);
       form.append("profile_picture", this.file);
       form.append("tag_ids", JSON.stringify(ids));
       axios
@@ -205,6 +208,7 @@ export default {
             (this.bio = response.data.bio);
           this.yos = response.data.year;
           this.major = response.data.major;
+          this.website = response.data.website
         })
         .catch(function(error) {
           this.error = error;
