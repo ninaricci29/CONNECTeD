@@ -58,7 +58,7 @@
           type="bio"
           class="form-control active"
           placeholder="Got a project? Let's collaborate!"
-          maxlength="100"
+          maxlength="50"
           v-model="bio"
         />
         <small id="bio-type" class="form-text text-muted"

@@ -15,7 +15,7 @@
       <!--            </b-nav-form>-->
 
       <div class="logo">
-        <a href="#">CONNECTeD</a>
+        <a> <b-link href="/connect/home"> CONNECTeD </b-link> </a>
       </div>
 
       <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
@@ -31,9 +31,9 @@
             v-for="(link, index) in navLinks"
             :key="index"
           >
-            <router-link :to="link.path">
+            <a :href="link.path">
               {{ link.text }}
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>

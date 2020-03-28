@@ -2,6 +2,16 @@
   <div>
     <div class="card">
       <img class="card-img" :src="picture_link" />
+      <div class="contributors top-left">
+        <b-link class="angle ghi jkl" href="#">CONTRIBUTORS</b-link>
+
+        <div v-for="user in users" v-bind:key="user.id">
+          <a class="angle jkl mno" :href="profilePath(user.id)">
+            {{ user.first_name + " " + user.last_name }}
+          </a>
+        </div>
+      </div>
+
       <div class="abc">
         <b-dropdown
           size="sm"
@@ -9,10 +19,9 @@
           text="Right align"
           variant="link"
           toggle-class="text-decoration-none"
-          no-caret
-        >
+          no-caret>
           <template v-slot:button-content>
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="efg" />
+            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def"/>
           </template>
 
           <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
@@ -20,13 +29,20 @@
         </b-dropdown>
       </div>
 
+      <b-link href="#">
+        <font-awesome-icon :icon="['fab', 'github']" class="abc def"/>
+      </b-link>
+
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted"></p>
+<!--          Replace UI/UX with the first tag they select-->
+          <p class="category text-muted font-weight-medium">UI/UX</p>
           <h4 class="title">{{ project_name }}</h4>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
+          <br /><br />
+
         </div>
       </div>
     </div>
@@ -36,7 +52,13 @@
 <script>
 export default {
   name: "projects",
-  props: ["project_name", "project_description", "project_id", "picture_link"],
+  props: [
+    "project_name",
+    "project_description",
+    "project_id",
+    "picture_link",
+    "users"
+  ],
   computed: {
     updateLink: function() {
       return "/connect/projects/" + this.project_id + "/update";
@@ -45,6 +67,9 @@ export default {
   methods: {
     deleteProject() {
       this.$emit("delete", this.project_id);
+    },
+    profilePath(id) {
+      return "/connect/profile/" + id;
     }
   }
 };
@@ -57,14 +82,58 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
 .abc {
-  transform: translate(115px, -400px);
+  transform: translate(115px, -395px);
   padding: 0 0 0 0;
   opacity: 0;
 }
+.def {
+  color: white;
+}
+/*For the contributors*/
+.ghi {
+  font-size: 20px;
+  cursor: pointer;
+  /*-webkit-text-stroke-color: black;*/
+  /*-webkit-text-stroke-width: 0.02em;*/
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+  transition: background-size 0.9s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+}
+.jkl {
+  flex-direction: column;
+  letter-spacing: 0.03em;
+  margin: 0;
+  font-weight: 900;
+  display: flex;
+  text-align: left;
+  text-decoration: none;
+}
+.mno {
+  font-size: 15px;
+  cursor: pointer;
+  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+  transition: background-size 0.9s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+}
 
-.efg {
-  color: black;
+.angle {
+  background-image: linear-gradient(135deg, white 0%, white 50%, transparent 50.1%);
+  background-size: 0% 100%;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }
 
 .text-muted {
@@ -82,15 +151,20 @@ body {
   margin: 10px;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
-.card:hover {
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
-}
 
 .card .card-img {
   filter: grayscale(100%);
   width: 100%;
   height: 400px;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
+}
+
+.card:hover .angle{
+  background-size: 300% 400%;
 }
 
 .card:hover .abc {
@@ -143,6 +217,7 @@ body {
 
 .card .title {
   font-size: 1.1rem;
+  font-weight: bold;
 }
 .card .byline {
   font-size: 0.8rem;

@@ -2,7 +2,19 @@
   <div class="search">
     <SearchTags class="search-tags" @searchTags="search" />
 
-    <section>
+    <div class="zero-projects" v-if="hasNoProjects()">
+      <img src="../assets/05.png"/>
+
+      <div class="font-weight-bold">
+        No Projects Found
+
+        <p class="text-muted">Seems like nobody has made a project yet! Projects will
+          <br/> appear here as soon as someone makes it!</p>
+
+      </div>
+    </div>
+
+    <section class="container">
       <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
           <li class="description" v-for="j in cols" v-bind:key="j">
@@ -12,6 +24,7 @@
               v-bind:project_description="getProject(i, j).desc"
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
+              v-bind:users="getProject(i, j).Users"
             />
           </li>
         </ul>
@@ -53,11 +66,11 @@ export default {
           .get("/connect/get-tag?tag=" + this.value[i])
           .then(response => this.tag_ids.push(response.data.tag_id.id));
       }
-      
+
       axios
         .get("/connect/search-projects?tag_ids=[" + this.tag_ids + "]")
         .then(response => (this.project_list = response.data.project));
-      
+
       this.tag_ids = [];
     },
     rowCount() {
@@ -73,7 +86,12 @@ export default {
     },
     projectExists(row, col) {
       return this.getProject(row, col) != null;
-    }
+    },
+      hasNoProjects() {
+          if (this.project_list == 0) {
+              return true;
+          }
+      },
   }
 };
 </script>
@@ -87,12 +105,29 @@ li {
 }
 ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  grid-gap: 5px;
   margin: 0px;
   padding: 0px;
 }
 .search-cards {
   padding: 1rem 0 1rem 0;
+}
+
+.container {
+  padding: 20px 40px 0 40px;
+}
+.zero-projects {
+  padding: 40px 0 40px 0;
+}
+img {
+  height: 30%;
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+.text-muted {
+  opacity: 0.4;
+  font-weight: 500;
 }
 </style>

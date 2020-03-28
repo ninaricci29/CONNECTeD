@@ -11,6 +11,9 @@ module.exports = {
           project = await Project.findOne({
             where: {
               id: req.query.id
+            },
+            include: {
+              model: Tag
             }
           })
           res.send(project);
@@ -34,6 +37,9 @@ async getProjects(req, res) {
     projects = await Project.findAll({
           where: {
             id: projects_list
+          }, 
+          include: {
+            model:User
           }
         })
     res.send(projects);
@@ -120,6 +126,13 @@ async getProjects(req, res) {
       })
       project.project_name = req.body.project_name;
       project.desc = req.body.desc;
+      lst = JSON.parse(req.body.tags)
+      tags = await Tag.findAll({
+        where: {
+          tag_name: lst
+        }
+      })
+      project.setTags(tags)
       if (req.file != null){
         project.picture = '/connect/images/' + req.file.filename
       }
@@ -151,12 +164,15 @@ async getProjects(req, res) {
   async searchProject(req,res){
       try {
         const tag_ids = JSON.parse(req.query.tag_ids)
-        const project = await Project.findAll({ include: {
+        const project = await Project.findAll({ include: [{
             model: Tag,
             where: {
               id: tag_ids
             }
-          }});
+          },
+          {
+            model:User,
+          }]});
         res.send({project})
       } catch (error) {
           res.status(500).send({

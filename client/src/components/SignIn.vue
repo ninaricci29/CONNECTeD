@@ -6,7 +6,7 @@
       </div>
       <form class="form">
         <div id="button">
-          <router-link to="/register" tag="b-button">Sign In</router-link>
+          <a href="/connect/register" tag="b-button">Sign In</a>
         </div>
       </form>
     </body>
@@ -24,14 +24,23 @@ body {
   color: black;
   text-align: center;
 }
+a {
+  text-decoration: none;
+  background-color: #2e2e2e;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+a:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-style: solid;
+}
 .brand {
   font-weight: bolder;
   font-size: 60px;
-}
-.sub {
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 10px;
 }
 .form {
   padding-top: 50px;
