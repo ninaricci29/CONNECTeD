@@ -21,7 +21,7 @@
           placeholder="This project is.."
           rows="4"
           cols="50"
-          maxlength="300"
+          maxlength="230"
           name="comment"
         />
         <small id="bio-type" class="form-text text-muted"
@@ -80,6 +80,16 @@
           class="mb-2"
           :tag-validator="tagValidator"
         ></b-form-tags>
+      </div>
+
+      <div class="form-group">
+        <label>Website</label>
+
+        <input
+            type="website"
+            class="form-control active"
+            placeholder="https://myProjectRepo.ca"/>
+        <small id="website-type" class="form-text text-muted">Link your repo!</small>
       </div>
 
       <div class="form-group">
