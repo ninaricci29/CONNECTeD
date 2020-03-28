@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card">
-      <img class="card-img" src="../assets/1.jpg" />
+      <img class="card-img" :src="picture_link" />
       <div class="contributors top-left">
         <b-link class="angle ghi jkl" href="#">CONTRIBUTORS</b-link>
 
