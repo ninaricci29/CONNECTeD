@@ -29,7 +29,7 @@
         >
       </div>
 
-      <div>
+      <div class="form group">
         <b-form-group label="select your tags:">
           <b-form-tags
             v-model="value"
