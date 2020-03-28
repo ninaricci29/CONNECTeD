@@ -2,6 +2,18 @@
   <div class="search">
     <SearchTags class="search-tags" @searchTags="search" />
 
+    <div class="zero-projects" v-if="hasNoProjects()">
+      <img src="../assets/05.png"/>
+
+      <div class="font-weight-bold">
+        No Projects Found
+
+        <p class="text-muted">Seems like nobody has made a project yet! Projects will
+          <br/> appear here as soon as someone makes it!</p>
+
+      </div>
+    </div>
+
     <section class="container">
       <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
@@ -74,7 +86,12 @@ export default {
     },
     projectExists(row, col) {
       return this.getProject(row, col) != null;
-    }
+    },
+      hasNoProjects() {
+          if (this.project_list == 0) {
+              return true;
+          }
+      },
   }
 };
 </script>
@@ -99,5 +116,18 @@ ul {
 
 .container {
   padding: 20px 40px 0 40px;
+}
+.zero-projects {
+  padding: 40px 0 40px 0;
+}
+img {
+  height: 30%;
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+.text-muted {
+  opacity: 0.4;
+  font-weight: 500;
 }
 </style>

@@ -10,7 +10,7 @@
         <div class="font-weight-bold">
           No Projects Found
 
-          <p>Looks like you haven't started a project yet! Project information
+          <p class="text-muted">Looks like you haven't started a project yet! Project information
             will <br/> appear here as soon as you post it!</p>
 
         </div>
@@ -139,7 +139,7 @@ ul {
   padding: 0px;
 }
 
-p {
+.text-muted {
   opacity: 0.4;
   font-weight: 500;
 }
