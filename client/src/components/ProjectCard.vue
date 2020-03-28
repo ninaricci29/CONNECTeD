@@ -35,8 +35,7 @@
 
       <div class="card-body">
         <div class="card-footer">
-<!--          Replace UI/UX with the first tag they select-->
-          <p class="category text-muted font-weight-medium">UI/UX</p>
+          <p class="category text-muted font-weight-medium">{{ tag }} </p>
           <h4 class="title">{{ project_name }}</h4>
           <p class="desc text-muted-2">
             {{ project_description }}
@@ -57,11 +56,18 @@ export default {
     "project_description",
     "project_id",
     "picture_link",
-    "users"
+    "users",
+    "tags"
   ],
   computed: {
     updateLink: function() {
       return "/connect/projects/" + this.project_id + "/update";
+    },
+    tag: function(){
+      if (this.tags.length > 0) {
+        return this.tags[0].tag_name
+      }
+      return ''
     }
   },
   methods: {

@@ -25,6 +25,7 @@
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
               v-bind:users="getProject(i, j).Users"
+              v-bind:tags="getProject(i,j).Tags"
             />
           </li>
         </ul>
@@ -43,15 +44,9 @@ export default {
     return {
       project_list: [],
       cols: 3,
-      options: [
-        "Computer Science",
-        "Java",
-        "A.I.",
-        "Machine Learning",
-        "Python"
-      ],
       value: [],
-      tag_ids: []
+      tag_ids: [],
+      show: false,
     };
   },
   components: {
@@ -61,6 +56,7 @@ export default {
   methods: {
     async search(value) {
       this.value = value;
+      this.show = true;
       for (var i = 0; i < this.value.length; i++) {
         await axios
           .get("/connect/get-tag?tag=" + this.value[i])
@@ -87,11 +83,9 @@ export default {
     projectExists(row, col) {
       return this.getProject(row, col) != null;
     },
-      hasNoProjects() {
-          if (this.project_list == 0) {
-              return true;
-          }
-      },
+    hasNoProjects() {
+      return this.project_list.length == 0  && this.show
+    },
   }
 };
 </script>

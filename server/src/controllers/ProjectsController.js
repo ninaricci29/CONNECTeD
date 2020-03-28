@@ -38,9 +38,12 @@ async getProjects(req, res) {
           where: {
             id: projects_list
           }, 
-          include: {
-            model:User
-          }
+          include: [{
+            model:User,
+          },
+          {
+            model:Tag,
+          }]
         })
     res.send(projects);
   } catch (err) {
