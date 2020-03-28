@@ -99,11 +99,13 @@ export default {
     return {
       name: "",
       description: "",
-      options: ['Computer Science',
-      'Python',
-      'Java',
-      'A.I.',
-      'Robotics'],
+      options: [
+        "Computer Science",
+        "Java",
+        "A.I.",
+        "Machine Learning",
+        "Python"
+      ],
       value: [],
       file: "",
       error: ""
