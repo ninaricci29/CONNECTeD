@@ -3,14 +3,15 @@
     <SearchTags class="search-tags" @searchTags="search" />
 
     <div class="zero-projects" v-if="hasNoProjects()">
-      <img src="../assets/05.png"/>
+      <img src="../assets/05.png" />
 
       <div class="font-weight-bold">
         No Projects Found
 
-        <p class="text-muted">Seems like nobody has made a project yet! Projects will
-          <br/> appear here as soon as someone makes it!</p>
-
+        <p class="text-muted">
+          Seems like nobody has made a project yet! Projects will <br />
+          appear here as soon as someone makes it!
+        </p>
       </div>
     </div>
 
@@ -24,8 +25,9 @@
               v-bind:project_description="getProject(i, j).desc"
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
+              v-bind:website="getProject(i, j).website"
               v-bind:users="getProject(i, j).Users"
-              v-bind:tags="getProject(i,j).Tags"
+              v-bind:tags="getProject(i, j).Tags"
             />
           </li>
         </ul>
@@ -46,7 +48,7 @@ export default {
       cols: 3,
       value: [],
       tag_ids: [],
-      show: false,
+      show: false
     };
   },
   components: {
@@ -84,8 +86,8 @@ export default {
       return this.getProject(row, col) != null;
     },
     hasNoProjects() {
-      return this.project_list.length == 0  && this.show
-    },
+      return this.project_list.length == 0 && this.show;
+    }
   }
 };
 </script>

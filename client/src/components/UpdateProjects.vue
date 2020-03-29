@@ -69,6 +69,20 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+          type="website"
+          v-model="website"
+          class="form-control active"
+          placeholder="https://myProjectRepo.ca"
+        />
+        <small id="website-type" class="form-text text-muted"
+          >Link your repo!</small
+        >
+      </div>
+
+      <div class="form-group">
         <label>Project Picture </label>
         <br />
         <input
@@ -100,6 +114,7 @@ export default {
     return {
       name: "",
       description: "",
+      website: "",
       options: [],
       value: [],
       file: "",
@@ -116,6 +131,7 @@ export default {
     axios.get("/connect/getproject?id=" + this.id).then(response => {
       this.name = response.data.project_name;
       this.description = response.data.desc;
+      this.website = response.data.website || "";
       for (var i = 0; i < response.data.Tags.length; i++) {
         this.value.push(response.data.Tags[i].tag_name);
       }
@@ -134,6 +150,7 @@ export default {
       form.append("desc", this.description);
       form.append("project_name", this.name);
       form.append("tags", JSON.stringify(this.value));
+      form.append("website", this.website);
       axios
         .post("/connect/update-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -142,6 +159,7 @@ export default {
           this.id = response.data.id;
           this.projectname = response.data.project_name;
           this.desc = response.data.desc;
+          this.website = response.data.website;
           const userId = this.$store.state.user.id;
           this.$router.push({ path: `/profile/${userId}` });
         })
