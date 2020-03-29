@@ -122,10 +122,10 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
-        <p>{{ error }}</p>
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -187,6 +187,20 @@ export default {
 
   methods: {
     update() {
+      if(this.firstname == '' || this.lastname == ''){
+        this.error = "Please enter your full name"
+        return
+      }else if(this.major == ''){
+        this.error = "Please enter a major"
+        return
+      }else if(this.bio == ''){
+        this.error = "Please enter a bio"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       // The url for the post request has
       // to be the url to the update page we need to make.
       var form = new FormData();
@@ -217,9 +231,8 @@ export default {
           const userId = this.$store.state.user.id;
           this.$router.push({ path: `/profile/${userId}` });
         })
-        .catch(error => {
-          this.error = error;
-          this.message = "Something went wrong, please try again shortly.";
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
