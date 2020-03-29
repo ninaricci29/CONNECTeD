@@ -28,12 +28,18 @@
         </h3>
       </b-container>
     </section>
+  <About/>
   </body>
 </template>
 
 <script>
+  import About from "./About.vue"
 export default {
-  name: "Home.vue"
+  name: "Home.vue",
+    components: {
+      About
+    }
+
 };
 </script>
 

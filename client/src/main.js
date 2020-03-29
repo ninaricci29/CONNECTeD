@@ -23,7 +23,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faFontAwesome, faGithub} from "@fortawesome/free-brands-svg-icons";
+import { faFontAwesome, faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faLightbulb,
@@ -33,7 +33,8 @@ library.add(
   faFontAwesome,
   faGithub,
   faEllipsisH,
-  faSearch
+  faSearch,
+    faLinkedin
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
