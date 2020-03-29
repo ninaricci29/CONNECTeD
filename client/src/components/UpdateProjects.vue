@@ -123,13 +123,13 @@ export default {
     };
   },
   async mounted() {
-    await axios.get("http://localhost:8081/connect/tags").then(response => {
+    await axios.get("/connect/tags").then(response => {
       for (var i = 0; i < response.data.length; i++) {
         this.options.push(response.data[i].tag_name);
       }
     });
     this.id = this.$route.params.id;
-    axios.get("http://localhost:8081/connect/getproject?id=" + this.id).then(response => {
+    axios.get("/connect/getproject?id=" + this.id).then(response => {
       this.name = response.data.project_name;
       this.description = response.data.desc;
       this.website = response.data.website || "";
