@@ -102,14 +102,14 @@
         <label>Website</label>
 
         <input
-                type="website"
-                class="form-control active"
-                placeholder="https://myWebsite.ca"
-                maxlength="100"
-                v-model="website"
+          type="website"
+          class="form-control active"
+          placeholder="https://myWebsite.ca"
+          maxlength="100"
+          v-model="website"
         />
         <small id="website-type" class="form-text text-muted"
-        >Link your Github!</small
+          >Link your Github!</small
         >
       </div>
 
@@ -171,21 +171,17 @@ export default {
     });
 
     this.id = this.$route.params.id;
-    axios
-      .get("/connect/profile_info?id=" + this.id)
-      .then(
-        response => {
-          this.first_name = response.data.first_name
-          this.last_name = response.data.last_name
-          this.bio = response.data.bio
-          this.yos = response.data.year
-          this.major = response.data.major
-          this.website = response.data.website
-          for (var i = 0; i < response.data.Tags.length; i++) {
-            this.value.push(response.data.Tags[i].tag_name);
-          }
-        }
-      );
+    axios.get("/connect/profile_info?id=" + this.id).then(response => {
+      this.first_name = response.data.first_name;
+      this.last_name = response.data.last_name;
+      this.bio = response.data.bio;
+      this.yos = response.data.year;
+      this.major = response.data.major;
+      this.website = response.data.website;
+      for (var i = 0; i < response.data.Tags.length; i++) {
+        this.value.push(response.data.Tags[i].tag_name);
+      }
+    });
   },
 
   methods: {
@@ -218,8 +214,7 @@ export default {
           this.message = "Profile Updated Successfully!";
 
           const userId = this.$store.state.user.id;
-          this.$router.push({ path: `/profile/${userId}` });;
-
+          this.$router.push({ path: `/profile/${userId}` });
         })
         .catch(error => {
           this.error = error;

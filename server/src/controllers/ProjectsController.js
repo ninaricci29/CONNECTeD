@@ -129,6 +129,7 @@ async getProjects(req, res) {
       })
       project.project_name = req.body.project_name;
       project.desc = req.body.desc;
+      project.website = req.body.website;
       lst = JSON.parse(req.body.tags)
       tags = await Tag.findAll({
         where: {

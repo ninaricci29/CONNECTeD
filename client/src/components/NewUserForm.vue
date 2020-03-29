@@ -208,7 +208,7 @@ export default {
             (this.bio = response.data.bio);
           this.yos = response.data.year;
           this.major = response.data.major;
-          this.website = response.data.website
+          this.website = response.data.website;
         })
         .catch(function(error) {
           this.error = error;

@@ -676,7 +676,9 @@
           mystery. But you can click the button below to go back to the
           homepage.
         </p>
-        <b-link href="/connect/home"> <button class="btn color">HOME</button> </b-link>
+        <b-link href="/connect/home">
+          <button class="btn color">HOME</button>
+        </b-link>
       </div>
     </div>
   </div>
