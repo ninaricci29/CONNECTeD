@@ -31,6 +31,14 @@ export default new Vuex.Store({
         commit("setUser", user);
         commit("setLoggedIn", false);
       }
+    },
+    loggedOut({commit}){
+      var user = {};
+      Vue.$cookies.remove('utorid');
+      user.id = null;
+      user.utorid = null;
+      commit("setUser",user);
+      commit("setLoggedIn",false)
     }
   }
 });

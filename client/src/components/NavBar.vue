@@ -24,17 +24,13 @@
         </b-link>
       </div>
 
-      <div class="nav-wrapper">
+      <div class="nav-wrapper" >
         <ul>
-          <li
-            v-on:click="collapse"
-            v-for="(link, index) in navLinks"
-            :key="index"
-          >
-            <a :href="link.path">
-              {{ link.text }}
-            </a>
-          </li>
+          <li><a href="/connect/home">Home</a></li>
+          <li><a href="/connect/search">Search</a></li>
+          <li><a href="/connect/profile/1">Profile</a></li>
+          <li><a v-if="isLoggedin()" href="/connect/log-in">Log-in</a></li>
+          <li><a v-if="isLoggedout()" @click="logOut" href="/connect/home" >Logout</a></li>
         </ul>
       </div>
     </div>
@@ -49,10 +45,29 @@ export default {
   methods: {
     collapse: function() {
       document.getElementById("nav").checked = false;
+    },
+    isLoggedin(){
+      if(this.$store.state.isLoggedIn){
+        return false
+      }
+      else{
+        return true
+      }
+    },
+    isLoggedout(){
+      if(this.$store.state.isLoggedIn){
+        return true
+      }
+      else{
+        return false
+      }
+    },
+    logOut(){
+      this.$store.dispatch('loggedOut')
     }
   },
   computed: {
-    ...mapState(["isLoggedIn"])
+    ...mapState(['isLoggedIn'])
   }
 };
 </script>
