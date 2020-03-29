@@ -19,9 +19,10 @@
           text="Right align"
           variant="link"
           toggle-class="text-decoration-none"
-          no-caret>
+          no-caret
+        >
           <template v-slot:button-content>
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def"/>
+            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def" />
           </template>
 
           <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
@@ -29,19 +30,18 @@
         </b-dropdown>
       </div>
 
-      <b-link href="#">
-        <font-awesome-icon :icon="['fab', 'github']" class="abc def"/>
+      <b-link v-if="showWebsite()" :href="websiteLink">
+        <font-awesome-icon :icon="['fab', 'github']" class="abc def" />
       </b-link>
 
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted font-weight-medium">{{ tag }} </p>
+          <p class="category text-muted font-weight-medium">{{ tag }}</p>
           <h4 class="title">{{ project_name }}</h4>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
           <br /><br />
-
         </div>
       </div>
     </div>
@@ -55,6 +55,7 @@ export default {
     "project_name",
     "project_description",
     "project_id",
+    "website",
     "picture_link",
     "users",
     "tags"
@@ -63,11 +64,14 @@ export default {
     updateLink: function() {
       return "/connect/projects/" + this.project_id + "/update";
     },
-    tag: function(){
+    websiteLink: function() {
+      return "//" + this.website;
+    },
+    tag: function() {
       if (this.tags.length > 0) {
-        return this.tags[0].tag_name
+        return this.tags[0].tag_name;
       }
-      return ''
+      return "";
     }
   },
   methods: {
@@ -76,6 +80,9 @@ export default {
     },
     profilePath(id) {
       return "/connect/profile/" + id;
+    },
+    showWebsite() {
+      return this.website != null;
     }
   }
 };
@@ -132,7 +139,12 @@ a {
 }
 
 .angle {
-  background-image: linear-gradient(135deg, white 0%, white 50%, transparent 50.1%);
+  background-image: linear-gradient(
+    135deg,
+    white 0%,
+    white 50%,
+    transparent 50.1%
+  );
   background-size: 0% 100%;
 }
 
@@ -169,7 +181,7 @@ a {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.09);
 }
 
-.card:hover .angle{
+.card:hover .angle {
   background-size: 300% 400%;
 }
 

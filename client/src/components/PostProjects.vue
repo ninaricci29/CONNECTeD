@@ -86,10 +86,14 @@
         <label>Website</label>
 
         <input
-            type="website"
-            class="form-control active"
-            placeholder="https://myProjectRepo.ca"/>
-        <small id="website-type" class="form-text text-muted">Link your repo!</small>
+          type="website"
+          v-model="website"
+          class="form-control active"
+          placeholder="https://myProjectRepo.ca"
+        />
+        <small id="website-type" class="form-text text-muted"
+          >Link your repo!</small
+        >
       </div>
 
       <div class="form-group">
@@ -101,6 +105,7 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
+        <p>{{ error }}</p>
       </div>
 
       <div id="button">
@@ -124,6 +129,7 @@ export default {
     return {
       name: "",
       description: "",
+      website: "",
       options: [],
       value: [],
       value2: [],
@@ -156,6 +162,7 @@ export default {
       form.append("userid", 1);
       form.append("desc", this.description);
       form.append("project_name", this.name);
+      form.append("website", this.website);
       form.append("tags", JSON.stringify(this.value));
       axios
         .post("/connect/post-projects", form, {
@@ -164,13 +171,23 @@ export default {
         .then(response => {
           this.project_name = response.data.project_name;
           this.desc = response.data.desc;
+          this.website = response.data.website;
         })
         .catch(error => {
           this.error = error;
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };

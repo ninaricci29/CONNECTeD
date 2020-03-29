@@ -69,6 +69,20 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+          type="website"
+          v-model="website"
+          class="form-control active"
+          placeholder="https://myProjectRepo.ca"
+        />
+        <small id="website-type" class="form-text text-muted"
+          >Link your repo!</small
+        >
+      </div>
+
+      <div class="form-group">
         <label>Project Picture </label>
         <br />
         <input
@@ -77,6 +91,7 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
+        <p>{{ error }}</p>
       </div>
 
       <div id="button">
@@ -100,6 +115,7 @@ export default {
     return {
       name: "",
       description: "",
+      website: "",
       options: [],
       value: [],
       file: "",
@@ -116,6 +132,7 @@ export default {
     axios.get("/connect/getproject?id=" + this.id).then(response => {
       this.name = response.data.project_name;
       this.description = response.data.desc;
+      this.website = response.data.website || "";
       for (var i = 0; i < response.data.Tags.length; i++) {
         this.value.push(response.data.Tags[i].tag_name);
       }
@@ -134,6 +151,7 @@ export default {
       form.append("desc", this.description);
       form.append("project_name", this.name);
       form.append("tags", JSON.stringify(this.value));
+      form.append("website", this.website);
       axios
         .post("/connect/update-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -142,6 +160,7 @@ export default {
           this.id = response.data.id;
           this.projectname = response.data.project_name;
           this.desc = response.data.desc;
+          this.website = response.data.website;
           const userId = this.$store.state.user.id;
           this.$router.push({ path: `/profile/${userId}` });
         })
@@ -150,7 +169,16 @@ export default {
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };
@@ -226,8 +254,5 @@ body h6 {
   background-color: lightslategrey;
   border-color: black;
   color: white;
-}
-
-.description {
 }
 </style>
