@@ -2,16 +2,16 @@
   <div>
     <div class="page-wrapper">
       <div class="profile-box">
-        <img :src=image />
+        <img src="../assets/03.png"/>
         <div class="text">
           <h4>{{label}}</h4>
           <h3>{{name}}</h3>
         </div>
 
-        <div class="social">
-          <div class="icons">
+        <div class="social" >
+          <div class="icons" >
 
-            <a :href=github>
+            <a :href=github >
               <font-awesome-icon :icon="['fab', 'github']" class="abc" />
             </a>
             <a :href="linkedin" >
@@ -50,6 +50,7 @@
     font-weight: 700;
     font-size: 22px;
     margin-top: 10px;
+    cursor: pointer;
   }
 
   h4 {
@@ -117,6 +118,7 @@
   }
   .icons a:hover{
     transform: scale(1.2);
+    cursor: pointer;
   }
   .abc {
     font-size: 25px;

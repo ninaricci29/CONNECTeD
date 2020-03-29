@@ -19,7 +19,13 @@ import {
   faStar,
   faArrowRight,
   faEllipsisH,
-  faSearch
+  faSearch,
+    faUsers,
+    faChartLine,
+    faBullhorn,
+    faMapSigns,
+    faPhoneAlt,
+    faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -34,7 +40,13 @@ library.add(
   faGithub,
   faEllipsisH,
   faSearch,
-    faLinkedin
+    faLinkedin,
+    faUsers,
+    faChartLine,
+    faBullhorn,
+    faMapSigns,
+    faPhoneAlt,
+    faEnvelope
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

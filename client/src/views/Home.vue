@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  import About from "./About.vue"
+  import About from "../components/About.vue"
 export default {
   name: "Home.vue",
     components: {
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style scoped>
+  body {
+    margin: 90px;
+  }
 img.logo {
   height: 65%;
   width: 65%;
