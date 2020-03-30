@@ -28,16 +28,25 @@
         </h3>
       </b-container>
     </section>
+  <About/>
   </body>
 </template>
 
 <script>
+  import About from "../components/About.vue"
 export default {
-  name: "Home.vue"
+  name: "Home.vue",
+    components: {
+      About
+    }
+
 };
 </script>
 
 <style scoped>
+  body {
+    margin: 90px;
+  }
 img.logo {
   height: 65%;
   width: 65%;
