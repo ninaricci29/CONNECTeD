@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="page-wrapper">
+
       <div class="profile-box">
         <img src="../assets/03.png"/>
+
         <div class="text">
-          <h4>{{label}}</h4>
-          <h3>{{name}}</h3>
+          <div class="label">{{label}}</div>
+          <div class="name">{{name}}</div>
         </div>
 
         <div class="social" >
@@ -17,11 +19,10 @@
             <a :href="linkedin" >
               <font-awesome-icon :icon="['fab', 'linkedin']" class="abc" />
             </a>
-
           </div>
-
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -40,57 +41,6 @@
 </script>
 
 <style scoped>
-
-  .text {
-    padding: 25px 0 0 20px;
-    text-align: left;
-  }
-
-  h3 {
-    font-weight: 700;
-    font-size: 22px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-
-  h4 {
-    transition: 500ms;
-    font-weight: 600;
-    font-size: 14px;
-    color: #98A0A6;
-  }
-
-
-
-  .page-wrapper {
-    /*margin: auto;*/
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*align-content: flex-start;*/
-    /*justify-content: space-evenly;*/
-    /*padding-left: calc(5% - 16px);*/
-    /*padding-right: calc(5% - 16px);*/
-  }
-
-  .profile-box {
-    background: #FFFFFF;
-    box-shadow: 0 2px 6px 0 rgba(47,83,151,0.10);
-    border-radius: 3px;
-    /*margin: 16px 16px;*/
-    /*padding: 16px 16px;*/
-    width: 250px;
-    height: 350px;
-    text-align: center;
-    transition: 300ms;
-    flex-grow: 1;
-    align-content: center;
-  }
-
-  .profile-box:hover {
-    /* box-shadow: 0 2px 6px 0 rgba(47,83,151,0.40); */
-    box-shadow: 0 0 20px 9px rgba(0,0,0,0.03);
-  }
-
   img {
     width: 160px;
     height: 160px;
@@ -99,14 +49,69 @@
     transform: translate(0, -60px);
   }
 
-  .social {
-    padding: 15px 0 20px 20px;
+  .name {
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .label {
+    transition: 500ms;
+    font-weight: 600;
+    font-size: 10px;
+    color: #98A0A6;
+  }
+
+  .text {
+    padding: 20px 0 0 40px;
     text-align: left;
+  }
+
+  /*.page-wrapper {*/
+  /*  margin: auto;*/
+  /*  display: flex;*/
+  /*  flex-wrap: wrap;*/
+  /*  align-content: flex-start;*/
+  /*  justify-content: space-evenly;*/
+  /*  padding-left: calc(5% - 16px);*/
+  /*  padding-right: calc(5% - 16px);*/
+  /*}*/
+
+  .profile-box {
+    background: #FFFFFF;
+    box-shadow: 0 2px 6px 0 rgba(47,83,151,0.10);
+    border-radius: 3px;
+    width: 240px;
+    height: 320px;
+    text-align: center;
+    transition: 300ms;
+    flex-grow: 1;
+    /*align-content: center;*/
+  }
+
+  .profile-box:hover {
+    /* box-shadow: 0 2px 6px 0 rgba(47,83,151,0.40); */
+    box-shadow: 0 0 20px 9px rgba(0,0,0,0.03);
+  }
+
+  .profile-box:hover img{
+    /* box-shadow: 0 2px 6px 0 rgba(47,83,151,0.40); */
+    box-shadow: 0 0 20px 9px rgba(0,0,0,0.03);
+  }
+
+  .social {
+    padding: 10px 0 0 40px;
+    text-align: left;
+  }
+
+  .abc {
+    font-size: 18px;
   }
 
   .icons{
     margin-top: 12px;
   }
+
   .icons a{
     margin: 0 2px;
     display: inline-block;
@@ -116,12 +121,9 @@
     color: #333;
     line-height: 30px;
   }
+
   .icons a:hover{
     transform: scale(1.2);
     cursor: pointer;
   }
-  .abc {
-    font-size: 25px;
-  }
-
 </style>

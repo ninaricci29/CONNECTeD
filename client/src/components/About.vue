@@ -3,14 +3,12 @@
     <div class="head">
       <ul>
         <li>
-          <div class="abc">
-            <h7> Python, Web Design, Vue, Java </h7>
-            <div class="def">
-              <h2>Creative & Inspiring <br/>
-                Productive Collaboration. </h2>
-
+          <div class="topic">
+            <div class="byline"> Python, Web Design, Vue, Java </div>
+            <div class="slogan">
+              <div class="title">Creative & Inspiring <br/>
+                Productive Collaboration. </div>
             </div>
-
 
             <div class="btn">
               <b-button class="button btn-sm">
@@ -19,21 +17,17 @@
             </div>
           </div>
         </li>
-
         <li>
           <img src="../assets/undraw_in_progress_ql66.svg"/>
         </li>
-
       </ul>
-
-
     </div>
 
     <div class="team">
       <div class="abc">
-        <h7> Angels </h7>
+        <div class="byline"> Angels </div>
         <br/>
-        <h2>CREATIVE TEAM</h2>
+        <div class="title">CREATIVE TEAM</div>
       </div>
 
       <ul>
@@ -94,9 +88,9 @@
         <ul>
           <li>
             <div class="info">
-              <font-awesome-icon :icon="['fas', 'bullhorn']" />
+              <font-awesome-icon :icon="['fas', 'bullhorn']" class="title"/>
 
-              <h2>1000+</h2>
+<!--              <div class="title">1000+</div>-->
               <p> You are already a <br/>
                 student! Sign Up now! </p>
             </div>
@@ -104,9 +98,9 @@
 
           <li>
             <div class="info">
-              <font-awesome-icon :icon="['fas', 'chart-line']" />
+              <font-awesome-icon :icon="['fas', 'chart-line']" class="title"/>
 
-              <h2>50+</h2>
+<!--              <div class="title">50+</div>-->
               <p> Users signing up <br/>
                  per day! </p>
             </div>
@@ -114,8 +108,8 @@
 
           <li>
             <div class="info">
-              <font-awesome-icon :icon="['fas', 'users']" />
-              <h2>834+</h2>
+              <font-awesome-icon :icon="['fas', 'users']" class="title"/>
+<!--              <div class="title">834+</div>-->
               <p> New projects posted <br/>
                 weekly! Sign Up now! </p>
             </div>
@@ -125,16 +119,16 @@
 
     <div class="inquire">
       <div class="abc">
-        <h7>Craft Your Idea</h7>
-        <h2>Share with us your  <br/>
-          project details!</h2>
+        <div class="byline">Craft Your Idea</div>
+        <div class="title">Share with us your <br/>
+          project details!</div>
       </div>
 
       <div>
         <ul>
           <div>
             <li>
-              <h4>Partners</h4>
+              <div class="subHead">Created at</div>
             </li>
 
             <li>
@@ -143,7 +137,7 @@
             </li>
 
             <li>
-              <h7> Join us now!</h7>
+              <div class="byline"> Join us now!</div>
             </li>
           </div>
 
@@ -165,15 +159,9 @@
                 Mississauga, ON L5L 1C6
 
             </li>
-
           </div>
-
-
         </ul>
-
-
       </div>
-
     </div>
 
 
@@ -191,6 +179,18 @@
 </script>
 
 <style scoped>
+
+  .title {
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  .byline {
+    font-size: 15px;
+    font-weight: 600;
+    color: #98A0A6;
+
+  }
   .head img {
     width: 500px;
     height: 550px;
@@ -200,20 +200,20 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-gap: 10px;
-    padding: 20px 0 40px 0;
+    padding: 0 0 40px 0;
     justify-items: center;
   }
 
-  .head .abc{
+  .topic{
     text-align: left;
-    padding: 200px 0 0 0;
+    padding: 180px 0 0 0;
   }
 
-  .btn {
+  .slogan {
     padding: 20px 0 0 0;
   }
 
-  .def {
+  .btn {
     padding: 20px 0 0 0;
   }
 
@@ -246,28 +246,16 @@
     text-align: center;
     padding: 20px 0 40px 0;
   }
-  h2 {
-    font-weight: 700;
-    font-size: 40px;
-  }
-  h4 {
+
+  .subHead {
     font-weight: 700;
     font-size: 30px;
   }
-  h7 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #98A0A6;
-    padding-bottom: 40px;
 
-  }
   p {
     font-size: 11px;
     font-weight: bold;
     color: #98A0A6;
-  }
-  h2 {
-    font-weight: bolder;
   }
 
   li {
