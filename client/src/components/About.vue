@@ -1,5 +1,34 @@
 <template>
   <div>
+    <div class="head">
+      <ul>
+        <li>
+          <div class="abc">
+            <h7> Python, Web Design, Vue, Java </h7>
+            <div class="def">
+              <h2>Creative & Inspiring <br/>
+                Productive Collaboration. </h2>
+
+            </div>
+
+
+            <div class="btn">
+              <b-button class="button btn-sm">
+                <b-link class="link" href="/connect/log-in">Sign In</b-link>
+              </b-button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="../assets/undraw_in_progress_ql66.svg"/>
+        </li>
+
+      </ul>
+
+
+    </div>
+
     <div class="team">
       <div class="abc">
         <h7> Angels </h7>
@@ -11,7 +40,7 @@
         <li>
           <TeamCard
             label="Product Manager"
-            name="Veerpal Braar"
+            name="Veerpal Brar"
             github="https://github.com/VeerpalBrar"
             linkedin="www.linkedin.com/in/veerpal-brar" />
         </li>
@@ -45,7 +74,7 @@
         <li>
           <TeamCard
             label="Back End Developer"
-            name="Isha Keerpal"
+            name="Isha Kerpal"
             github="https://github.com/ishaaa-ai"
             linkedin="https://www.linkedin.com/in/isha-kerpal-6a923819b/" />
         </li>
@@ -60,7 +89,6 @@
       </ul>
 
     </div>
-
 
     <div class="statistic">
         <ul>
@@ -163,9 +191,60 @@
 </script>
 
 <style scoped>
+  .head img {
+    width: 500px;
+    height: 550px;
+    transform: scaleX(-1);
+  }
+  .head ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 10px;
+    padding: 20px 0 40px 0;
+    justify-items: center;
+  }
+
+  .head .abc{
+    text-align: left;
+    padding: 200px 0 0 0;
+  }
+
+  .btn {
+    padding: 20px 0 0 0;
+  }
+
+  .def {
+    padding: 20px 0 0 0;
+  }
+
+  .button {
+    border-radius: 20px;
+    border: 1px solid #212121;
+    background-color: #212121;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+  }
+   .link {
+     color: white;
+     text-decoration: none;
+   }
+  .button:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+
+  .button:focus {
+    outline: none;
+  }
+
   .abc{
     text-align: center;
-    padding: 20px 0 80px 0;
+    padding: 20px 0 40px 0;
   }
   h2 {
     font-weight: 700;
@@ -174,12 +253,13 @@
   h4 {
     font-weight: 700;
     font-size: 30px;
-    padding-bottom: 40px;
   }
   h7 {
     font-size: 15px;
     font-weight: 600;
     color: #98A0A6;
+    padding-bottom: 40px;
+
   }
   p {
     font-size: 11px;
@@ -234,4 +314,5 @@
     width: 80px;
     height: 80px;
   }
+
 </style>
