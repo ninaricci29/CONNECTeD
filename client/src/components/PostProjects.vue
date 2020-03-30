@@ -159,7 +159,7 @@ export default {
     addProject() {
       var form = new FormData();
       form.append("picture", this.file);
-      form.append("userid", 1);
+      form.append("userid", this.$store.state.user.id);
       form.append("desc", this.description);
       form.append("project_name", this.name);
       form.append("website", this.website);
