@@ -18,7 +18,7 @@
           </div>
         </li>
         <li>
-          <img src="../assets/undraw_in_progress_ql66.svg"/>
+          <img src="../assets/07.png"/>
         </li>
       </ul>
     </div>
