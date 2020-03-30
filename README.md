@@ -26,7 +26,7 @@ npm install
 npm run client
 npm run start
 ```
-
+For more information about setting up your local repo and getting started read our [wiki](https://github.com/itsninaricci29/CONNECTeD/wiki)
 ## Credits
 
 ConnectEd is built by Nano Banano. This project's development started at and has been supported at the University of Toronto Mississauga. Below is a list of our contributors so far. 
