@@ -25,7 +25,7 @@
       </div>
 
       <div class="nav-wrapper" >
-        <ul>
+        <ul v-on:click="collapse">
           <li><a href="/connect/home">Home</a></li>
           <li><a href="/connect/search">Search</a></li>
           <li><a href="/connect/profile/1">Profile</a></li>
