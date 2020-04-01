@@ -19,7 +19,7 @@
       </div>
 
       <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
-        <b-link class="update-button" href="/profile/:id/edit">
+        <b-link class="update-button" :href="editProfile">
           <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
         </b-link>
       </div>
@@ -67,6 +67,9 @@ export default {
     }
   },
   computed: {
+    editProfile: function(){
+      return "/connect/profile/" + this.$store.state.user.id + "/edit"
+    },
     ...mapState(['isLoggedIn'])
   }
 };

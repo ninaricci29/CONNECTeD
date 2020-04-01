@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div class="abc">
+      <div class="abc" v-if="is_logged_in">
         <b-dropdown
           size="sm"
           right
@@ -24,12 +24,8 @@
           <template v-slot:button-content>
             <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def" />
           </template>
-          <b-button v-if="isLoggedIn()" class="btn-sm">
-            <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
-          </b-button>
-          <b-button v-if="isLoggedIn()" class="btn-sm">
-            <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
-          </b-button>
+          <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
+          <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
 
         </b-dropdown>
       </div>
@@ -62,7 +58,8 @@ export default {
     "website",
     "picture_link",
     "users",
-    "tags"
+    "tags",
+    "is_logged_in"
   ],
   computed: {
     updateLink: function() {
@@ -79,9 +76,6 @@ export default {
     }
   },
   methods: {
-    isLoggedIn() {
-      return this.$store.state.user.utorid == this.utorid && this.$store.state.user.id == req.params.id && this.$store.state.user!=null;
-    },
     deleteProject() {
       this.$emit("delete", this.project_id);
     },
@@ -89,7 +83,7 @@ export default {
       return "/connect/profile/" + id;
     },
     showWebsite() {
-      return this.website != null;
+      return this.website != null && this.website != '';
     }
   }
 };
