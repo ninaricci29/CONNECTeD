@@ -64,7 +64,7 @@ export default {
       return "/connect/profile/" + id;
     },
     showWebsite() {
-      return this.website != null;
+      return this.website != null && this.website != '';
     }
   }
 };
