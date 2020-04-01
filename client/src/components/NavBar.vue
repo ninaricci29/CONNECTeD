@@ -19,13 +19,13 @@
       </div>
 
       <div v-if="isLoggedIn" class="h2 mb-2 gear-wheel">
-        <b-link class="update-button" href="/profile/:id/edit">
+        <b-link class="update-button" :href="editProfile">
           <b-icon icon="gear" v-b-popover.hover.bottomleft="'edit profile'" />
         </b-link>
       </div>
 
       <div class="nav-wrapper" >
-        <ul>
+        <ul v-on:click="collapse">
           <li><a href="/connect/home">Home</a></li>
           <li><a href="/connect/search">Search</a></li>
           <li><a :href="profile">Profile</a></li>
@@ -67,11 +67,16 @@ export default {
     }
   },
   computed: {
+  
     profile: function() {
       if (this.$store.state.isLoggedIn) {
         return "/connect/profile/" + this.$store.state.user.id;
       }
       return "/connect/404";
+    }, 
+    
+    editProfile: function(){
+      return "/connect/profile/" + this.$store.state.user.id + "/edit"
     },
     ...mapState(['isLoggedIn'])
   }

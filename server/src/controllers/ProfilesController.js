@@ -55,7 +55,9 @@ module.exports = {
 
   async tags(req, res) {
     try {
-      tags = await Tag.findAll({})
+      tags = await Tag.findAll({
+        order: [['tag_name', 'ASC']],
+      })
       res.send(tags)
     } catch (err) {
       console.log(err)

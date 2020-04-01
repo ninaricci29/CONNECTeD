@@ -9,7 +9,7 @@
 
       <div>
         <div class="info-inner">
-          <li><a> About </a></li>
+          <li><a>Home</a></li>
         </div>
 
         <b-row class="info-inner">

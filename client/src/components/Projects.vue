@@ -38,6 +38,7 @@
               v-bind:website="getProject(i, j).website"
               v-bind:users="getProject(i, j).Users"
               v-bind:tags="getProject(i, j).Tags"
+              v-bind:is_logged_in="isLoggedIn()"
             />
           </li>
         </ul>
