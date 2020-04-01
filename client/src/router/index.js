@@ -70,13 +70,6 @@ const routes = [
         /* webpackChunkName: "upload-projects"*/ "../components/PostProjects.vue"
       )
   },
-
-  {
-    path: "/home",
-    name: "Home",
-    component: () =>
-      import(/* webpackChunkName: "log-in" */ "../views/Home.vue")
-  },
   {
     path: "/faq",
     name: "FAQ",
@@ -102,7 +95,6 @@ const router = new VueRouter({
   base: "/connect",
   routes
 });
-
 
 router.beforeEach((to, from, next) => {
   store.dispatch("setUser");

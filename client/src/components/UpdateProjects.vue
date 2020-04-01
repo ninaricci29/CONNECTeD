@@ -21,6 +21,7 @@
           placeholder="This project is.."
           rows="4"
           cols="50"
+          maxlength="230"
           name="comment"
         />
         <small id="bio-type" class="form-text text-muted"
@@ -28,8 +29,8 @@
         >
       </div>
 
-      <div>
-        <b-form-group label="select your tags:">
+      <div class="form group">
+        <b-form-group label="select your tags:">          
           <b-form-tags
             v-model="value"
             size="sm"
@@ -68,6 +69,20 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+          type="website"
+          v-model="website"
+          class="form-control active"
+          placeholder="https://myProjectRepo.ca"
+        />
+        <small id="website-type" class="form-text text-muted"
+          >Link your repo!</small
+        >
+      </div>
+
+      <div class="form-group">
         <label>Project Picture </label>
         <br />
         <input
@@ -79,6 +94,7 @@
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -99,28 +115,28 @@ export default {
     return {
       name: "",
       description: "",
-      options: [
-        "Computer Science",
-        "Java",
-        "A.I.",
-        "Machine Learning",
-        "Python"
-      ],
+      website: "",
+      options: [],
       value: [],
       file: "",
       error: ""
     };
   },
-  mounted() {
+  async mounted() {
+    await axios.get("/connect/tags").then(response => {
+      for (var i = 0; i < response.data.length; i++) {
+        this.options.push(response.data[i].tag_name);
+      }
+    });
     this.id = this.$route.params.id;
-    axios
-      .get("/connect/getproject?id=" + this.id)
-      .then(
-        response => (
-          (this.name = response.data.project_name),
-          (this.description = response.data.desc)
-        )
-      );
+    axios.get("/connect/getproject?id=" + this.id).then(response => {
+      this.name = response.data.project_name;
+      this.description = response.data.desc;
+      this.website = response.data.website || "";
+      for (var i = 0; i < response.data.Tags.length; i++) {
+        this.value.push(response.data.Tags[i].tag_name);
+      }
+    });
   },
   computed: {
     availableOptions() {
@@ -129,11 +145,24 @@ export default {
   },
   methods: {
     updateProject() {
+      if(this.name == ''){
+        this.error = "Please enter a project name"
+        return
+      }else if(this.description == ''){
+        this.error = "Please enter a project description"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       var form = new FormData();
       form.append("picture", this.file);
       form.append("id", this.$route.params.id);
       form.append("desc", this.description);
       form.append("project_name", this.name);
+      form.append("tags", JSON.stringify(this.value));
+      form.append("website", this.website);
       axios
         .post("/connect/update-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -142,13 +171,25 @@ export default {
           this.id = response.data.id;
           this.projectname = response.data.project_name;
           this.desc = response.data.desc;
+          this.website = response.data.website;
+          const userId = this.$store.state.user.id;
+          this.$router.push({ path: `/profile/${userId}` });
         })
-        .catch(error => {
-          this.error = error;
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };
@@ -224,8 +265,5 @@ body h6 {
   background-color: lightslategrey;
   border-color: black;
   color: white;
-}
-
-.description {
 }
 </style>

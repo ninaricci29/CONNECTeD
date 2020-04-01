@@ -3,13 +3,13 @@
     <div class="inner-footer">
       <div class="logo-container info">
         <a>
-          <b-link href="/home">CONNECTeD</b-link>
+          <b-link href="/connect/home">CONNECTeD</b-link>
         </a>
       </div>
 
       <div>
         <div class="info-inner">
-          <li><a> About </a></li>
+          <li><a>Home</a></li>
         </div>
 
         <b-row class="info-inner">
@@ -19,14 +19,14 @@
 
           <li>
             <a>
-              <b-link href="/log-in">Sign In</b-link>
+              <b-link href="/connect/log-in">Sign In</b-link>
             </a>
           </li>
         </b-row>
         <div class="info-inner">
           <li>
             <a>
-              <b-link href="/FAQ"> FAQ </b-link>
+              <b-link href="/connect/faq"> FAQ </b-link>
             </a>
           </li>
         </div>

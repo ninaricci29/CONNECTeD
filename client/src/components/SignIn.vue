@@ -36,16 +36,11 @@ a:hover {
   background-color: white;
   color: black;
   border-color: black;
-  border-style:solid;
+  border-style: solid;
 }
 .brand {
   font-weight: bolder;
   font-size: 60px;
-}
-.sub {
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 10px;
 }
 .form {
   padding-top: 50px;

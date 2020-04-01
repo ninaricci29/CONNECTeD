@@ -4,7 +4,7 @@
       <h1>CONNECTeD</h1>
       <h6>Complete the form.</h6>
     </div>
-    <form class="form" method="submit">
+    <div class="form" method="submit">
       <div class="form-group">
         <label>First Name</label>
         <span class="star">*</span>
@@ -58,7 +58,7 @@
           type="bio"
           class="form-control active"
           placeholder="Got a project? Let's collaborate!"
-          maxlength="100"
+          maxlength="50"
           v-model="bio"
         />
         <small id="bio-type" class="form-text text-muted"
@@ -74,6 +74,7 @@
           class="form-control active"
           placeholder="https://myWebsite.ca"
           maxlength="100"
+          v-model="website"
         />
         <small id="website-type" class="form-text text-muted"
           >Link your Github!</small
@@ -131,6 +132,7 @@
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -139,13 +141,12 @@
           SUBMIT
         </button>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
   name: "submit",
@@ -154,9 +155,11 @@ export default {
       firstname: "",
       lastname: "",
       bio: "",
+      website: "",
       yos: "",
       major: "",
       file: "",
+      error: "",
       tags: null,
       options: [],
       value: []
@@ -177,6 +180,20 @@ export default {
   },
   methods: {
     submit() {
+      if(this.firstname == '' || this.lastname == ''){
+        this.error = "Please enter your full name"
+        return
+      }else if(this.major == ''){
+        this.error = "Please enter a major"
+        return
+      }else if(this.bio == ''){
+        this.error = "Please enter a bio"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       var ids = [];
       for (var i = 0; i < this.value.length; i++) {
         for (var j = 0; j < this.tags.length; j++) {
@@ -187,12 +204,13 @@ export default {
       }
 
       var form = new FormData();
-      form.append("utorid", AuthenticationService.getUtorid());
+      form.append("utorid", this.$store.state.user.utorid);
       form.append("first_name", this.firstname);
       form.append("last_name", this.lastname);
       form.append("bio", this.bio);
       form.append("major", this.major);
       form.append("year", this.yos);
+      form.append("website", this.website);
       form.append("profile_picture", this.file);
       form.append("tag_ids", JSON.stringify(ids));
       axios
@@ -205,13 +223,25 @@ export default {
             (this.bio = response.data.bio);
           this.yos = response.data.year;
           this.major = response.data.major;
+          this.website = response.data.website;
+          this.$cookies.set('id', response.data.user.id)
+          this.$router.push({ path: `/profile/${response.data.user.id}` });
         })
-        .catch(function(error) {
-          this.error = error;
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };

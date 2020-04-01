@@ -21,6 +21,7 @@
           placeholder="This project is.."
           rows="4"
           cols="50"
+          maxlength="230"
           name="comment"
         />
         <small id="bio-type" class="form-text text-muted"
@@ -82,6 +83,20 @@
       </div>
 
       <div class="form-group">
+        <label>Website</label>
+
+        <input
+          type="website"
+          v-model="website"
+          class="form-control active"
+          placeholder="https://myProjectRepo.ca"
+        />
+        <small id="website-type" class="form-text text-muted"
+          >Link your repo!</small
+        >
+      </div>
+
+      <div class="form-group">
         <label>Project Picture </label>
         <br />
         <input
@@ -93,6 +108,7 @@
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -113,6 +129,7 @@ export default {
     return {
       name: "",
       description: "",
+      website: "",
       options: [],
       value: [],
       value2: [],
@@ -140,11 +157,23 @@ export default {
     },
 
     addProject() {
+      if(this.name == ''){
+        this.error = "Please enter a project name"
+        return
+      }else if(this.description == ''){
+        this.error = "Please enter a project description"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       var form = new FormData();
       form.append("picture", this.file);
-      form.append("userid", 1);
+      form.append("userid", this.$store.state.user.id);
       form.append("desc", this.description);
       form.append("project_name", this.name);
+      form.append("website", this.website);
       form.append("tags", JSON.stringify(this.value));
       axios
         .post("/connect/post-projects", form, {
@@ -153,13 +182,23 @@ export default {
         .then(response => {
           this.project_name = response.data.project_name;
           this.desc = response.data.desc;
+          this.website = response.data.website;
         })
-        .catch(error => {
-          this.error = error;
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.error = "";
+      var file = this.$refs.file.files[0];
+      var size = file.size / 1024 / 1024; // in MB
+      if (size > 2) {
+        this.error = "Please select a file under 2MB";
+      } else if (file.type != "image/jpeg" && file.type != "image/png") {
+        this.error = "Please select a png or jpg image";
+      } else {
+        this.file = file;
+      }
     }
   }
 };

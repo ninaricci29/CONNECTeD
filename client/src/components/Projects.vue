@@ -3,11 +3,27 @@
     <h4>PROJECTS <font-awesome-icon :icon="['fa', 'lightbulb']" /></h4>
 
     <section class="container">
-      <b-button v-if="isLoggedIn()" class="btn-sm">
-        <b-link class="project-button" href="/connect/post-projects"
-          >NEW PROJECT</b-link
-        >
-      </b-button>
+      <div class="zero-projects" v-if="hasNoProjects()">
+        <img src="../assets/04.png" />
+
+        <div class="font-weight-bold">
+          No Projects Found
+
+          <p class="text-muted">
+            Looks like you haven't started a project yet! Project information
+            will <br />
+            appear here as soon as you post it!
+          </p>
+        </div>
+      </div>
+
+      <div class="button">
+        <b-button v-if="isLoggedIn()" class="btn-sm btn">
+          <b-link class="project-button" href="/connect/post-projects"
+            >NEW PROJECT</b-link
+          >
+        </b-button>
+      </div>
 
       <div class="project-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
@@ -19,6 +35,9 @@
               v-bind:project_description="getProject(i, j).desc"
               v-bind:project_id="getProject(i, j).id"
               v-bind:picture_link="getProject(i, j).picture"
+              v-bind:website="getProject(i, j).website"
+              v-bind:users="getProject(i, j).Users"
+              v-bind:tags="getProject(i, j).Tags"
             />
           </li>
         </ul>
@@ -73,6 +92,12 @@ export default {
     projectExists(row, col) {
       return this.getProject(row, col) != null;
     },
+    hasNoProjects() {
+      if (this.project_list == 0) {
+        return true;
+      }
+    },
+
     deleteProject(id) {
       axios
         .post("/connect/delete-project", {
@@ -98,16 +123,14 @@ h4 {
   font-weight: bold;
 }
 
-.container {
-  padding: 20px 40px 0 40px;
+img {
+  height: 30%;
+  width: 30%;
+  display: block;
+  margin: 0 auto;
 }
-
-.text-box {
-  font-size: 14px;
-  height: 80px;
-  border-color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.09);
-  padding-bottom: 20px;
+.container {
+  padding: 0 40px 0 40px;
 }
 
 li {
@@ -122,6 +145,11 @@ ul {
   padding: 0px;
 }
 
+.text-muted {
+  opacity: 0.4;
+  font-weight: 500;
+}
+
 .project-cards {
   padding: 1rem 0 1rem 0;
 }
@@ -129,5 +157,32 @@ ul {
 .project-button {
   color: white;
   text-decoration: none;
+  font-weight: 600;
+}
+.zero-projects {
+  padding: 0 0 20px 0;
+}
+
+.button {
+  padding: 20px 0 40px 0;
+}
+
+.btn {
+  background-color: #2e2e2e;
+  padding: 10px 15px;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  padding-bottom: 8px;
+}
+
+.btn:hover .project-button {
+  background-color: white;
+  color: black;
 }
 </style>
