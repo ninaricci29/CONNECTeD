@@ -28,7 +28,7 @@
         <ul v-on:click="collapse">
           <li><a href="/connect/home">Home</a></li>
           <li><a href="/connect/search">Search</a></li>
-          <li><a href="/connect/profile/1">Profile</a></li>
+          <li><a :href="profile">Profile</a></li>
           <li><a v-if="isLoggedin()" href="/connect/log-in">Log-in</a></li>
           <li><a v-if="isLoggedout()" @click="logOut" href="/connect/home" >Logout</a></li>
         </ul>
@@ -67,6 +67,14 @@ export default {
     }
   },
   computed: {
+  
+    profile: function() {
+      if (this.$store.state.isLoggedIn) {
+        return "/connect/profile/" + this.$store.state.user.id;
+      }
+      return "/connect/404";
+    }, 
+    
     editProfile: function(){
       return "/connect/profile/" + this.$store.state.user.id + "/edit"
     },
