@@ -23,10 +23,11 @@
             <b-row class="desc">
               <h6>{{ description }}</h6></b-row
             >
-            <b-row class="url"
-              ><a
-                ><h6>{{ website }}</h6></a
-              ></b-row
+            <b-row v-if="HasWebsite" >
+              <a class="url" :href=website target="_blank">
+                {{website}}
+              </a>
+            </b-row
             >
           </b-col>
 
@@ -81,7 +82,14 @@ export default {
           (this.link = response.data.profile_picture)
         )
       );
-  }
+  },
+    methods: {
+        HasWebsite() {
+            if (this.website != null) {
+                return true;
+            }
+        },
+    }
 };
 </script>
 
@@ -94,8 +102,11 @@ header {
   padding-top: 200px;
   -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
 }
-
-img {
+a img {
+  width: 20px;
+  height: 20px;
+}
+.profile-picture img {
   width: 150px;
   height: 150px;
   border-radius: 1000px;
@@ -128,10 +139,12 @@ li {
 .first-row li a:hover {
   color: lightslategrey;
 }
-
+.url {
+  font-weight: 600;
+}
 .url:hover {
-  color: lightslategrey;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .abc {

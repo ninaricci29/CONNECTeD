@@ -42,7 +42,7 @@
             {{ project_description }}
           </p>
           <br /><br />
-        </div>
+        </div> 
       </div>
     </div>
   </div>

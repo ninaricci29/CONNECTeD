@@ -25,7 +25,8 @@ import {
     faBullhorn,
     faMapSigns,
     faPhoneAlt,
-    faEnvelope
+    faEnvelope,
+    faLink
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -46,7 +47,8 @@ library.add(
     faBullhorn,
     faMapSigns,
     faPhoneAlt,
-    faEnvelope
+    faEnvelope,
+    faLink
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
