@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
         unique: false
 },
     desc: DataTypes.TEXT,
-    picture: DataTypes.STRING
+    picture: DataTypes.STRING,
+    website: DataTypes.STRING
 }, {
     timestamps: false
 });

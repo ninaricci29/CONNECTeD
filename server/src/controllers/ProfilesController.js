@@ -8,6 +8,9 @@ module.exports = {
       user = await User.findOne({
         where: {
           id: req.query.id
+        },
+        include: {
+          model: Tag,
         }
       })
       res.send(user)
@@ -52,7 +55,9 @@ module.exports = {
 
   async tags(req, res) {
     try {
-      tags = await Tag.findAll({})
+      tags = await Tag.findAll({
+        order: [['tag_name', 'ASC']],
+      })
       res.send(tags)
     } catch (err) {
       console.log(err)
@@ -90,6 +95,14 @@ module.exports = {
       user.major=req.body.major;
       user.year=req.body.year;
       user.description=req.body.description;
+      user.website=req.body.website;
+      lst = JSON.parse(req.body.tags)
+      tags = await Tag.findAll({
+        where: {
+          tag_name: lst
+        }
+      })
+      user.setTags(tags)
       if (req.file != null){
         user.profile_picture = '/connect/images/' + req.file.filename
       }

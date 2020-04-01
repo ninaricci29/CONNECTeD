@@ -11,5 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     bio: DataTypes.TEXT,
     year: DataTypes.INTEGER,
     profile_picture: DataTypes.STRING,
+    website: DataTypes.STRING
   });
 }

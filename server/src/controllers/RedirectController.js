@@ -106,7 +106,6 @@ module.exports = {
     },
     async profile_redirect(req, res){
       console.log(req.params.id);
-      res.cookie('id', req.params.id)
 
       user = await User.findOne({
         where: {
