@@ -30,7 +30,7 @@
       </div>
 
       <div class="form group">
-        <b-form-group label="select your tags:">
+        <b-form-group label="select your tags:">          
           <b-form-tags
             v-model="value"
             size="sm"
@@ -91,10 +91,10 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
-        <p>{{ error }}</p>
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -145,6 +145,17 @@ export default {
   },
   methods: {
     updateProject() {
+      if(this.name == ''){
+        this.error = "Please enter a project name"
+        return
+      }else if(this.description == ''){
+        this.error = "Please enter a project description"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       var form = new FormData();
       form.append("picture", this.file);
       form.append("id", this.$route.params.id);
@@ -164,8 +175,8 @@ export default {
           const userId = this.$store.state.user.id;
           this.$router.push({ path: `/profile/${userId}` });
         })
-        .catch(error => {
-          this.error = error;
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {

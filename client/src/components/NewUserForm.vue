@@ -4,7 +4,7 @@
       <h1>CONNECTeD</h1>
       <h6>Complete the form.</h6>
     </div>
-    <form class="form" method="submit">
+    <div class="form" method="submit">
       <div class="form-group">
         <label>First Name</label>
         <span class="star">*</span>
@@ -129,10 +129,10 @@
           ref="file"
           v-on:change="handleFileUpload()"
         />
-        <p>{{ error }}</p>
       </div>
 
       <div id="button">
+        <p class="star">{{ error }}</p>
         <button
           type="log-in-via-utorid"
           class="btn btn-primary"
@@ -141,13 +141,12 @@
           SUBMIT
         </button>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
   name: "submit",
@@ -160,6 +159,7 @@ export default {
       yos: "",
       major: "",
       file: "",
+      error: "",
       tags: null,
       options: [],
       value: []
@@ -180,6 +180,20 @@ export default {
   },
   methods: {
     submit() {
+      if(this.firstname == '' || this.lastname == ''){
+        this.error = "Please enter your full name"
+        return
+      }else if(this.major == ''){
+        this.error = "Please enter a major"
+        return
+      }else if(this.bio == ''){
+        this.error = "Please enter a bio"
+        return
+      }
+      else if(this.value.length == 0){
+        this.error = "Please select at least one tag"
+        return
+      }
       var ids = [];
       for (var i = 0; i < this.value.length; i++) {
         for (var j = 0; j < this.tags.length; j++) {
@@ -190,7 +204,7 @@ export default {
       }
 
       var form = new FormData();
-      form.append("utorid", AuthenticationService.getUtorid());
+      form.append("utorid", this.$store.state.user.utorid);
       form.append("first_name", this.firstname);
       form.append("last_name", this.lastname);
       form.append("bio", this.bio);
@@ -210,9 +224,11 @@ export default {
           this.yos = response.data.year;
           this.major = response.data.major;
           this.website = response.data.website;
+          this.$cookies.set('id', response.data.user.id)
+          this.$router.push({ path: `/profile/${response.data.user.id}` });
         })
-        .catch(function(error) {
-          this.error = error;
+        .catch(() => {
+          this.error = "Something went wrong, please try again shortly.";
         });
     },
     handleFileUpload() {
