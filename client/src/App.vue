@@ -24,7 +24,7 @@ export default {
       },
       {
         text: "Profile",
-        path: "/connect/profile/1"
+        path: "/connect/profile"
       },
       {
         text: "Search",
