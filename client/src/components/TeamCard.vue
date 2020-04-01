@@ -13,10 +13,10 @@
         <div class="social" >
           <div class="icons" >
 
-            <a :href=github >
+            <a :href=github target="_blank">
               <font-awesome-icon :icon="['fab', 'github']" class="abc" />
             </a>
-            <a :href="linkedin" >
+            <a :href=linkedin target="_blank">
               <font-awesome-icon :icon="['fab', 'linkedin']" class="abc" />
             </a>
           </div>

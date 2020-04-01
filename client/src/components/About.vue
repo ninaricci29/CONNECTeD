@@ -34,7 +34,7 @@
             label="Product Manager"
             name="Veerpal Brar"
             github="https://github.com/VeerpalBrar"
-            linkedin="www.linkedin.com/in/veerpal-brar" />
+            linkedin="https://www.linkedin.com/in/veerpal-brar" />
         </li>
 
         <li>

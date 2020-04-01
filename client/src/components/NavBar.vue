@@ -29,7 +29,7 @@
           <li><a href="/connect/home">Home</a></li>
           <li><a href="/connect/search">Search</a></li>
           <li><a href="/connect/profile/1">Profile</a></li>
-          <li><a v-if="isLoggedin()" href="/connect/log-in">Log-in</a></li>
+          <li><a v-if="isLoggedin()" href="/connect/log-in">Log In</a></li>
           <li><a v-if="isLoggedout()" @click="logOut" href="/connect/home" >Logout</a></li>
         </ul>
       </div>

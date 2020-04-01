@@ -23,10 +23,11 @@
             <b-row class="desc">
               <h6>{{ description }}</h6></b-row
             >
-            <b-row class="url"
-              ><a
-                ><h6>{{ website }}</h6></a
-              ></b-row
+            <b-row class="url">
+              <a :href=website target="_blank">
+                  <img src="https://img.icons8.com/material-sharp/24/000000/link.png"/>
+              </a>
+            </b-row
             >
           </b-col>
 
@@ -94,8 +95,11 @@ header {
   padding-top: 200px;
   -webkit-box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.09);
 }
-
-img {
+a img {
+  width: 20px;
+  height: 20px;
+}
+.profile-picture img {
   width: 150px;
   height: 150px;
   border-radius: 1000px;
