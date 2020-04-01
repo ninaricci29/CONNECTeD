@@ -23,9 +23,9 @@
             <b-row class="desc">
               <h6>{{ description }}</h6></b-row
             >
-            <b-row class="url">
-              <a :href=website target="_blank">
-                  <img src="https://img.icons8.com/material-sharp/24/000000/link.png"/>
+            <b-row v-if="HasWebsite" >
+              <a class="url" :href=website target="_blank">
+                {{website}}
               </a>
             </b-row
             >
@@ -82,7 +82,14 @@ export default {
           (this.link = response.data.profile_picture)
         )
       );
-  }
+  },
+    methods: {
+        HasWebsite() {
+            if (this.website != null) {
+                return true;
+            }
+        },
+    }
 };
 </script>
 
@@ -132,10 +139,12 @@ li {
 .first-row li a:hover {
   color: lightslategrey;
 }
-
+.url {
+  font-weight: 600;
+}
 .url:hover {
-  color: lightslategrey;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .abc {
