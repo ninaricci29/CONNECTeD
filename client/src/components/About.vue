@@ -10,10 +10,8 @@
                 Productive Collaboration. </div>
             </div>
 
-            <div class="btn">
-              <b-button class="button btn-sm">
-                <b-link class="link" href="/connect/log-in">Sign In</b-link>
-              </b-button>
+            <div>
+                <b-link class="btn button btn-sm" href="/connect/log-in">Sign In</b-link>
             </div>
           </div>
         </li>
@@ -214,7 +212,7 @@
   }
 
   .btn {
-    padding: 20px 0 0 0;
+    /*padding: 20px 0 0 0;*/
   }
 
   .button {
@@ -228,11 +226,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    text-decoration: none;
   }
-   .link {
-     color: white;
-     text-decoration: none;
-   }
   .button:hover {
     transform: scale(1.1);
     transition: 0.5s;
