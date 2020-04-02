@@ -36,7 +36,7 @@
 
         <li>
           <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
-            <font-awesome-icon :icon="['fab', 'github']" class="def"/>
+            <font-awesome-icon :icon="['fab', 'github']" class="def" />
           </b-link>
 
         </li>
