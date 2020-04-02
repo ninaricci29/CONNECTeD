@@ -30,19 +30,19 @@
         </b-dropdown>
       </div>
 
-      <b-link v-if="showWebsite()" :href="websiteLink">
+      <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
         <font-awesome-icon :icon="['fab', 'github']" class="abc def" />
       </b-link>
 
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted font-weight-medium">{{ tag }}</p>
+          <p class="category text-muted">{{ tag }}</p>
           <h4 class="title">{{ project_name }}</h4>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
           <br /><br />
-        </div> 
+        </div>
       </div>
     </div>
   </div>
@@ -157,6 +157,7 @@ a {
 
 .text-muted {
   opacity: 0.4;
+  font-weight: 600;
 }
 
 .text-muted-2 {

@@ -17,12 +17,12 @@
         </div>
       </div>
 
-      <div class="button">
-        <b-button v-if="isLoggedIn()" class="btn-sm btn">
-          <b-link class="project-button" href="/connect/post-projects"
+      <div class="action">
+        <div v-if="isLoggedIn()">
+          <b-link class="button btn-sm btn" href="/connect/post-projects"
             >NEW PROJECT</b-link
           >
-        </b-button>
+        </div>
       </div>
 
       <div class="project-cards" v-for="i in rowCount()" v-bind:key="i">
@@ -155,35 +155,32 @@ ul {
   padding: 1rem 0 1rem 0;
 }
 
-.project-button {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
 .zero-projects {
   padding: 0 0 20px 0;
 }
-
-.button {
+.action {
   padding: 20px 0 40px 0;
 }
-
-.btn {
-  background-color: #2e2e2e;
-  padding: 10px 15px;
+.button {
+  border-radius: 20px;
+  border: 1px solid #212121;
+  background-color: #212121;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  text-decoration: none;
+}
+.button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 
-.btn:hover {
-  background-color: white;
-  color: black;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
-  padding-bottom: 8px;
+.button:focus {
+  outline: none;
 }
 
-.btn:hover .project-button {
-  background-color: white;
-  color: black;
-}
 </style>
