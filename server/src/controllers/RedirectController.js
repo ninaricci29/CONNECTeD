@@ -47,7 +47,7 @@ module.exports = {
     async update_project_redirect(req, res){
       console.log(req.cookies)
       if (req.cookies.utorid == undefined){
-        res.redirect('/connect/register')
+        res.redirect('/connect/404')
       }
       user = await User.findOne({
         where: {
@@ -73,7 +73,7 @@ module.exports = {
     async new_project_redirect(req, res){
       console.log(req.cookies)
       if (req.cookies.utorid == null){
-        res.redirect('/connect/register')
+        res.redirect('/connect/404')
       }
       user = await User.findOne({
         where: {
