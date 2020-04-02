@@ -84,7 +84,7 @@ a {
 
 .abc {
   transform: translate(115px, -395px);
-  padding: 0 0 0 0;
+  padding: 5px 0 0 0;
   opacity: 0;
 }
 .def {

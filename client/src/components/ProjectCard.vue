@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <b-col class="abc">
+      <b-col class="abc def">
         <li>
           <div v-if="is_logged_in">
             <b-dropdown
