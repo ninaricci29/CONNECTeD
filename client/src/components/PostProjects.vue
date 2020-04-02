@@ -149,14 +149,14 @@ export default {
       for (var i = 0; i < response.data.length; i++) {
         this.options.push(response.data[i].tag_name);
       }
-    axios.get("connect/get_utorids").then(response => {
+    });
+
+    axios.get("/connect/get_utorids").then(response => {
         for (var j = 0; j < response.data.length; j ++) {
-            alert(response.data[i].utorid)
             this.collab.push(response.data[j].utorid)
             
         }
     })
-    });
   },
 
   methods: {
@@ -176,6 +176,9 @@ export default {
         this.error = "Please select at least one tag"
         return
       }
+      if (this.value2.indexOf(this.$store.state.user.utorid) == -1){
+        this.value2.push(this.$store.state.user.utorid);
+      }
       var form = new FormData();
       form.append("picture", this.file);
       form.append("userid", this.$store.state.user.id);
@@ -183,8 +186,7 @@ export default {
       form.append("project_name", this.name);
       form.append("website", this.website);
       form.append("tags", JSON.stringify(this.value));
-      this.value2.push(this.$store.state.user.utorid);
-      form.append("collab", this.value2)
+      form.append("collab", JSON.stringify(this.value2));
       axios
         .post("/connect/post-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
@@ -193,6 +195,9 @@ export default {
           this.project_name = response.data.project_name;
           this.desc = response.data.desc;
           this.website = response.data.website;
+          const userId = this.$store.state.user.id;
+          this.$router.push({ path: `/profile/${userId}` });
+
         })
         .catch(() => {
           this.error = "Something went wrong, please try again shortly.";

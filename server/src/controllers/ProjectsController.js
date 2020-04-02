@@ -74,24 +74,23 @@ async getProjects(req, res) {
       project = await Project.create(req.body);
       console.log(project)
       lst1 = JSON.parse(req.body.collab)
-        for (var i = 0; i <lst1.length; i++){
-            user = await User.findOne({
-                where:{utorid:lst1[i]}
-            });
-            uid = user.id
-            const uid_pid = {
-                UserId: uid,
-                ProjectId: project.id
-            }
-            await UsersProject.create(uid_pid)
-        }
-      const uid_pid = {
-        UserId: req.body.userid,
-        ProjectId: project.id
-      }
-      console.log(uid_pid.body)
-      await UsersProject.create(uid_pid)
 
+      // filter out duplicate utorids 
+      lst1 = lst1.filter(function(value, index, self){ 
+          return self.indexOf(value) == index
+       })
+
+      for (var i = 0; i <lst1.length; i++){
+          user = await User.findOne({
+              where:{utorid:lst1[i]}
+          });
+          uid = user.id
+          const uid_pid = {
+              UserId: uid,
+              ProjectId: project.id
+          }
+          await UsersProject.create(uid_pid)
+      }
       lst = JSON.parse(req.body.tags)
       for (var i = 0; i < lst.length; i++) {
            tag = await Tag.findOne({where: {
