@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <b-col class="abc def">
+      <b-col class="abc">
         <li>
           <div v-if="is_logged_in">
             <b-dropdown
@@ -24,7 +24,7 @@
               no-caret
             >
               <template v-slot:button-content>
-                <font-awesome-icon :icon="['fa', 'ellipsis-h']" />
+                <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def"/>
               </template>
               <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
               <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
@@ -36,7 +36,7 @@
 
         <li>
           <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
-            <font-awesome-icon :icon="['fab', 'github']" />
+            <font-awesome-icon :icon="['fab', 'github']" class="def"/>
           </b-link>
 
         </li>
