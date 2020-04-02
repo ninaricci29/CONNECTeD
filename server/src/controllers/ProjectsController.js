@@ -52,7 +52,18 @@ async getProjects(req, res) {
       error: 'an error has occurred trying to fetch projects'
     })
   }},
-  
+  async get_utorids(req, res){
+    try{
+      users = await User.findAll({})
+      res.send(users)
+    }
+    catch (err){
+      console.log(err)
+    res.status(500).send({
+      error: 'an error has occurred trying to fetch utorids'
+    })
+}},
+
   async addProject(req,res){
     try {
       if (req.file == null){

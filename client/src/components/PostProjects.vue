@@ -134,7 +134,8 @@ export default {
       value: [],
       value2: [],
       file: "",
-      error: ""
+      error: "",
+      collab: []
     };
   },
   computed: {
@@ -148,12 +149,19 @@ export default {
       for (var i = 0; i < response.data.length; i++) {
         this.options.push(response.data[i].tag_name);
       }
+    axios.get("connect/get_utorids").then(response => {
+        for (var j = 0; j < response.data.length; j ++) {
+            alert(response.data[i].utorid)
+            this.collab.push(response.data[j].utorid)
+            
+        }
+    })
     });
   },
 
   methods: {
     tagValidator(tag) {
-      return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6;
+      return  this.collab.includes(tag)
     },
 
     addProject() {
@@ -175,6 +183,8 @@ export default {
       form.append("project_name", this.name);
       form.append("website", this.website);
       form.append("tags", JSON.stringify(this.value));
+      this.value2.push(this.$store.state.user.utorid);
+      form.append("collab", this.value2)
       axios
         .post("/connect/post-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }
