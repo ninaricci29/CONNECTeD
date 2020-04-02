@@ -74,11 +74,13 @@
           input-id="tags-separators"
           v-model="value2"
           separator=" ,;"
-          placeholder="utorid"
+          placeholder="Enter collaborator utorid's seperated by commas"
           no-add-on-enter
           remove-on-delete
           class="mb-2"
-          :tag-validator="tagValidator"
+          :tag-validator="utoridValidator"
+          invalid-tag-text="Invalid utorid(s)"
+          duplicate-tag-text="Duplicate utorid(s)"
         ></b-form-tags>
       </div>
 
@@ -160,7 +162,7 @@ export default {
   },
 
   methods: {
-    tagValidator(tag) {
+    utoridValidator(tag) {
       return  this.collab.includes(tag)
     },
 

@@ -12,9 +12,13 @@ module.exports = {
             where: {
               id: req.query.id
             },
-            include: {
+            include: [{
               model: Tag
+            },
+            {
+              model: User
             }
+            ]
           })
           res.send(project);
         } catch (err) {
@@ -147,6 +151,16 @@ async getProjects(req, res) {
         }
       })
       project.setTags(tags)
+
+      lst1 = JSON.parse(req.body.collab)
+      console.log(lst1)
+      users = await User.findAll({
+        where: {
+          utorid: lst1
+        }
+      })
+      console.log(users)
+      project.setUsers(users)
       if (req.file != null){
         project.picture = '/connect/images/' + req.file.filename
       }
