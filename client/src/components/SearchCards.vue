@@ -19,7 +19,7 @@
       <!--        <b-dropdown-item href="#">Save</b-dropdown-item>-->
       <!--      </b-dropdown>-->
 
-      <b-link v-if="showWebsite()" :href="websiteLink">
+      <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
         <font-awesome-icon :icon="['fab', 'github']" class="abc def" />
       </b-link>
 

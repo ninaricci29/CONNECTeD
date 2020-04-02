@@ -12,27 +12,37 @@
         </div>
       </div>
 
-      <div class="abc" v-if="is_logged_in">
-        <b-dropdown
-          size="sm"
-          right
-          text="Right align"
-          variant="link"
-          toggle-class="text-decoration-none"
-          no-caret
-        >
-          <template v-slot:button-content>
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def" />
-          </template>
-          <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
-          <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+      <b-col class="abc">
+        <li>
+          <div v-if="is_logged_in">
+            <b-dropdown
+              size="sm"
+              right
+              text="Right align"
+              variant="link"
+              toggle-class="text-decoration-none"
+              no-caret
+            >
+              <template v-slot:button-content>
+                <font-awesome-icon :icon="['fa', 'ellipsis-h']" />
+              </template>
+              <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
+              <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
 
-        </b-dropdown>
-      </div>
+            </b-dropdown>
+          </div>
 
-      <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
-        <font-awesome-icon :icon="['fab', 'github']" class="abc def" />
-      </b-link>
+        </li>
+
+        <li>
+          <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
+            <font-awesome-icon :icon="['fab', 'github']" />
+          </b-link>
+
+        </li>
+
+      </b-col>
+
 
       <div class="card-body">
         <div class="card-footer">
@@ -105,6 +115,9 @@ a {
   transform: translate(115px, -395px);
   padding: 0 0 0 0;
   opacity: 0;
+}
+li {
+  padding-top: 5px;
 }
 .def {
   color: white;
