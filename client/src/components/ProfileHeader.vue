@@ -24,7 +24,7 @@
               <h6>{{ description }}</h6></b-row
             >
             <b-row v-if="HasWebsite" >
-              <a class="url" :href=website target="_blank">
+              <a class="url" :href="websiteLink()" target="_blank">
                 {{website}}
               </a>
             </b-row
@@ -85,10 +85,14 @@ export default {
   },
     methods: {
         HasWebsite() {
-            if (this.website != null) {
+            if (this.website != null && this.website != '') {
                 return true;
             }
+            return false
         },
+        websiteLink(){
+          return  "//" + this.website
+        }
     }
 };
 </script>
