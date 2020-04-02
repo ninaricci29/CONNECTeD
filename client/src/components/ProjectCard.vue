@@ -12,37 +12,47 @@
         </div>
       </div>
 
-      <div class="abc" v-if="is_logged_in">
-        <b-dropdown
-          size="sm"
-          right
-          text="Right align"
-          variant="link"
-          toggle-class="text-decoration-none"
-          no-caret
-        >
-          <template v-slot:button-content>
-            <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def" />
-          </template>
-          <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
-          <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
+      <b-col class="abc">
+        <li>
+          <div v-if="is_logged_in">
+            <b-dropdown
+              size="sm"
+              right
+              text="Right align"
+              variant="link"
+              toggle-class="text-decoration-none"
+              no-caret
+            >
+              <template v-slot:button-content>
+                <font-awesome-icon :icon="['fa', 'ellipsis-h']" class="def"/>
+              </template>
+              <b-dropdown-item :href="updateLink">Edit</b-dropdown-item>
+              <b-dropdown-item @click="deleteProject">Delete</b-dropdown-item>
 
-        </b-dropdown>
-      </div>
+            </b-dropdown>
+          </div>
 
-      <b-link v-if="showWebsite()" :href="websiteLink">
-        <font-awesome-icon :icon="['fab', 'github']" class="abc def" />
-      </b-link>
+        </li>
+
+        <li>
+          <b-link v-if="showWebsite()" :href="websiteLink" target="_blank">
+            <font-awesome-icon :icon="['fab', 'github']" class="def" />
+          </b-link>
+
+        </li>
+
+      </b-col>
+
 
       <div class="card-body">
         <div class="card-footer">
-          <p class="category text-muted font-weight-medium">{{ tag }}</p>
+          <p class="category text-muted">{{ tag }}</p>
           <h4 class="title">{{ project_name }}</h4>
           <p class="desc text-muted-2">
             {{ project_description }}
           </p>
           <br /><br />
-        </div> 
+        </div>
       </div>
     </div>
   </div>
@@ -106,6 +116,9 @@ a {
   padding: 0 0 0 0;
   opacity: 0;
 }
+li {
+  padding-top: 5px;
+}
 .def {
   color: white;
 }
@@ -157,6 +170,7 @@ a {
 
 .text-muted {
   opacity: 0.4;
+  font-weight: 600;
 }
 
 .text-muted-2 {

@@ -43,8 +43,8 @@
         </b-form-group>
       </div>
 
-      <div id="button">
-        <button class="btn btn-primary" @click="SearchTag">
+      <div class="active">
+        <button class="btn btn-sm button" @click="SearchTag">
           <font-awesome-icon :icon="['fa', 'search']" />
         </button>
       </div>
@@ -108,21 +108,29 @@ header {
   width: 500px;
   border-color: black;
 }
-#button {
-  padding-bottom: 20px;
-  padding-top: 20px;
+.button {
+  border-radius: 20px;
+  border: 1px solid #212121;
+  background-color: #212121;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  text-decoration: none;
 }
-.btn {
-  background-color: #2e2e2e;
+.button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
-.btn-primary {
-  border-color: white;
-  background-color: #2e2e2e;
+
+.button:focus {
+  outline: none;
 }
-.btn:hover {
-  background-color: white;
-  color: black;
-  border-color: black;
+.active {
+  padding: 0 0 40px 0;
 }
 .star {
   color: red;
