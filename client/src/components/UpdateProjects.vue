@@ -68,6 +68,22 @@
         </b-form-group>
       </div>
 
+      <div>
+        <label>Collaborators:</label>
+        <b-form-tags
+          input-id="tags-separators"
+          v-model="value2"
+          separator=" ,;"
+          placeholder="Enter collaborator utorid's seperated by commas"
+          no-add-on-enter
+          remove-on-delete
+          class="mb-2"
+          :tag-validator="utoridValidator"
+          invalid-tag-text="Invalid utorid(s)"
+          duplicate-tag-text="Duplicate utorid(s)"
+        ></b-form-tags>
+      </div>
+
       <div class="form-group">
         <label>Website</label>
 
@@ -118,6 +134,8 @@ export default {
       website: "",
       options: [],
       value: [],
+      value2:[],
+      collab: [],
       file: "",
       error: ""
     };
@@ -128,6 +146,13 @@ export default {
         this.options.push(response.data[i].tag_name);
       }
     });
+
+    axios.get("/connect/get_utorids").then(response => {
+        for (var j = 0; j < response.data.length; j ++) {
+            this.collab.push(response.data[j].utorid)
+        }
+    })
+
     this.id = this.$route.params.id;
     axios.get("/connect/getproject?id=" + this.id).then(response => {
       this.name = response.data.project_name;
@@ -135,6 +160,9 @@ export default {
       this.website = response.data.website || "";
       for (var i = 0; i < response.data.Tags.length; i++) {
         this.value.push(response.data.Tags[i].tag_name);
+      }
+      for (var j = 0; j < response.data.Users.length; j++) {
+        this.value2.push(response.data.Users[j].utorid);
       }
     });
   },
@@ -144,6 +172,9 @@ export default {
     }
   },
   methods: {
+    utoridValidator(tag) {
+      return  this.collab.includes(tag)
+    },
     updateProject() {
       if(this.name == ''){
         this.error = "Please enter a project name"
@@ -156,6 +187,10 @@ export default {
         this.error = "Please select at least one tag"
         return
       }
+      if (this.value2.indexOf(this.$store.state.user.utorid) == -1){
+        this.value2.push(this.$store.state.user.utorid);
+      }
+      
       var form = new FormData();
       form.append("picture", this.file);
       form.append("id", this.$route.params.id);
@@ -163,6 +198,7 @@ export default {
       form.append("project_name", this.name);
       form.append("tags", JSON.stringify(this.value));
       form.append("website", this.website);
+      form.append("collab", JSON.stringify(this.value2));
       axios
         .post("/connect/update-projects", form, {
           headers: { "Content-Type": "multipart/form-data" }

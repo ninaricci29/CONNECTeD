@@ -11,7 +11,7 @@
             </div>
 
             <div>
-                <b-link class="btn button btn-sm" href="/connect/log-in">Sign In</b-link>
+                <b-link class="btn button btn-sm" href="/connect/register">Sign In</b-link>
             </div>
           </div>
         </li>
