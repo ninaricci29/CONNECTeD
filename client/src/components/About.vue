@@ -10,7 +10,7 @@
                 Productive Collaboration. </div>
             </div>
 
-            <div>
+            <div v-if="isLoggedOut()">
                 <b-link class="btn button btn-sm" href="/connect/register">Sign In</b-link>
             </div>
           </div>
@@ -172,6 +172,11 @@
         name: "About",
         components: {
             TeamCard
+        },
+        methods: {
+          isLoggedOut(){
+            return !this.$store.state.isLoggedIn
+          }
         }
     }
 </script>
