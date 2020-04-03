@@ -122,12 +122,13 @@ li {
 .def {
   color: white;
 }
+
 /*For the contributors*/
 .ghi {
   font-size: 20px;
   cursor: pointer;
-  /*-webkit-text-stroke-color: black;*/
-  /*-webkit-text-stroke-width: 0.02em;*/
+  /* -webkit-text-stroke-color: black; */
+  /* -webkit-text-stroke-width: 0.02em; */
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-repeat: no-repeat;
@@ -198,6 +199,9 @@ li {
 
 .card:hover .angle {
   background-size: 300% 400%;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.02em; 
+  -webkit-text-fill-color:white;
 }
 
 .card:hover .abc {
