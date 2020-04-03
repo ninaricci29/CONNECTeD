@@ -165,6 +165,9 @@ a {
 
 .card:hover .angle {
   background-size: 300% 400%;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.02em; 
+  -webkit-text-fill-color:white;
 }
 
 .card:hover .abc {
