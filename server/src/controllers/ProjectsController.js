@@ -207,5 +207,25 @@ async getProjects(req, res) {
             error: 'Error'
           })
       }
+  },
+
+    async discoverProjects(req,res){
+      try {
+        const project = await Project.findAll({ include: [{
+            model: Tag,
+          },
+          {
+            model:User,
+          }],
+          order: [
+            ['id', 'DESC'],
+          ],
+          limit: 9});
+        res.send({project})
+      } catch (error) {
+          res.status(500).send({
+            error: 'Error'
+          })
+      }
   }
 }
