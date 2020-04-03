@@ -16,7 +16,7 @@
           </li>
         </div>
 
-        <b-row class="info-inner">
+        <b-row class="info-inner" v-if="isLoggedOut()">
           <li>
             <div class="text-muted">Have an account?</div>
           </li>
@@ -45,7 +45,12 @@
 
 <script>
 export default {
-  name: "footer"
+  name: "footer",
+  methods: {
+    isLoggedOut(){
+      return !this.$store.state.isLoggedIn
+    }
+  }
 };
 </script>
 
