@@ -91,6 +91,9 @@ export default {
             return false
         },
         websiteLink(){
+          if (this.website != null && this.website.startsWith('http')){
+            return this.website
+          }
           return  "//" + this.website
         }
     }

@@ -76,7 +76,10 @@ export default {
       return "/connect/projects/" + this.project_id + "/update";
     },
     websiteLink: function() {
-      return "//" + this.website;
+      if (this.website != null && this.website.startsWith('http')){
+        return this.website
+      }
+      return  "//" + this.website
     },
     tag: function() {
       if (this.tags.length > 0) {

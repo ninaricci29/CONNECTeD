@@ -56,7 +56,10 @@ export default {
       return "";
     },
     websiteLink: function() {
-      return "//" + this.website;
+      if (this.website != null && this.website.startsWith('http')){
+        return this.website
+      }
+      return  "//" + this.website
     }
   },
   methods: {
