@@ -17,6 +17,7 @@ module.exports = (app, upload) => {
   app.get('/connect/getproject', ProjectController.getProject),
   app.post('/connect/update-projects', upload.single('picture'), ProjectController.updateProject); 
   app.get('/connect/search-projects',ProjectController.searchProject);
+  app.get('/connect/discover-projects',ProjectController.discoverProjects);
   app.get('/connect/project', ProjectController.getProjects);
   app.get('/connect/get-tag',ProjectController.getTag);
   app.get('/connect/get_utorids', ProjectController.get_utorids)

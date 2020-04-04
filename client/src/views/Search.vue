@@ -15,6 +15,12 @@
       </div>
     </div>
 
+     <div class="zero-projects" v-if="discover">
+      <div class="font-weight-bold">
+        Here are some recently created projects
+      </div>
+    </div>
+
     <section class="container">
       <div class="search-cards" v-for="i in rowCount()" v-bind:key="i">
         <ul>
@@ -48,17 +54,24 @@ export default {
       cols: 3,
       value: [],
       tag_ids: [],
-      show: false
+      show: false,
+      discover: true
     };
   },
   components: {
     SearchTags,
     SearchCard
   },
+  mounted() {
+    axios
+        .get("/connect/discover-projects")
+        .then(response => (this.project_list = response.data.project));
+  },
   methods: {
     async search(value) {
       this.value = value;
       this.show = true;
+      this.discover = false;
       for (var i = 0; i < this.value.length; i++) {
         await axios
           .get("/connect/get-tag?tag=" + this.value[i])
