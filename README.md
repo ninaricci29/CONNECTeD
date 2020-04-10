@@ -12,8 +12,8 @@ ConnectEd is an online platform where university students can turn dream project
 
 Our platform matches UofT students based on self-stated personal objectives, skill levels, and project ideas. Students can connect, collaborate, and hone entrepreneurial and preprofessional skills as they complete projects with other nominated users. 
 
-## Wireframes and Screenshots
-Coming soon! 
+## DEMO VIDEO
+[![Watch the video](https://miro.medium.com/max/1400/1*1Xe5rF_sEB6DyM8pEe58zg.png)](https://youtu.be/NGpKQLZozqk)
 
 ## Setup
 You need to have node.js installed. Then clone the repo, navigate to it, and run: 
