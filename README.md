@@ -3,7 +3,7 @@
 ## Contents
 
 0. [Introduction](#introduction)
-2. [Wireframes and Screenshots](#images)
+2. [Demo video](#images)
 1. [Setup](#setup)
 
 ## Introduction
